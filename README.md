@@ -19,13 +19,15 @@ flowchart LR
     F --> B
 ```
 
-## What v0.1 does
+## What v0.2 does
 
 - One current note per task, grouped by project, with explicit relationships.
 - Separate facts, decisions, hypotheses, sources and corrections.
 - Lexical search with small discovery results; bounded recall of complete notes.
 - SHA-based conflict detection, atomic replacement and previous-version snapshots.
-- Local operation with Python 3.10+ and its standard library. No API key or plugin.
+- Partial updates that preserve human sections, YAML properties and comments.
+- Public installer for Codex and Claude Code, with one private vault per project.
+- Local operation with Python 3.10+ and ruamel.yaml. No API key or Obsidian plugin.
 - Skill instructions for recovery after context resets and handoffs between agents.
 
 OBIA is designed to reduce repeated context loading and make claims easier to
@@ -42,51 +44,31 @@ git clone https://github.com/Enzoramo/OBIA.git
 cd OBIA
 ```
 
-Copy `skills/obia` to your agent's skill location. These commands stop if that
-installation already exists; review and update an existing installation separately.
-
-**Codex, user installation:**
+Choose an existing private parent folder for your project vaults:
 
 ```sh
-mkdir -p "$HOME/.agents/skills"
-test ! -e "$HOME/.agents/skills/obia" && cp -R skills/obia "$HOME/.agents/skills/obia"
+python3 install.py --host codex --vaults-root '/private/Obsidian' --project '/work/my-app'
+# Or:
+python3 install.py --host claude --vaults-root '/private/Obsidian' --project '/work/my-app'
 ```
 
-**Claude Code, user installation:**
+The installer adds the skill, its YAML dependency and a small host instruction
+block. Each new project gets a separate `OBIA - <project>` vault. Subdirectories
+and Git worktrees reuse their project's vault. Open that folder in Obsidian.
 
-```sh
-mkdir -p "$HOME/.claude/skills"
-test ! -e "$HOME/.claude/skills/obia" && cp -R skills/obia "$HOME/.claude/skills/obia"
-```
+Use `--update` for an existing installation. Old code is backed up; existing
+registry entries, private memories and unrelated instructions are retained.
+See [installation and migration](docs/installation.md) for directory overrides,
+Windows commands and installing into existing `~/.codex/skills` setups.
 
-For project installations use `.agents/skills/obia` or `.claude/skills/obia` in
-the relevant repository. For another Agent Skills host, use its documented skill
-location. An agent without skill discovery can read `skills/obia/SKILL.md`
-explicitly if it has file access. A chat without filesystem tools can only propose
-notes for you to save; it cannot operate this helper or access your local vault.
-
-## First use
-
-Tell the agent the exact existing vault path and a project slug:
-
-```text
-Use OBIA for this project. My vault is /path/to/my-vault.
-Project: my-app. Task: offline-cache.
-Save useful checkpoints and recover relevant memory before continuing.
-```
-
-Invoke `$obia` in Codex or `/obia` in Claude Code if needed. The agent initializes
-an isolated `OBIA/` folder in that vault and records task state there. Existing
-notes and `.obsidian/` configuration are outside its write scope.
-
-For continuity across new chats, add the short configuration in
-[Integrations](docs/integrations.md) to the project's `AGENTS.md`, `CLAUDE.md`, or
-equivalent instructions. Merely installing the skill does not guarantee that
-every task uses it. No background service or provider-specific hook is installed.
+Invoke `$obia` in Codex or `/obia` in Claude Code if needed. The host must provide
+filesystem access and load the skill/instructions. For another agent, install the
+same skill files in its documented location or explicitly read `SKILL.md`.
 
 ## Try it without touching your vault
 
 ```sh
+python3 -m pip install -r skills/obia/requirements.txt
 python3 examples/demo.py
 python3 -m unittest discover -s tests -v
 ```
@@ -138,7 +120,7 @@ Keep one writer at a time and respect your vault's existing rules.
 ## Contributing
 
 Use synthetic data in issues, examples and tests. Explain the workflow that fails,
-provide a minimal reproduction, and run the standard-library test suite. Keep
+provide a minimal reproduction, and run the test suite. Keep
 provider-specific setup out of the portable skill body. Changes should preserve
 small retrieval outputs, source provenance and existing user notes.
 

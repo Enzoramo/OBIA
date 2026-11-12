@@ -1,5 +1,8 @@
 # Configure continuity
 
+The [public installer](installation.md) configures a vault per project and adds
+a host instruction block. For manual fixed-vault setups, use the example below.
+
 Install the skill and explicitly choose a private vault. Keep the public skill
 repository separate from runtime memory. Do not copy your vault into this repo.
 

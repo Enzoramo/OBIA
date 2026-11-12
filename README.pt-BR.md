@@ -20,7 +20,9 @@ não precisa estar aberto para a gravação funcionar.
 - Separação entre fatos, decisões, hipóteses e correções, com referências às fontes.
 - Busca por palavras e recuperação com limite de caracteres.
 - Proteção contra sobrescritas concorrentes pelo utilitário e histórico local.
-- Python 3.10+ sem bibliotecas externas, APIs pagas ou plugins de Obsidian.
+- Edição parcial que preserva seções humanas, propriedades e comentários YAML.
+- Instalador público com um cofre separado por projeto, incluindo worktrees.
+- Python 3.10+ e ruamel.yaml, sem APIs pagas ou plugins de Obsidian.
 - Formato Agent Skills e instruções de instalação para Codex e Claude Code.
 
 **Economia de tokens e redução de alucinações são objetivos ainda não medidos.**
@@ -37,40 +39,31 @@ git clone https://github.com/Enzoramo/OBIA.git
 cd OBIA
 ```
 
-Para Codex:
+Escolha uma pasta privada existente que receberá os cofres:
 
 ```sh
-mkdir -p "$HOME/.agents/skills"
-test ! -e "$HOME/.agents/skills/obia" && cp -R skills/obia "$HOME/.agents/skills/obia"
+python3 install.py --host codex --vaults-root '/privado/Obsidian' --project '/trabalho/meu-app'
+# Ou:
+python3 install.py --host claude --vaults-root '/privado/Obsidian' --project '/trabalho/meu-app'
 ```
 
-Para Claude Code:
+O instalador adiciona a skill, a dependência YAML e instruções de memória ao host.
+Cada projeto novo recebe um cofre `OBIA - <projeto>`. Subpastas e worktrees reutilizam
+o mesmo cofre do projeto. Abra a pasta criada como cofre no Obsidian.
 
-```sh
-mkdir -p "$HOME/.claude/skills"
-test ! -e "$HOME/.claude/skills/obia" && cp -R skills/obia "$HOME/.claude/skills/obia"
-```
+Para atualizar, repita os mesmos caminhos com `--update`. A versão anterior fica
+em backup; os registros de projetos, memórias e demais instruções são preservados.
+Veja [instalação e migração](docs/installation.md) para configurar caminhos,
+Windows e instalações existentes em `~/.codex/skills`.
 
-Esses comandos não substituem uma instalação existente. Para outros agentes,
-consulte o local de instalação de skills do produto; também é possível mandar o
-agente ler o `SKILL.md` diretamente. É necessário acesso aos arquivos do cofre.
-
-Depois, faça um pedido como:
-
-```text
-Use OBIA neste projeto. Meu cofre está em /caminho/do/meu-cofre.
-Projeto: meu-app. Tarefa: cache-offline.
-Registre checkpoints úteis e recupere a memória relevante antes de continuar.
-```
-
-No Codex você pode chamar `$obia`; no Claude Code, `/obia`. Para manter esse
-comportamento em novas conversas, adicione a configuração curta de
-[Integrações](docs/integrations.md) às instruções do projeto. Instalar uma skill,
-por si só, não faz toda tarefa executá-la. Nenhum serviço em segundo plano é instalado.
+No Codex você pode chamar `$obia`; no Claude Code, `/obia`. O host precisa carregar
+as instruções e permitir acesso aos arquivos. Outros agentes podem ler o mesmo
+`SKILL.md` e usar o utilitário com acesso ao sistema de arquivos.
 
 ## Experimentar com dados fictícios
 
 ```sh
+python3 -m pip install -r skills/obia/requirements.txt
 python3 examples/demo.py
 python3 -m unittest discover -s tests -v
 ```

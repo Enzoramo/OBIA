@@ -16,13 +16,21 @@ that previous conclusions were correct. Work in the user's language.
 
 ## Establish the memory location
 
-Use the vault, project slug, and task ID supplied by the user or the project's
-existing OBIA configuration. If no location is known, ask for the vault path;
-do not guess from unrelated personal folders. Read applicable vault instructions.
-Only initialize memory when the user has requested it. An ongoing instruction to
-use OBIA authorizes relevant checkpoints without asking again each time.
+If configured through the installer, use `scripts/projects.py --config-dir
+<configured-directory> ensure --path <current-project-root>` and the returned
+`vault` and `project`. The default registry is `~/.config/obia/projects.json`,
+overridden by `OBIA_HOME`. Follow any explicit host configuration instead.
+Registered subfolders/worktrees reuse the same vault; a missing registered vault
+is an error to report, not a reason to choose a new directory. Do not enumerate all
+projects or notes at every startup.
 
-The helper writes only in `<vault>/OBIA/`. It does not manage existing journals,
+Otherwise use the vault, project slug and task ID supplied by the user. If no
+location is known, ask for the private vault parent; do not guess from personal
+folders. Read applicable vault instructions. Initialize only with authorization;
+an ongoing instruction to use OBIA authorizes relevant checkpoints.
+
+The memory helper writes only in `<vault>/OBIA/`. The configured project router
+creates owned project vaults with an identity marker, Home.md and .obsidian folder. It does not manage existing journals,
 reorganize the vault, install plugins, or synchronize notes to GitHub. The public
 skill repository and a user's private task memories are separate things.
 
