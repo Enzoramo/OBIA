@@ -130,6 +130,12 @@ def validate_vault(entry, data):
     return vault
 
 
+def home_for(vault):
+    home = memory.safe_path(vault, "Home.md")
+    legacy = memory.safe_path(vault, "Início.md")
+    return legacy if not home.exists() and legacy.is_file() else home
+
+
 def provision(entry, data):
     vault = validate_vault(entry, data)
     marker = memory.safe_path(vault, ".obia-project.json")
@@ -144,7 +150,7 @@ def provision(entry, data):
         raise ValueError("Vault configuration directory must not be a symlink.")
     (vault / ".obsidian").mkdir(exist_ok=True)
     memory.initialize(vault)
-    home = memory.safe_path(vault, "Home.md")
+    home = home_for(vault)
     if not home.exists():
         body = (
             f"# {entry['label']} · OBIA\n\n"
@@ -190,7 +196,7 @@ def ensure(path, name=None, config_path=CONFIG):
         if not entry.get("ready", False):
             entry["ready"] = True
             memory.atomic_write(config_path, json.dumps(data, ensure_ascii=False, indent=2) + "\n")
-        return {**entry, "created": new, "helper": str(HELPER), "home": str(vault / "Home.md")}
+        return {**entry, "created": new, "helper": str(HELPER), "home": str(home_for(vault))}
 
 
 def resolve(path, config_path=CONFIG):
@@ -206,7 +212,7 @@ def resolve(path, config_path=CONFIG):
     if not marker.is_file() or json.loads(memory.read_text(marker)) != identity:
         raise ValueError("Registered vault identity differs; check the configuration.")
     memory.initialized(vault)
-    return {**entry, "helper": str(HELPER), "home": str(vault / "Home.md")}
+    return {**entry, "helper": str(HELPER), "home": str(home_for(vault))}
 
 
 def main():

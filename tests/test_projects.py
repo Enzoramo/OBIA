@@ -141,3 +141,13 @@ class ProjectTests(unittest.TestCase):
                     projects.ensure(self.project(), config_path=self.config)
             finally:
                 fcntl.flock(stream, fcntl.LOCK_UN)
+
+    def test_existing_local_router_home_is_reused(self):
+        path = self.project()
+        entry = projects.ensure(path, config_path=self.config)
+        vault = Path(entry['vault'])
+        (vault / 'Home.md').rename(vault / 'Início.md')
+        expected = str(vault / 'Início.md')
+        self.assertEqual(projects.resolve(path, self.config)['home'], expected)
+        self.assertEqual(projects.ensure(path, config_path=self.config)['home'], expected)
+        self.assertFalse((vault / 'Home.md').exists())
