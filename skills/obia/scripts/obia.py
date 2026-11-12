@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""OBIA: local Markdown task memory. Python 3.10+, standard library only."""
+"""OBIA: local Markdown task memory. Python 3.10+, optional YAML round-trip support."""
 from __future__ import annotations
 
 import argparse
 from contextlib import contextmanager
 from datetime import date, datetime, timezone
 import hashlib
+import io
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -14,7 +15,19 @@ import sys
 import tempfile
 import unicodedata
 
-VERSION = "0.1.0"
+# The public installer keeps dependencies inside this skill, not global Python.
+_packages = Path(__file__).resolve().parents[1] / "_packages"
+if _packages.is_dir():
+    sys.path.insert(0, str(_packages))
+try:
+    from ruamel.yaml import YAML
+    from ruamel.yaml.error import YAMLError
+except ImportError:
+    YAML = None
+    YAMLError = ValueError
+
+VERSION = "0.2.0"
+META_FIELDS = {"obia", "project", "task_id", "title", "status", "updated", "summary"}
 MAX_BYTES = 131072
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 SOURCE_ID = re.compile(r"S[1-9][0-9]*\Z")
@@ -255,31 +268,168 @@ def render(data, updated):
     return text
 
 
+def frontmatter(text, require_yaml=False):
+    match = re.match(r"\A---\n(.*?)\n---(?:\n|$)", text, re.S)
+    if not match:
+        fail("Managed note has no valid frontmatter.")
+    raw = match.group(1)
+    if YAML is None:
+        if require_yaml:
+            fail("Partial updates need ruamel.yaml. Run the OBIA installer or install skills/obia/requirements.txt.")
+        # Backward compatibility for v0.1 JSON-scalar notes without dependencies.
+        result = {}
+        try:
+            for row in raw.splitlines():
+                key, value = row.split(":", 1)
+                if key in result:
+                    fail("Duplicate frontmatter property.")
+                result[key] = json.loads(value.strip())
+        except ValueError:
+            fail("YAML frontmatter needs ruamel.yaml. Run the OBIA installer.")
+    else:
+        try:
+            # Safe validation rejects executable/custom tags. Round-trip loading
+            # retains comments, quotes, extra properties and their order.
+            YAML(typ="safe", pure=True).load(raw)
+            yaml = YAML(typ="rt", pure=True)
+            yaml.preserve_quotes = True
+            result = yaml.load(raw)
+        except YAMLError:
+            fail("Invalid YAML frontmatter (duplicate keys and custom tags are unsupported).")
+    if not isinstance(result, dict):
+        fail("Frontmatter must be a mapping.")
+    return result, text[match.end():]
+
+
+def join_frontmatter(meta, body):
+    yaml = YAML(typ="rt", pure=True)
+    yaml.preserve_quotes = True
+    stream = io.StringIO()
+    yaml.dump(meta, stream)
+    return "---\n" + stream.getvalue() + "---\n" + body
+
+
 def metadata(text):
-    rows = text.splitlines()
-    if not rows or rows[0] != "---":
-        fail("Managed note has no frontmatter.")
-    result = {}
+    result, _ = frontmatter(text)
+    if not META_FIELDS <= result.keys() or type(result["obia"]) is not int or result["obia"] != 1:
+        fail("Unsupported managed note metadata.")
+    # Native YAML dates/timestamps are accepted; protocol fields stay JSON-safe.
+    canonical = {key: result[key] for key in META_FIELDS}
+    if isinstance(canonical["updated"], (date, datetime)):
+        canonical["updated"] = canonical["updated"].isoformat()
+    slug(canonical["project"])
+    slug(canonical["task_id"])
+    line(canonical["title"], "title", 160)
+    line(canonical["summary"], "summary", 240)
+    observed(canonical["updated"])
+    if not isinstance(canonical["status"], str) or canonical["status"] not in STATUSES:
+        fail("Invalid task status in note.")
+    return canonical
+
+
+def sections(content):
+    """Locate level-two Markdown sections, ignoring fenced code blocks."""
+    found, offset, fence = {}, 0, None
+    for row in content.splitlines(keepends=True):
+        marker = re.match(r"^ {0,3}(`{3,}|~{3,})(.*)$", row.rstrip("\r\n"))
+        if fence:
+            if marker and marker[1][0] == fence[0] and len(marker[1]) >= fence[1] and not marker[2].strip():
+                fence = None
+        elif marker:
+            fence = (marker[1][0], len(marker[1]))
+        else:
+            heading = re.match(r"^## +(.+?) *#*\s*$", row)
+            if heading:
+                name = heading[1]
+                if name in found:
+                    fail("Duplicate section heading; reconcile it before editing: " + name)
+                found[name] = [offset, offset + len(row), len(content)]
+        offset += len(row)
+    values = list(found.values())
+    for i in range(len(values) - 1):
+        values[i][2] = values[i + 1][0]
+    return found
+
+
+def validate_content(root, content):
+    metadata(content)
+    if len(content.encode("utf-8")) > MAX_BYTES:
+        fail("Checkpoint is too large.")
+    if SENSITIVE.search(content):
+        fail("Possible credential detected. Remove secrets before saving.")
+    definitions = set(re.findall(r"^- \*\*(S[1-9][0-9]*)\*\* \(", content, re.M))
+    references = set(re.findall(r"\[(S[1-9][0-9]*)\]", content))
+    if not definitions or references - definitions:
+        fail("Note needs Sources definitions for every source reference.")
+    for target in related_targets(content):
+        if not safe_path(root, target + ".md").is_file():
+            fail("Related note does not exist: " + target)
+
+
+def persist(root, relative, content, old=None):
+    if old:
+        backup = safe_path(root, f"OBIA/.history/{old['project']}/{old['task_id']}/{old['sha256']}.md")
+        if backup.exists() and read_text(backup) != old["content"]:
+            fail("History snapshot content conflict.")
+        if not backup.exists():
+            atomic_write(backup, old["content"])
+    atomic_write(safe_path(root, relative), content)
+    result = {"status": "updated" if old else "created", "path": relative, "sha256": digest(content)}
     try:
-        end = rows.index("---", 1)
-        for row in rows[1:end]:
-            key, value = row.split(":", 1)
-            if key in result:
-                fail("Duplicate frontmatter property.")
-            result[key] = json.loads(value.strip())
-        expected = {"obia", "project", "task_id", "title", "status", "updated", "summary"}
-        if set(result) != expected or result["obia"] != 1:
-            fail("Unsupported managed note metadata.")
-        slug(result["project"])
-        slug(result["task_id"])
-        line(result["title"], "title", 160)
-        line(result["summary"], "summary", 240)
-        observed(result["updated"])
-        if result["status"] not in STATUSES:
-            fail("Invalid task status in note.")
-    except (ValueError, TypeError) as error:
-        fail(f"Invalid managed frontmatter: {error}")
+        rebuild(root)
+    except (ObiaError, OSError) as error:
+        result["warning"] = f"Note saved; indexes need repair: {error}"
     return result
+
+
+def patch(root, project, task, changes, expected):
+    if not isinstance(changes, dict) or not changes or changes.keys() - {"properties", "sections", "append"}:
+        fail("Patch accepts properties, sections and append mappings.")
+    for key in changes:
+        if not isinstance(changes[key], dict):
+            fail("Patch operations must be mappings.")
+    if changes.get("properties", {}).keys() & {"obia", "project", "task_id", "updated"}:
+        fail("Identity and updated properties cannot be patched.")
+    if changes.get("sections", {}).keys() & changes.get("append", {}).keys():
+        fail("Cannot replace and append to the same section.")
+    relative = task_relative(project, task)
+    with locked(root):
+        old = note(root, relative)
+        if expected != old["sha256"]:
+            fail("Write conflict: reread and reconcile the current note; pass its SHA with --expect-sha.")
+        meta, body = frontmatter(old["content"], require_yaml=True)
+        previous = dict(meta)
+        for key, value in changes.get("properties", {}).items():
+            line(key, "property name", 160)
+            meta[key] = value
+        # Keep the standard rendered summary/title in agreement, without
+        # replacing a user's independently edited Resume section or heading.
+        for key, prefix in (("summary", "**Current state:** "), ("title", "# ")):
+            if key in changes.get("properties", {}) and meta[key] != previous[key]:
+                before = prefix + str(previous[key])
+                if before in body.splitlines():
+                    body = re.sub(r"^" + re.escape(before) + r"$", lambda _: prefix + str(meta[key]), body, count=1, flags=re.M)
+                elif key == "summary" and "Resume" not in changes.get("sections", {}):
+                    fail("Resume was edited manually; provide its reconciled replacement in sections.Resume.")
+        for operation in ("sections", "append"):
+            for title, value in changes.get(operation, {}).items():
+                line(title, "section title", 160)
+                if not isinstance(value, str) or sections(value):
+                    fail("Section content must be Markdown without level-two headings outside fences.")
+                spans = sections(body)
+                if title in spans:
+                    start, head, end = spans[title]
+                    replacement = value if operation == "sections" else body[head:end].rstrip() + "\n\n" + value
+                    body = body[:head] + "\n" + replacement.strip("\n") + "\n\n" + body[end:]
+                else:
+                    body = body.rstrip() + f"\n\n## {title}\n\n" + value.strip("\n") + "\n"
+        sections(body)  # reject ambiguous duplicate headings even on property edits
+        content = join_frontmatter(meta, body)
+        validate_content(root, content)
+        if content == old["content"]:
+            return {"status": "unchanged", "path": relative, "sha256": old["sha256"]}
+        meta["updated"] = datetime.now(timezone.utc).isoformat(timespec="microseconds")
+        return persist(root, relative, join_frontmatter(meta, body), old)
 
 
 def note(root, relative):
@@ -329,7 +479,7 @@ def rebuild(root):
     return {"indexed_tasks": len(notes), "indexes": len(outputs)}
 
 
-def save(root, data, expected=None):
+def save(root, data, expected=None, replace_existing=False):
     validate_payload(data, root)
     relative = task_relative(data["project"], data["id"])
     with locked(root):
@@ -341,20 +491,15 @@ def save(root, data, expected=None):
             fail("Write conflict: expected a previous note, but it does not exist.")
         if old and render(data, old["updated"]) == old["content"]:
             return {"status": "unchanged", "path": relative, "sha256": old["sha256"]}
+        if old and not replace_existing:
+            fail("Whole-note replacement requires --replace. Prefer patch to preserve human edits.")
         content = render(data, datetime.now(timezone.utc).isoformat(timespec="microseconds"))
-        if old:
-            backup = safe_path(root, f"OBIA/.history/{data['project']}/{data['id']}/{old['sha256']}.md")
-            if backup.exists() and read_text(backup) != old["content"]:
-                fail("History snapshot content conflict.")
-            if not backup.exists():
-                atomic_write(backup, old["content"])
-        atomic_write(path, content)
-        result = {"status": "updated" if old else "created", "path": relative, "sha256": digest(content)}
-        try:
-            rebuild(root)
-        except (ObiaError, OSError) as error:
-            result["warning"] = f"Note saved; indexes need repair: {error}"
-        return result
+        if old and YAML is not None:
+            meta, _ = frontmatter(old["content"], require_yaml=True)
+            fresh, body = frontmatter(content)
+            meta.update(fresh)
+            content = join_frontmatter(meta, body)
+        return persist(root, relative, content, old)
 
 
 def words(text):
@@ -448,16 +593,19 @@ def parser():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--version", action="version", version=VERSION)
     sub = cli.add_subparsers(dest="command", required=True)
-    for command in ("init", "save", "read", "search", "recall", "index", "check"):
+    for command in ("init", "save", "patch", "read", "search", "recall", "index", "check"):
         p = sub.add_parser(command)
         p.add_argument("--vault", required=True, help="Existing vault root; writes stay in its OBIA/ folder")
-        if command in {"read", "search", "recall", "check"}:
+        if command in {"patch", "read", "search", "recall", "check"}:
             p.add_argument("--project", required=True)
-        if command == "save":
+        if command in {"save", "patch"}:
             p.add_argument("--input", required=True, help="Checkpoint JSON path, or - for stdin")
             p.add_argument("--expect-sha", help="SHA returned by read; required to replace a task")
-        if command == "read":
+        if command == "save":
+            p.add_argument("--replace", action="store_true", help="Explicitly replace the whole body of an existing note")
+        if command in {"read", "patch"}:
             p.add_argument("--task", required=True)
+        if command == "read":
             p.add_argument("--section", help="Level-2 section, e.g. Resume or Sources")
         if command in {"search", "recall"}:
             p.add_argument("--limit", type=int, default=5 if command == "search" else 3)
@@ -490,19 +638,21 @@ def main(argv=None):
             result = initialize(root)
         else:
             initialized(root)
-            if args.command == "save":
+            if args.command in {"save", "patch"}:
                 raw = sys.stdin.read(MAX_BYTES + 1) if args.input == "-" else read_text(Path(args.input))
                 if len(raw.encode("utf-8")) > MAX_BYTES:
                     fail("Input is too large.")
-                result = save(root, json.loads(raw), args.expect_sha)
+                result = (save(root, json.loads(raw), args.expect_sha, args.replace) if args.command == "save"
+                          else patch(root, args.project, args.task, json.loads(raw), args.expect_sha))
             elif args.command == "read":
                 item = note(root, task_relative(args.project, args.task))
                 content = item["content"]
                 if args.section:
-                    match = re.search(r"^## " + re.escape(args.section) + r"\n.*?(?=^## |\Z)", content, re.M | re.S)
-                    if not match:
+                    spans = sections(content)
+                    if args.section not in spans:
                         fail("Section not found.")
-                    content = match.group(0).rstrip() + "\n"
+                    start, _, end = spans[args.section]
+                    content = content[start:end].rstrip() + "\n"
                 result = {"path": item["path"], "sha256": item["sha256"], "content": content}
             elif args.command == "search":
                 results = search(root, args.project, args.query, args.limit, args.include_archived)

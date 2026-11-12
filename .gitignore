@@ -11,3 +11,5 @@ __pycache__/
 /local-vault/
 /checkpoint*.json
 *.local.md
+
+_packages/

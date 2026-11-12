@@ -63,7 +63,7 @@ class MemoryTests(unittest.TestCase):
         old = obia.save(self.root, data)
         data["facts"] = [{"text": "Corrected assertion.", "sources": ["S1"]}]
         data["corrections"] = [{"text": "Replaced the earlier assertion after checking the source.", "sources": ["S1"]}]
-        new = obia.save(self.root, data, old["sha256"])
+        new = obia.save(self.root, data, old["sha256"], replace_existing=True)
         current = (self.root / new["path"]).read_text()
         self.assertNotIn("Old disproved assertion.", current)
         history = list((self.root / "OBIA/.history/sample/cache").glob("*.md"))
@@ -75,7 +75,7 @@ class MemoryTests(unittest.TestCase):
         data = payload()
         old = obia.save(self.root, data)
         data["summary"] = "Another writer completed inspection."
-        updated = obia.save(self.root, data, old["sha256"])
+        updated = obia.save(self.root, data, old["sha256"], replace_existing=True)
         stale = payload()
         stale["summary"] = "Stale competing change."
         with self.assertRaises(obia.ObiaError):

@@ -1,0 +1,2 @@
+# Pure-Python round-trip YAML; tested with this release.
+ruamel.yaml==0.18.17

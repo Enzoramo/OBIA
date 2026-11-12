@@ -1,6 +1,7 @@
 # Helper commands
 
-Python 3.10+; no packages, API keys, network calls, embeddings or Obsidian plugins.
+Python 3.10+; install `skills/obia/requirements.txt` for round-trip YAML edits.
+No API keys, network calls at runtime, embeddings or Obsidian plugins.
 Resolve the helper from the installed skill directory. Examples below run from
 the OBIA repository root. Quote paths, including vault paths containing spaces.
 Replace `/path/to/vault` with the user's existing vault directory.
@@ -21,12 +22,32 @@ when composing payloads; do not interpolate task text into shell commands.
 
 1. `read` the task. The result contains a `sha256` of the complete Markdown note,
    including when reading one section.
-2. Build a **complete replacement checkpoint**, preserving all still-relevant
-   state, evidence and constraints. Omitted optional lists become empty; `save`
-   is not a partial patch or automatic merge.
-3. Run `save --input checkpoint.json --expect-sha ACTUAL_SHA_FROM_READ`.
-4. Check the returned status and any warning. A stale or absent SHA refuses the
-   replacement. Reconcile any concurrent edit before retrying.
+2. Prefer a partial JSON patch containing `properties`, `sections` and/or `append`.
+   `sections` replaces only the named level-two section body; `append` adds to it.
+   Headings inside fenced code are ignored. Unmentioned sections are retained.
+3. Run `patch --project my-app --task login --input patch.json --expect-sha SHA`.
+4. Check the returned status and warning. Reconcile concurrent edits before retrying.
+
+Example `patch.json` (sources must already exist or be supplied in `sections.Sources`):
+
+```json
+{
+  "properties": {"status": "complete", "summary": "Login tested offline."},
+  "append": {"Facts": "- Offline login passed. [S1]"},
+  "sections": {"Next steps": "No remaining implementation work."}
+}
+```
+
+Plain YAML strings, lists, dates, custom properties and comments are supported.
+Identity fields (`obia`, `project`, `task_id`) are immutable; `updated` is automatic.
+The generated title/current-state line is synchronized when its old text matches.
+If a human rewrote the current-state line, supply a reconciled `sections.Resume`.
+Duplicate YAML keys, custom YAML tags and duplicate section headings are rejected.
+
+For a deliberate complete body rewrite, use a complete checkpoint JSON with
+`save --input checkpoint.json --expect-sha SHA --replace`. Extra frontmatter
+properties are preserved when YAML support is installed; the body is replaced.
+Without `--replace`, a changed existing note is refused even with the correct SHA.
 
 Identical replacements return `unchanged` and create no history. Changed notes
 save the previous version in `OBIA/.history/<project>/<task>/<sha>.md` before
