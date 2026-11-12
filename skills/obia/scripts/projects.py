@@ -24,7 +24,26 @@ HELPER = Path(__file__).resolve().with_name("obia.py")
 
 @contextmanager
 def locked(config_path):
-    lock = config_path.parent / ".projects.lock"
+    lock = memory.safe_path(config_path.parent, ".projects.lock")
+    try:
+        import fcntl
+    except ImportError:
+        fcntl = None
+    if fcntl is not None:
+        # Interoperate with the original local router, whose advisory lock file
+        # remains on disk after release. Existence is not a live POSIX lock.
+        with lock.open("a", encoding="utf-8") as stream:
+            try:
+                fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                raise ValueError("Project registry is locked by another writer.")
+            try:
+                yield
+            finally:
+                fcntl.flock(stream, fcntl.LOCK_UN)
+        return
+    # Windows fallback needs no third-party locking package. Stale exclusive
+    # files require inspection; do not mistake an old PID for permission to delete.
     try:
         descriptor = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
     except FileExistsError:

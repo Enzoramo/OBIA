@@ -59,9 +59,11 @@ Vault creation reserves an identity in the registry before provisioning. If an
 interrupted creation left an unowned folder with no identity marker, inspect it
 before retrying; OBIA refuses to claim arbitrary existing content.
 
-Registry locks are exclusive on one filesystem. A stale `.projects.lock` requires
-checking that its writer stopped before removal. These locks do not coordinate
-multiple computers through iCloud or other sync systems.
+Registry locks coordinate writers on one filesystem. POSIX uses advisory locks
+compatible with the original local router; the empty `.projects.lock` file remains
+after release and is not itself evidence of an active writer. Windows uses an
+exclusive lock file; inspect its writer before removing a stale file. These locks
+do not coordinate multiple computers through iCloud or other sync systems.
 
 ## Updates and migration
 

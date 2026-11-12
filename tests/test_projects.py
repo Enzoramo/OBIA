@@ -75,7 +75,8 @@ class ProjectTests(unittest.TestCase):
         with projects.locked(self.config):
             with self.assertRaisesRegex(ValueError, 'locked'):
                 projects.ensure(self.root, config_path=self.config)
-        self.assertFalse((self.config.parent / '.projects.lock').exists())
+        with projects.locked(self.config):
+            pass  # lock is reusable after release on either platform
 
     def test_vault_identity_cannot_be_substituted(self):
         path = self.project()
@@ -126,3 +127,17 @@ class ProjectTests(unittest.TestCase):
         other.mkdir()
         with self.assertRaisesRegex(ValueError, 'differs'):
             projects.configure(other, self.config)
+
+    @unittest.skipIf(sys.platform == 'win32', 'Legacy advisory router was POSIX-only')
+    def test_original_router_persistent_lock_is_compatible(self):
+        import fcntl
+        lock = self.config.parent / '.projects.lock'
+        lock.touch()
+        self.assertEqual(projects.configure(self.vaults, self.config)['status'], 'existing')
+        with lock.open('a') as stream:
+            fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            try:
+                with self.assertRaisesRegex(ValueError, 'locked'):
+                    projects.ensure(self.project(), config_path=self.config)
+            finally:
+                fcntl.flock(stream, fcntl.LOCK_UN)
