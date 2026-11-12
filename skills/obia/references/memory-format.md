@@ -109,10 +109,10 @@ notes summarize state; sources retain detail and history retains prior versions.
 
 ## Editing in Obsidian
 
-The note body is ordinary Markdown. Frontmatter uses JSON-quoted scalar values
-(valid YAML). The helper intentionally parses this small format, not arbitrary
-YAML; preserve the generated quoting, keys and IDs when editing frontmatter.
-Human body edits are preserved as snapshots on the next replacement. Reread and
-merge useful edits into the checkpoint first. `index` refreshes discovery after
-manual summary/status edits. Renaming managed task files by hand changes their
-identity; use a new task and a documented relationship instead.
+The note body is ordinary Markdown. Generated frontmatter starts with JSON-quoted
+scalars, which are valid YAML. With the installed YAML dependency, ordinary YAML
+properties, lists, dates and comments are supported and extra fields are retained.
+The managed identity fields must remain valid. Custom YAML tags and duplicate keys
+are rejected. `patch` preserves unmentioned sections and properties; full body
+replacement requires an explicit `save --replace`. Both require the current SHA
+and retain the previous note in history. Read and reconcile human edits first.

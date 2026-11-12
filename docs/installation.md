@@ -37,6 +37,8 @@ instruction to use memory for project work, not a guarantee of host activation.
 Open the new folder using Obsidian's **Open folder as vault** command. OBIA does
 not modify Obsidian's running application's private vault registry.
 
+Add `--hooks` to merge optional lifecycle adapters; see [hooks and activation](hooks.md).
+
 ## Resolving projects
 
 ```sh

@@ -22,6 +22,7 @@ não precisa estar aberto para a gravação funcionar.
 - Proteção contra sobrescritas concorrentes pelo utilitário e histórico local.
 - Edição parcial que preserva seções humanas, propriedades e comentários YAML.
 - Instalador público com um cofre separado por projeto, incluindo worktrees.
+- Hooks opcionais para recuperar contexto salvo e solicitar checkpoints.
 - Python 3.10+ e ruamel.yaml, sem APIs pagas ou plugins de Obsidian.
 - Formato Agent Skills e instruções de instalação para Codex e Claude Code.
 
@@ -55,6 +56,10 @@ Para atualizar, repita os mesmos caminhos com `--update`. A versão anterior fic
 em backup; os registros de projetos, memórias e demais instruções são preservados.
 Veja [instalação e migração](docs/installation.md) para configurar caminhos,
 Windows e instalações existentes em `~/.codex/skills`.
+
+Adicione `--hooks` para configurar os [eventos de retomada e checkpoint](docs/hooks.md).
+O Codex exige a revisão normal dos hooks antes de ativá-los. A recuperação cobre
+o contexto salvo; o agente continua responsável por escrever os checkpoints.
 
 No Codex você pode chamar `$obia`; no Claude Code, `/obia`. O host precisa carregar
 as instruções e permitir acesso aos arquivos. Outros agentes podem ler o mesmo

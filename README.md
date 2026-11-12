@@ -27,6 +27,7 @@ flowchart LR
 - SHA-based conflict detection, atomic replacement and previous-version snapshots.
 - Partial updates that preserve human sections, YAML properties and comments.
 - Public installer for Codex and Claude Code, with one private vault per project.
+- Optional lifecycle hooks for saved-context recovery and checkpoint reminders.
 - Local operation with Python 3.10+ and ruamel.yaml. No API key or Obsidian plugin.
 - Skill instructions for recovery after context resets and handoffs between agents.
 
@@ -60,6 +61,10 @@ Use `--update` for an existing installation. Old code is backed up; existing
 registry entries, private memories and unrelated instructions are retained.
 See [installation and migration](docs/installation.md) for directory overrides,
 Windows commands and installing into existing `~/.codex/skills` setups.
+
+Add `--hooks` to configure [lifecycle events](docs/hooks.md). Codex requires
+its normal hook review before activation. Recovery covers saved context; the
+agent remains responsible for writing useful checkpoints.
 
 Invoke `$obia` in Codex or `/obia` in Claude Code if needed. The host must provide
 filesystem access and load the skill/instructions. For another agent, install the

@@ -120,6 +120,8 @@ def main(argv=None):
     cli.add_argument('--instructions', type=Path, help='Override host instruction file')
     cli.add_argument('--no-instructions', action='store_true', help='Install code/config only; do not change host instructions')
     cli.add_argument('--update', action='store_true')
+    cli.add_argument('--hooks', action='store_true', help='Merge lifecycle hooks into host settings; host trust review still applies')
+    cli.add_argument('--hook-settings', type=Path, help='Override the hook settings destination')
     args = cli.parse_args(argv)
     host_home = Path(os.environ.get('CODEX_HOME', Path.home() / '.codex')) if args.host == 'codex' else Path.home() / '.claude'
     # Codex supports shared Agent Skills discovery; older desktop installs can
@@ -131,6 +133,10 @@ def main(argv=None):
         if args.project:
             result['project'] = projects.ensure(args.project, config_path=args.config_dir.expanduser().resolve() / 'projects.json')
             result['project']['helper'] = str(skills.expanduser().resolve() / 'obia/scripts/obia.py')
+        if args.hooks:
+            import hooks
+            settings = args.hook_settings or host_home / ('hooks.json' if args.host == 'codex' else 'settings.json')
+            result['hooks'] = hooks.install_hooks(args.config_dir.expanduser().resolve(), args.host, settings, skills.expanduser().resolve() / 'obia/scripts/hooks.py')
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
     except (ValueError, OSError, subprocess.CalledProcessError) as error:
