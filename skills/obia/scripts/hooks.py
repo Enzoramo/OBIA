@@ -72,7 +72,8 @@ def bind(config, host, session, cwd, task):
     with state_lock(path):
         state = load_state(path)
         if state.get('task') != task or state.get('root') != entry['root']:
-            state.update(task=task, root=entry['root'], project=entry['project'], checkpoint_turn=None, sha256=None, prompted_turn=None)
+            state.update(task=task, root=entry['root'], project=entry['project'], checkpoint_turn=None,
+                         checkpoint_turn_id=None, sha256=None, prompted_turn=None)
         save_state(path, state)
     result = {'task': task, 'session': session, 'project': entry['project'], 'vault': entry['vault']}
     if obia.safe_path(Path(entry['vault']), obia.task_relative(entry['project'], task)).is_file():
@@ -95,8 +96,15 @@ def acknowledge(config, host, session, cwd, expected):
                 raise ValueError('Checkpoint SHA differs. Reread and reconcile before acknowledging.')
             obia.validate_content(root, item['content'])
             state.update(checkpoint_turn=state['turn'], sha256=item['sha256'])
+            if host == 'codex':
+                # Only a lifecycle event can identify the host turn. An ack
+                # before a delegated turn is observed must not adopt that turn.
+                state['checkpoint_turn_id'] = state.get('turn_id')
             save_state(path, state)
-    return {'status': 'checkpoint-verified', 'task': state['task'], 'sha256': item['sha256'], 'turn': state['turn']}
+    result = {'status': 'checkpoint-verified', 'task': state['task'], 'sha256': item['sha256'], 'turn': state['turn']}
+    if host == 'codex':
+        result['turn_id'] = state.get('checkpoint_turn_id')
+    return result
 
 
 def context_output(event, text):
@@ -128,6 +136,9 @@ def handle(config, host, event, budget=12000):
         raise ValueError('Recall budget must be between 1024 and 64000 characters.')
     session = event.get('session_id')
     obia.line(event.get('cwd'), 'cwd')
+    turn_id = event.get('turn_id') if host == 'codex' and name != 'SessionStart' else None
+    if turn_id is not None:
+        obia.line(turn_id, 'turn ID', 256)
     path = session_file(config, host, session)
     with state_lock(path):
         state = load_state(path)
@@ -135,6 +146,8 @@ def handle(config, host, event, budget=12000):
             # Never persist the prompt, transcript_path or assistant text.
             state['turn'] += 1
             state['prompted_turn'] = None
+            if host == 'codex':
+                state['turn_id'] = turn_id
             save_state(path, state)
             return {}
         if name == 'SessionStart':
@@ -153,17 +166,28 @@ def handle(config, host, event, budget=12000):
         if not state.get('task'):
             return {}
         entry = entry_for(config, event['cwd'], state)
+        if host == 'codex' and state.get('turn_id') != turn_id:
+            # Delegated tool-output turns skip UserPromptSubmit. Observe their
+            # identity at PreCompact/Stop without advancing the prompt counter.
+            # Reset the loop guard so an earlier turn cannot suppress this one.
+            state.update(turn_id=turn_id, prompted_turn=None)
+            save_state(path, state)
         relative = obia.task_relative(entry['project'], state['task'])
         target = obia.safe_path(Path(entry['vault']), relative)
         item = obia.note(Path(entry['vault']), relative) if target.is_file() else None
-        current = bool(item and state['checkpoint_turn'] == state['turn'] and state['sha256'] == item['sha256'])
+        same_turn = host != 'codex' or (turn_id is not None and state.get('checkpoint_turn_id') == turn_id)
+        current = bool(item and same_turn and state['checkpoint_turn'] == state['turn'] and state['sha256'] == item['sha256'])
+        identity_warning = ' Codex supplied no turn_id; a receipt cannot be verified for this turn.' if host == 'codex' and turn_id is None else ''
         if name == 'PreCompact':
             # A command hook cannot invent a semantic checkpoint. Record only
             # whether persisted evidence exists, and never block compaction.
             state['last_compaction'] = {'turn': state['turn'], 'checkpoint_verified': current}
+            if host == 'codex':
+                state['last_compaction']['turn_id'] = turn_id
             save_state(path, state)
             message = (f'OBIA task {entry["project"]}/{state["task"]}: '
                        + ('checkpoint verified for this turn.' if current else 'no verified checkpoint for this turn; unsaved context may be lost.')
+                       + identity_warning
                        + f' Saved note locator: {relative}. Restore saved evidence after compaction; do not invent missing state.')
             # Claude accepts summary guidance as plain stdout; Codex ignores it
             # and accepts a diagnostic systemMessage instead.
@@ -171,7 +195,7 @@ def handle(config, host, event, budget=12000):
         if current:
             return {}
         if event.get('stop_hook_active') or state['prompted_turn'] == state['turn']:
-            return {'systemMessage': 'OBIA checkpoint remains unverified. No further continuation requested; report unsaved context if applicable.'}
+            return {'systemMessage': 'OBIA checkpoint remains unverified. No further continuation requested; report unsaved context if applicable.' + identity_warning}
         state['prompted_turn'] = state['turn']
         save_state(path, state)
         return {'decision': 'block', 'reason': (
@@ -180,6 +204,7 @@ def handle(config, host, event, budget=12000):
             'then run hooks.py ack with this session ID and its current SHA. If nothing changed, read and ack '
             'the existing SHA. If storage is unavailable, report that the checkpoint was not saved. '
             'Do not perform unrelated work or claim a successful save without evidence. '
+            + identity_warning + ' '
             + bootstrap(config, host, session)
         )}
 

@@ -28,11 +28,25 @@ checkpoint. If nothing materially changed, read the current note and acknowledge
 its SHA without rewriting it. If work or constraints changed, save them first.
 
 SessionStart restores the bound task and its limited same-project links. A
-UserPromptSubmit event starts a new receipt cycle without storing the prompt.
+UserPromptSubmit event advances the private prompt counter without storing the
+prompt. In Codex, a valid receipt also needs the `turn_id` supplied by the host
+to match the ID recorded by `ack`. PreCompact and Stop observe this ID too:
+delegated turns can skip UserPromptSubmit but cannot reuse an earlier turn's ack.
+The counter remains a count of prompt events, not all host turns.
+
+Codex `ack` returns the last observed `turn_id` (or null if none is known). It
+verifies the persisted note against that observed turn, never an unseen future
+turn. If the first event for a delegated turn is Stop, an earlier ack cannot
+identify that turn; reread and ack during the requested continuation. Legacy
+receipts without an ID require a new ack after a real lifecycle event supplies
+one. A missing Codex `turn_id` is reported as unverified, never accepted using
+only the counter. Claude Code retains its prompt-counter receipt workflow.
+
 Stop asks for a checkpoint when its receipt is missing/stale, at most once per
-cycle, and respects `stop_hook_active`. After that it reports the missing receipt
-without looping. A failed write or failed acknowledgement is not a successful
-checkpoint; report it. Hooks never archive a task or mark it complete themselves.
+observed turn/cycle, and respects `stop_hook_active` even if the continuation has
+a new turn ID. After that it reports the missing receipt without looping. A
+failed write or failed acknowledgement is not a successful checkpoint; report it.
+Hooks never archive a task or mark it complete themselves.
 
 PreCompact records whether the current checkpoint was verified. It cannot compel
 the model to produce a fresh summary before an automatic compaction, and does not

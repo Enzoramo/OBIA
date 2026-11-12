@@ -25,14 +25,30 @@ follow any host review/restart prompts.
 | Event | OBIA behavior |
 | --- | --- |
 | SessionStart | Supplies the session ID and workflow; restores bounded memory when a task is bound. Includes restart after compaction. |
-| UserPromptSubmit | Advances a private turn counter. Does not store the prompt. |
-| PreCompact | Checks whether the current saved note has a verified receipt. Reports unsaved state; never blocks compaction. |
-| Stop | Requests one checkpoint pass if needed; accepts a verified current SHA and prevents repeated continuation loops. |
+| UserPromptSubmit | Advances a private prompt counter and records the Codex turn ID when supplied. Does not store the prompt. |
+| PreCompact | Observes the Codex turn ID and checks whether the current saved note has a verified receipt for that turn. Reports unsaved state; never blocks compaction. |
+| Stop | Observes the Codex turn ID and requests one checkpoint pass if needed; accepts a verified current SHA for that turn and prevents repeated continuation loops. |
 
 The agent uses `bind` to associate a session with a task, then saves through the
 normal memory helper and uses `ack` to verify the note SHA. Existing task bindings
 survive process restarts. A new chat must explicitly bind its intended task. See
 [the agent workflow](../skills/obia/references/hooks.md).
+
+Codex receipts match both the prompt counter and the host's `turn_id`, in addition
+to the saved note SHA. Delegated tool-output turns may skip UserPromptSubmit;
+PreCompact or Stop still observes their new ID and rejects an earlier turn's
+receipt. The Stop loop guard resets for a new observed ID, while
+`stop_hook_active` still prevents a repeated continuation. The ID comes from the
+[documented lifecycle input](https://learn.chatgpt.com/docs/hooks#stop), without
+reading transcripts or adding hook definitions.
+
+An ack records the most recently observed turn; it cannot anticipate an ID the
+host has not supplied yet. A delegated turn first observed at Stop therefore
+needs an ack in that continuation even if the agent acknowledged earlier. Older
+receipts without a turn ID require one new acknowledgement after an event
+supplies it. If Codex omits the ID, the checkpoint is reported as unverified.
+Claude Code continues to use its prompt counter and SHA. Updating the helper
+requires no changes to hook configuration or trust records.
 
 **Automatic recovery is for saved context.** These command hooks cannot generate
 a semantic summary of unobserved model context. Checkpoints are authored by the
