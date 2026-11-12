@@ -75,5 +75,5 @@ index, and a limited set of credential patterns. It cannot establish source trut
 detect every secret, or enforce the agent's reasoning behavior. Do not store secrets.
 
 Exit codes: `0` success, `1` structural check problems, `2` invalid input or I/O
-failure. Results are JSON on stdout; errors are JSON on stderr. No deletion,
+failure. Results are UTF-8 JSON on stdout; errors are UTF-8 JSON on stderr. No deletion,
 automatic sync, arbitrary shell execution, or external API commands are provided.

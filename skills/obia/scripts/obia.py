@@ -473,6 +473,10 @@ def parser():
 
 
 def main(argv=None):
+    # JSON is a UTF-8 protocol even when a Windows console uses a legacy code page.
+    for stream in (sys.stdin, sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", newline="\n")
     args = parser().parse_args(argv)
     try:
         root = root_for(args.vault)

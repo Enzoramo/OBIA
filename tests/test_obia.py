@@ -1,6 +1,7 @@
 """Behavioral filesystem tests using only synthetic, temporary data."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -32,14 +33,22 @@ class MemoryTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         obia.initialize(self.root)
 
-    def invoke(self, command, *args, input_data=None, code=0):
+    def invoke(self, command, *args, input_data=None, code=0, legacy_encoding=False):
         result = subprocess.run(
             [sys.executable, str(HELPER), command, "--vault", str(self.root), *args],
             input=json.dumps(input_data) if input_data is not None else None,
             text=True, encoding="utf-8", capture_output=True,
+            env={**os.environ, "PYTHONIOENCODING": "cp1252"} if legacy_encoding else None,
         )
         self.assertEqual(result.returncode, code, result.stderr + result.stdout)
         return json.loads(result.stdout if result.stdout else result.stderr)
+
+    def test_cli_utf8_is_independent_of_legacy_console_encoding(self):
+        data = payload()
+        data["title"] = "Conexão — 日本語 🙂"
+        self.invoke("save", "--input", "-", input_data=data, legacy_encoding=True)
+        recovered = self.invoke("read", "--project", "sample", "--task", "cache", legacy_encoding=True)
+        self.assertIn(data["title"], recovered["content"])
 
     def test_fresh_process_recovers_saved_goal_and_constraints(self):
         saved = self.invoke("save", "--input", "-", input_data=payload())
