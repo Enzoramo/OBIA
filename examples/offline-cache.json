@@ -1,0 +1,18 @@
+{
+  "project": "demo-app",
+  "id": "offline-cache",
+  "title": "Implement offline reading",
+  "status": "active",
+  "summary": "Synthetic example: storage decision exists; code inspection and implementation remain.",
+  "objective": "Make previously loaded articles readable without a network connection.",
+  "sources": [
+    {"id": "S1", "kind": "user", "ref": "Synthetic fixture, not a real conversation: user requests cached articles offline, with no background sync.", "observed_at": "2026-11-12"},
+    {"id": "S2", "kind": "memory", "ref": "OBIA/projects/demo-app/tasks/storage-choice.md, Decisions and Sources; verify original intent before changing scope.", "observed_at": "2026-11-12"}
+  ],
+  "constraints": [{"text": "Do not implement background synchronization.", "sources": ["S1"]}],
+  "decisions": [{"text": "Continue from the SQLite choice recorded in the storage task.", "reason": "Reuse the recorded decision while retaining its original evidence trail.", "sources": ["S2"]}],
+  "hypotheses": [{"text": "An existing repository layer may be reusable.", "verify": "Inspect the code; this fixture includes no repository or execution evidence."}],
+  "open_questions": ["How should expired content appear to the user?"],
+  "next_actions": ["Inspect the current data model before implementing the cache."],
+  "links": [{"target": "OBIA/projects/demo-app/tasks/storage-choice.md", "relation": "Implements the local storage decision from this task."}]
+}

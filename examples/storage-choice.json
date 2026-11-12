@@ -1,0 +1,16 @@
+{
+  "project": "demo-app",
+  "id": "storage-choice",
+  "title": "Choose storage for offline reading",
+  "status": "complete",
+  "summary": "Synthetic example: SQLite chosen; implementation belongs to the offline-cache task.",
+  "objective": "Select a local storage approach for an offline reading prototype.",
+  "sources": [
+    {"id": "S1", "kind": "user", "ref": "Synthetic fixture, not a real conversation: user approves SQLite for the prototype and excludes background sync.", "observed_at": "2026-11-12"}
+  ],
+  "facts": [{"text": "The fictional user approved SQLite for this prototype.", "sources": ["S1"]}],
+  "constraints": [{"text": "No background synchronization in the prototype.", "sources": ["S1"]}],
+  "decisions": [{"text": "Use SQLite for the prototype's local cache.", "reason": "The fictional user selected it for the prototype; implementation is still unverified.", "sources": ["S1"]}],
+  "next_actions": ["Implement and verify the cache in the linked implementation task."],
+  "links": []
+}

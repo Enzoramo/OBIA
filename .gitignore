@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+.env
+.env.*
+.obsidian/
+# Runtime memories and local configuration must not enter the public skill repo.
+/OBIA/
+/private-vault/
+/local-vault/
+/checkpoint*.json
+*.local.md

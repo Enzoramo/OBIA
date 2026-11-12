@@ -1,0 +1,4 @@
+interface:
+  display_name: "OBIA"
+  short_description: "Recover task context from linked Obsidian notes"
+  default_prompt: "Use $obia to recover or checkpoint this task in my Obsidian vault."
