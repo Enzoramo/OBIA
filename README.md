@@ -33,6 +33,9 @@ flowchart LR
 
 OBIA is designed to reduce repeated context loading and make claims easier to
 check. **Token savings and reduced hallucination rates have not been benchmarked.**
+The [work and token analysis](docs/economia-trabalho-tokens.md) (Portuguese)
+provides local payload counts and conditional savings scenarios, not measured
+end-to-end savings.
 It cannot recover unsaved messages, make a model remember without reading files,
 or guarantee that a host activates a skill before context compaction.
 

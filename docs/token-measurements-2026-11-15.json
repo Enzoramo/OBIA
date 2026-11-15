@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "measurement": "local_text_tokenization_not_model_usage",
+  "tiktoken_version": "0.12.0",
+  "encodings": [
+    "o200k_base",
+    "cl100k_base"
+  ],
+  "scope": "Explicit task notes, their read-only recall packets and public skill instructions. No transcripts or hooks executed.",
+  "exclusions": [
+    "model message framing",
+    "reasoning and output tokens",
+    "cache billing",
+    "checkpoint authoring",
+    "source verification",
+    "repeated context across model requests",
+    "human time",
+    "task quality equivalence"
+  ],
+  "static_instructions": {
+    "SKILL.md": {
+      "characters": 8673,
+      "o200k_base": 1696,
+      "cl100k_base": 1698
+    },
+    "references/commands.md": {
+      "characters": 5908,
+      "o200k_base": 1340,
+      "cl100k_base": 1342
+    },
+    "references/memory-format.md": {
+      "characters": 5595,
+      "o200k_base": 1315,
+      "cl100k_base": 1298
+    },
+    "references/hooks.md": {
+      "characters": 3550,
+      "o200k_base": 762,
+      "cl100k_base": 766
+    }
+  },
+  "samples": [
+    {
+      "sample": 1,
+      "metrics": {
+        "note_markdown": {
+          "characters": 10477,
+          "o200k_base": 2977,
+          "cl100k_base": 3244
+        },
+        "read_full_json": {
+          "characters": 10732,
+          "o200k_base": 3129,
+          "cl100k_base": 3396
+        },
+        "read_resume_json": {
+          "characters": 890,
+          "o200k_base": 278,
+          "cl100k_base": 302
+        },
+        "section_resume_text": {
+          "characters": 728,
+          "o200k_base": 200,
+          "cl100k_base": 224
+        },
+        "read_constraints_json": {
+          "characters": 469,
+          "o200k_base": 156,
+          "cl100k_base": 167
+        },
+        "section_constraints_text": {
+          "characters": 309,
+          "o200k_base": 80,
+          "cl100k_base": 91
+        },
+        "read_facts_json": {
+          "characters": 1874,
+          "o200k_base": 579,
+          "cl100k_base": 625
+        },
+        "section_facts_text": {
+          "characters": 1710,
+          "o200k_base": 499,
+          "cl100k_base": 545
+        },
+        "read_decisions_json": {
+          "characters": 461,
+          "o200k_base": 153,
+          "cl100k_base": 166
+        },
+        "section_decisions_text": {
+          "characters": 301,
+          "o200k_base": 77,
+          "cl100k_base": 90
+        },
+        "read_sources_json": {
+          "characters": 6690,
+          "o200k_base": 1979,
+          "cl100k_base": 2118
+        },
+        "section_sources_text": {
+          "characters": 6501,
+          "o200k_base": 1874,
+          "cl100k_base": 2013
+        },
+        "recall_12000_json": {
+          "characters": 11083,
+          "o200k_base": 3225,
+          "cl100k_base": 3492
+        }
+      },
+      "recall_included_notes": 1,
+      "recall_omitted_notes": 1
+    },
+    {
+      "sample": 2,
+      "metrics": {
+        "note_markdown": {
+          "characters": 3490,
+          "o200k_base": 1058,
+          "cl100k_base": 1164
+        },
+        "read_full_json": {
+          "characters": 3711,
+          "o200k_base": 1173,
+          "cl100k_base": 1280
+        },
+        "read_resume_json": {
+          "characters": 623,
+          "o200k_base": 192,
+          "cl100k_base": 209
+        },
+        "section_resume_text": {
+          "characters": 465,
+          "o200k_base": 118,
+          "cl100k_base": 134
+        },
+        "read_facts_json": {
+          "characters": 1059,
+          "o200k_base": 317,
+          "cl100k_base": 353
+        },
+        "section_facts_text": {
+          "characters": 901,
+          "o200k_base": 243,
+          "cl100k_base": 278
+        },
+        "read_decisions_json": {
+          "characters": 522,
+          "o200k_base": 155,
+          "cl100k_base": 173
+        },
+        "section_decisions_text": {
+          "characters": 368,
+          "o200k_base": 85,
+          "cl100k_base": 102
+        },
+        "read_sources_json": {
+          "characters": 1236,
+          "o200k_base": 471,
+          "cl100k_base": 493
+        },
+        "section_sources_text": {
+          "characters": 1076,
+          "o200k_base": 400,
+          "cl100k_base": 421
+        },
+        "recall_12000_json": {
+          "characters": 7307,
+          "o200k_base": 2119,
+          "cl100k_base": 2354
+        }
+      },
+      "recall_included_notes": 2,
+      "recall_omitted_notes": 0
+    }
+  ]
+}

@@ -25,6 +25,11 @@ conversation logs in a public fixture.
 
 ## Measuring the intended benefit
 
+The [November 2026 token and work analysis](economia-trabalho-tokens.md)
+(Portuguese) includes local payload counts, explicit break-even scenarios and a
+reproducible counting tool. It does not measure end-to-end token savings or human
+time. Aggregate counts are published without private note content.
+
 Compare the same continuation task with (a) the full available conversation and
 (b) OBIA retrieval plus source checks. Track actual model input/output tokens,
 extra tool calls, task success, unsupported claims, missed constraints and stale

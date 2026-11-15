@@ -27,6 +27,9 @@ não precisa estar aberto para a gravação funcionar.
 - Formato Agent Skills e instruções de instalação para Codex e Claude Code.
 
 **Economia de tokens e redução de alucinações são objetivos ainda não medidos.**
+Veja a [análise de trabalho e tokens](docs/economia-trabalho-tokens.md) para
+contagens locais do contexto e cenários de poupança, separados de resultados
+de uma comparação controlada.
 A skill não recupera o que nunca foi salvo, não amplia a janela do modelo e não
 garante ativação automática antes de toda compactação. Ela mantém uma memória
 externa que o agente precisa consultar e conferir.
