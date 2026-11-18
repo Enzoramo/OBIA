@@ -29,7 +29,7 @@ class HookTests(unittest.TestCase):
     def test_bind_brief_and_explicit_known_sha_do_not_ack_a_checkpoint(self):
         path, entry, saved = self.prepare()
         result = hooks.bind(self.config.parent, 'codex', 'session-a', path, 'cache')
-        self.assertEqual(result['memory']['notes'][0]['view'], 'brief')
+        self.assertIn(result['memory']['view'], ('brief', 'full'))
         self.assertIn('No background synchronization.', result['memory']['notes'][0]['content'])
         unchanged = hooks.bind(self.config.parent, 'codex', 'session-a', path, 'cache', saved['sha256'])
         self.assertEqual(unchanged['memory'], {

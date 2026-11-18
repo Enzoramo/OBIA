@@ -34,7 +34,9 @@ normal memory helper and uses `ack` to verify the note SHA. Existing task bindin
 survive process restarts. A new chat must explicitly bind its intended task. See
 [the agent workflow](../skills/obia/references/hooks.md).
 
-SessionStart and bind use `recall --view brief`. Related notes are locators for
+SessionStart and bind use adaptive `recall --view brief`. When the complete packet
+fits and is smaller in serialized characters, it is returned with `view: full`.
+Otherwise, related notes are locators for
 later reading; source definitions and nonessential sections are deferred. An
 essential projection that cannot fit is marked `deferred` and requires a full
 read, rather than silently dropping constraints. The CLI's default full recall

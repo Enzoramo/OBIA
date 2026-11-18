@@ -1,76 +1,53 @@
-# Hook workflow for agents
+# Hook workflow
 
-`hooks.py` is beside `obia.py`. Use the exact host, config directory and session
-ID provided by the hook's startup context. Example commands below are relative
-to the skill root; quote values using the actual shell or use structured argv.
+Use `hooks.py` beside `obia.py`, with the host/config directory/session ID supplied
+by startup context. Examples are relative to the skill directory:
 
 ```sh
 python scripts/hooks.py --host codex --config-dir '/private/obia-config' bind --session 'HOST_SESSION_ID' --path '/work/my-app' --task offline-cache
 ```
 
-Binding resolves or creates this project's vault and returns its location and
-project ID. For an existing task, it returns bounded brief recall immediately.
-Reuse that task ID for the same objective. A different chat or host has a separate
-binding; explicitly bind the same task to hand off. Never automatically load the
-last task worked on by an unrelated chat.
+Binding resolves/creates the project vault and returns its location/project ID
+and adaptive brief recall for an existing task. Reuse IDs for the same objective.
+Explicitly bind every new chat/host; never infer its task from another chat.
+Use `--known-sha SHA` only when that note context is already available: matching
+bytes return `memory: {status: unchanged, path, sha256}`, otherwise fresh recall.
+This does not acknowledge a checkpoint. An earlier receipt cannot establish what
+context the model currently holds.
 
-If the current note context is already visible, add `--known-sha SHA` to bind.
-Matching bytes return only `memory: {status: unchanged, path, sha256}`; changed
-bytes return fresh brief recall. This is an explicit context-reuse request, not
-an ack. Never infer available context from a receipt left by an earlier session.
-The full note SHA still identifies the persisted note even for a brief view.
+SessionStart always restores bound context, including after compaction. Recall
+preserves whole essential sections, exposes omissions, and selects complete notes
+when smaller; see [retrieval](commands.md#retrieve) for expansion/fallback rules.
+There is no persistent suppression flag after an ack.
 
-SessionStart always restores brief context, including after compaction: no
-persistent suppression flag can know what the model retained. A brief view keeps
-Resume, Constraints, Decisions and Corrections whole and lists deferred sections
-and source IDs. Read details with `read --section` or `--source`, using
-`--expect-sha` to prevent mixing snapshots. A deferred/omitted main note needs a
-full read before acting. Related-note locators require reading before use.
-
-Save using `obia.py save` for a new task or `obia.py patch --expect-sha ...` for an
-existing one, following the command and memory-format references. Then verify the
-actual persisted note through:
+Save useful changes with `obia.py`, then verify persistence:
 
 ```sh
 python scripts/hooks.py --host codex --config-dir '/private/obia-config' ack --session 'HOST_SESSION_ID' --path '/work/my-app' --sha ACTUAL_SHA
 ```
 
-For Claude Code change `--host codex` to `--host claude`. `ack` only verifies an
-existing persisted note against that SHA. It does **not** generate or save a
-checkpoint. If nothing materially changed, read the current note and acknowledge
-its SHA without rewriting it. For context already read, `read --if-changed SHA`
-can check freshness without echoing unchanged content. A brief projection or
-receipt does not establish that deferred evidence has been read or verified.
-If work or constraints changed, save them first.
+For Claude Code use `--host claude`. Ack verifies the existing note against the
+exact SHA; it does not write a checkpoint or verify its meaning. With no useful
+change, read and ack the existing SHA without rewriting. `read --if-changed` may
+check freshness of context already read; neither a brief view nor a receipt proves
+that deferred evidence was read. Save changed work/constraints before ack.
 
-SessionStart restores the bound task and its limited same-project links. A
-UserPromptSubmit event advances the private prompt counter without storing the
-prompt. In Codex, a valid receipt also needs the `turn_id` supplied by the host
-to match the ID recorded by `ack`. PreCompact and Stop observe this ID too:
-delegated turns can skip UserPromptSubmit but cannot reuse an earlier turn's ack.
-The counter remains a count of prompt events, not all host turns.
+UserPromptSubmit advances a private prompt-event counter without storing prompts.
+Codex receipts also require a non-null host `turn_id` matching the ack and current
+note SHA. PreCompact/Stop observe this ID: delegated turns may skip prompt events
+but cannot reuse a previous turn's ack. The counter does not count all host turns.
+Ack reports the last observed ID, never an unseen future turn. If a delegated turn
+is first observed at Stop, reread/ack during its requested continuation. Legacy
+or missing-ID receipts remain unverified until a real event supplies the ID and a
+new ack is made. Claude retains prompt-counter/SHA receipt validation.
 
-Codex `ack` returns the last observed `turn_id` (or null if none is known). It
-verifies the persisted note against that observed turn, never an unseen future
-turn. If the first event for a delegated turn is Stop, an earlier ack cannot
-identify that turn; reread and ack during the requested continuation. Legacy
-receipts without an ID require a new ack after a real lifecycle event supplies
-one. A missing Codex `turn_id` is reported as unverified, never accepted using
-only the counter. Claude Code retains its prompt-counter receipt workflow.
+Stop requests one checkpoint pass for a stale/missing receipt per observed
+turn/cycle. It honors `stop_hook_active` even with a new continuation ID, then
+reports missing verification without looping. Report failed writes/acks; hooks
+do not archive or complete tasks. PreCompact records verification without blocking
+compaction or summarizing unsaved context. No transcript/last-message inspection
+or SessionEnd rescue writer exists. Save progress before the context is exhausted.
 
-Stop asks for a checkpoint when its receipt is missing/stale, at most once per
-observed turn/cycle, and respects `stop_hook_active` even if the continuation has
-a new turn ID. After that it reports the missing receipt without looping. A
-failed write or failed acknowledgement is not a successful checkpoint; report it.
-Hooks never archive a task or mark it complete themselves.
-
-PreCompact records whether the current checkpoint was verified. It cannot compel
-the model to produce a fresh summary before an automatic compaction, and does not
-read the transcript or last assistant message. Save meaningful progress during
-work, before the context is exhausted. SessionEnd is deliberately not used as a
-last-chance writer: it may be too late for the agent to produce a checkpoint.
-
-Runtime files live under the private config directory: `sessions/<host>/...json`
-contains task bindings, turn counters and SHA receipts, with no copied prompts
-or transcripts. A missing vault fails visibly. Locks coordinate local writers;
-inspect a stale lock only after confirming its writer stopped.
+Private `sessions/<host>/...json` files hold bindings, counters, turn IDs and SHA
+receipts, never copied prompts/transcripts. Missing vaults fail visibly. Local
+locks require checking that a writer stopped before stale-lock removal.

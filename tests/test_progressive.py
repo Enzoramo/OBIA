@@ -51,8 +51,9 @@ class ProgressiveTests(unittest.TestCase):
             with self.subTest(budget=budget):
                 packet = obia.recall(self.root, 'sample', task='cache', budget=budget, view='brief')
                 self.assertLessEqual(len(json.dumps(packet, ensure_ascii=False, indent=2)) + 1, budget)
-                self.assertIn('before acting', packet['next'])
-                if packet['notes'] and packet['notes'][0]['view'] == 'brief':
+                if packet['view'] == 'brief':
+                    self.assertIn('before acting', packet['next'])
+                if packet['notes'] and (packet['view'] == 'full' or packet['notes'][0]['view'] == 'brief'):
                     self.assertIn(data['constraints'][0]['text'], packet['notes'][0]['content'])
                 elif packet['notes']:
                     self.assertEqual(packet['notes'][0]['read_required'], 'full')
@@ -69,12 +70,13 @@ class ProgressiveTests(unittest.TestCase):
                         original.replace('obia: 1', 'obia: 1\nhuman_constraint: "Never contact a server"')):
             with self.subTest(changed=changed[:30]):
                 path.write_text(changed, encoding='utf-8')
-                item = obia.recall(self.root, 'sample', task='cache', view='brief')['notes'][0]
-                self.assertEqual(item['view'], 'full')
+                packet = obia.recall(self.root, 'sample', task='cache', view='brief')
+                item = packet['notes'][0]
+                self.assertEqual(item.get('view', packet['view']), 'full')
                 self.assertEqual(item['content'], changed)
 
     def test_brief_retains_human_preamble_and_lists_custom_sections(self):
-        saved = obia.save(self.root, core.payload())
+        _, saved = self.prepare()
         path = self.root / saved['path']
         content = path.read_text(encoding='utf-8').replace('## Resume', 'Human boundary: do not delete drafts.\n\n## Resume')
         content += '\n## Human observations\n\nAn optional extra detail.\n'
@@ -99,12 +101,20 @@ class ProgressiveTests(unittest.TestCase):
         self.assertNotIn('/private/', json.dumps(packet))
 
     def test_query_results_are_brief_and_empty_search_is_explicit(self):
-        obia.save(self.root, core.payload())
+        self.prepare()
         result = self.invoke('recall', '--project', 'sample', '--query', 'offline', '--view', 'brief')
         self.assertEqual(result['notes'][0]['view'], 'brief')
         empty = self.invoke('recall', '--project', 'sample', '--query', 'not-present', '--view', 'brief')
         self.assertEqual(empty['notes'], [])
         self.assertIn('No lexical matches', empty['next'])
+
+    def test_short_notes_use_complete_payload_when_it_is_smaller(self):
+        obia.save(self.root, core.payload())
+        full = obia.recall(self.root, 'sample', task='cache')
+        adaptive = obia.recall(self.root, 'sample', task='cache', view='brief')
+        self.assertEqual(adaptive['view'], 'full')
+        self.assertEqual(adaptive['notes'], full['notes'])
+        self.assertIn('## Sources', adaptive['notes'][0]['content'])
 
     def test_batch_sections_conditional_read_and_snapshot_guard(self):
         saved = obia.save(self.root, core.payload())
