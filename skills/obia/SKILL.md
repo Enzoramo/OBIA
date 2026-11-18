@@ -85,6 +85,12 @@ reconcile, never blindly retry. Whole-body replacement needs `save --replace`
 and reconciliation of the entire body. Replace disproved current facts and
 record sourced corrections instead of retaining contradictions.
 
+When work changes state, reconcile current-state claims across Resume, Facts,
+Constraints and Corrections, including obsolete pending actions. Earlier status
+assertions must be replaced or explicitly dated as historical, even when they
+appear in Corrections. Appending a newer correction alone leaves conflicting
+current statements. Use already recovered sections; expand only missing ones.
+
 ## Verify economically
 
 `save`/`patch` validate, write, reread the stored UTF-8 text under the lock and return

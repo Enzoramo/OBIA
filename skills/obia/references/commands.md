@@ -77,7 +77,8 @@ characters, default 12,000. This is not a token budget.
   status/time, full-note SHA, omitted section names and referenced source IDs.
   `--with-sources` includes a `source_definitions` mapping for IDs cited in that
   projection, taken from the same in-memory snapshot. `available_source_ids`
-  lists all defined IDs so an update can choose an unused ID without another read. Other definitions remain
+  lists all defined IDs so an update can choose an unused ID without another read.
+  Both individual `[S1]` and comma-grouped `[S1, S2]` citations are recognized. Other definitions remain
   omitted; it does not read linked files or URLs. Without the flag, expand source
   definitions when needed. The budget includes the mapping; oversized projections
   remain deferred, never truncated. Full views already include all definitions. Known-task links become locators with

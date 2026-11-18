@@ -212,3 +212,17 @@ class ProgressiveTests(unittest.TestCase):
         self.assertEqual(item['sha256'], saved['sha256'])
         self.assertIn('Synthetic user request', item['source_definitions']['S1'])
         self.assertNotEqual(obia.note(self.root, saved['path'])['sha256'], item['sha256'])
+
+    def test_grouped_citations_bundle_all_sources_and_reject_unknown_ids(self):
+        data, saved = self.prepare()
+        data['objective'] += ' Accepted requirements [S2, S1, S2].'
+        updated = obia.save(self.root, data, saved['sha256'], replace_existing=True)
+        item = obia.recall(self.root, 'sample', task='cache', view='brief', with_sources=True)['notes'][0]
+        self.assertEqual(item['source_ids'], ['S1', 'S2'])
+        self.assertEqual(list(item['source_definitions']), ['S1', 'S2'])
+        self.assertIn(data['sources'][1]['ref'], item['source_definitions']['S2'])
+        with self.assertRaises(obia.ObiaError):
+            obia.patch(self.root, 'sample', 'cache', {'append': {'Facts': 'Unsupported [S1, S99].'}}, updated['sha256'])
+        path = self.root / updated['path']
+        path.write_text(path.read_text(encoding='utf-8') + '\nManual claim [S1, S99].\n', encoding='utf-8')
+        self.assertTrue(any('missing source S99' in issue for issue in obia.check(self.root, 'sample')['problems']))

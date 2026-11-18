@@ -67,6 +67,9 @@ def summarize(root, manual_audit=None):
     report["workflow"] = original.get("workflow", "legacy")
     report["measurement"] = "actual_codex_turn_completed_usage"
     report["scope"] = "One fresh-context handoff, including initial checkpoint creation and final checkpoint maintenance."
+    if original.get("workflow") == "reconciled_replay":
+        for key in ("scope", "reused_source_commit", "planned_agent_executions", "new_agent_executions", "completed_agent_turns", "reused_agent_executions"):
+            report[key] = original[key]
     report["exclusions"] = ["earlier common task work", "parent chat and evaluation development", "monetary billing", "human time", "native compaction comparison"]
     report["pairs"] = []
     for pair in sorted(original["pairs"], key=lambda p: (p["case"], p["repeat"])):
