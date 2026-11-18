@@ -8,7 +8,7 @@ that directory from the installed skill, quote paths, and use the actual vault.
 python3 scripts/obia.py init --vault '/path/to/vault'
 python3 scripts/obia.py save --vault '/path/to/vault' --input checkpoint.json
 python3 scripts/obia.py search --vault '/path/to/vault' --project my-app --query 'login offline'
-python3 scripts/obia.py recall --vault '/path/to/vault' --project my-app --task login --view brief
+python3 scripts/obia.py recall --vault '/path/to/vault' --project my-app --task login --view brief --with-sources
 python3 scripts/obia.py read --vault '/path/to/vault' --project my-app --task login --section Sources
 python3 scripts/obia.py check --vault '/path/to/vault' --project my-app
 ```
@@ -19,7 +19,8 @@ for checkpoint fields.
 
 ## Update
 
-Read the task/SHA, then apply only changed properties and level-two sections:
+Use the task/SHA already recovered in this context, then apply only changed
+properties and level-two sections. Read an omitted section before replacing it:
 
 ```sh
 python3 scripts/obia.py patch --vault '/path/to/vault' --project my-app --task login --input patch.json --expect-sha SHA
@@ -48,6 +49,17 @@ return `unchanged`; changes snapshot the previous Markdown under
 `OBIA/.history/<project>/<task>/<sha>.md`. Removing current text does not erase
 history or external backups.
 
+`save` and `patch`, including `unchanged`, return `verified: true` only after
+rereading the persisted note and validating its identity, sources and links under
+the write lock. `project_index_current` separately compares this project's index
+with current notes. A rebuild failure remains a warning: a saved note does not
+imply repaired indexes. A readback mismatch fails without a positive receipt.
+SHA follows the helper's existing UTF-8 text contract (CRLF normalized to LF),
+not an OS-level hash of arbitrary newline bytes. No repeated read/check is needed when verified/index fields are true and there is
+no warning. This is a local structural receipt, not source verification, a
+project-wide audit, synchronization proof or hook acknowledgement. Use `check`
+for project-wide audits; keep the separate exact-SHA `hooks.py ack` when bound.
+
 ## Retrieve
 
 `search` requires a project and uses accent-insensitive lexical matching, with
@@ -63,7 +75,12 @@ characters, default 12,000. This is not a token budget.
 - `--view full` (CLI/API default): whole notes or explicit omissions.
 - `--view brief`: whole Resume, Constraints, Decisions, Corrections and preamble,
   status/time, full-note SHA, omitted section names and referenced source IDs.
-  Source definitions require expansion. Known-task links become locators with
+  `--with-sources` includes a `source_definitions` mapping for IDs cited in that
+  projection, taken from the same in-memory snapshot. `available_source_ids`
+  lists all defined IDs so an update can choose an unused ID without another read. Other definitions remain
+  omitted; it does not read linked files or URLs. Without the flag, expand source
+  definitions when needed. The budget includes the mapping; oversized projections
+  remain deferred, never truncated. Full views already include all definitions. Known-task links become locators with
   titles/summaries; query matches each get a projection.
 - Adaptive exception: if the complete packet fits without omissions and is no
   larger in serialized characters, return it with root `view: full`. Small notes

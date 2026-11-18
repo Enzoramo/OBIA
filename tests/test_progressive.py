@@ -167,3 +167,48 @@ class ProgressiveTests(unittest.TestCase):
             self.assertLessEqual(len(json.dumps(packet, ensure_ascii=False, indent=2)) + 1, budget)
         with self.assertRaises(ValueError):
             obia.recall(self.root, 'sample', task='cache', view='unknown')
+
+    def test_bundled_sources_include_only_cited_records_and_inventory_all_ids(self):
+        data, saved = self.prepare()
+        packet = self.invoke('recall', '--project', 'sample', '--task', 'cache',
+                             '--view', 'brief', '--with-sources')
+        item = packet['notes'][0]
+        self.assertEqual(item['sha256'], saved['sha256'])
+        self.assertEqual(item['available_source_ids'], ['S1', 'S2'])
+        self.assertEqual(list(item['source_definitions']), ['S1'])
+        self.assertIn(data['sources'][0]['ref'], item['source_definitions']['S1'])
+        self.assertIn('Sources', item['omitted_sections'])
+        self.assertNotIn(data['sources'][1]['ref'], str(packet))
+        for budget in (1024, 1500, 3000):
+            result = obia.recall(self.root, 'sample', task='cache', view='brief',
+                                 with_sources=True, budget=budget)
+            self.assertLessEqual(len(json.dumps(result, ensure_ascii=False, indent=2)) + 1, budget)
+            if result['notes'][0]['view'] == 'brief':
+                self.assertEqual(result['notes'][0]['source_definitions'], item['source_definitions'])
+            else:
+                self.assertEqual(result['notes'][0]['read_required'], 'full')
+
+    def test_bundled_sources_reject_duplicate_or_missing_definition(self):
+        _, saved = self.prepare()
+        path = self.root / saved['path']
+        content = path.read_text(encoding='utf-8')
+        for changed in (content.replace('- **S1**', '- **S3**'),
+                        content + '\n- **S1** (file; observed 2026-11-18): Duplicate.\n'):
+            path.write_text(changed, encoding='utf-8')
+            with self.assertRaises(obia.ObiaError):
+                obia.recall(self.root, 'sample', task='cache', view='brief', with_sources=True)
+
+    def test_bundled_evidence_remains_in_the_loaded_snapshot(self):
+        from unittest.mock import patch
+        _, saved = self.prepare()
+        path = self.root / saved['path']
+        original = obia.source_records
+        def edit_after_load(content):
+            path.write_text(content.replace('Synthetic user request', 'Changed evidence'), encoding='utf-8')
+            return original(content)
+        with patch.object(obia, 'source_records', side_effect=edit_after_load):
+            result = obia.recall(self.root, 'sample', task='cache', view='brief', with_sources=True)
+        item = result['notes'][0]
+        self.assertEqual(item['sha256'], saved['sha256'])
+        self.assertIn('Synthetic user request', item['source_definitions']['S1'])
+        self.assertNotEqual(obia.note(self.root, saved['path'])['sha256'], item['sha256'])

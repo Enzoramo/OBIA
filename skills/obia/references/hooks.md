@@ -20,7 +20,9 @@ preserves whole essential sections, exposes omissions, and selects complete note
 when smaller; see [retrieval](commands.md#retrieve) for expansion/fallback rules.
 There is no persistent suppression flag after an ack.
 
-Save useful changes with `obia.py`, then verify persistence:
+Save useful changes with `obia.py`. Its storage receipt avoids a separate
+read/check after a successful write, but does not acknowledge the host turn.
+Acknowledge the returned exact SHA:
 
 ```sh
 python scripts/hooks.py --host codex --config-dir '/private/obia-config' ack --session 'HOST_SESSION_ID' --path '/work/my-app' --sha ACTUAL_SHA
