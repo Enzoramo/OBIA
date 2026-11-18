@@ -54,6 +54,18 @@ note, credential, or private project artifact is used as test data. Check for
 unexpected tool use, edits to protected fixtures and memory persistence failures.
 Keep the public release to synthetic fixtures, harness, aggregates and analysis.
 
+### Infrastructure correction before the valid paired sample
+
+The first attempt was interrupted when its temporary skill copy was found to
+lack the vendored YAML dependency present in the actual installation. Login
+shells did not reliably preserve the evaluation environment's Python path.
+No completed OBIA/baseline pair was available when this defect was identified.
+The harness now copies the pinned YAML package into the installed `_packages`
+layout and validates it before any agent runs. Criteria, tasks, model and arm
+prompts remain unchanged. Completed usage from the invalid attempt is reported
+separately; interrupted executions without final usage are explicitly unknown.
+This is an infrastructure restart, not an outcome-driven retry.
+
 ## Outcomes fixed before execution
 
 The independent grader is not copied to agent workspaces. Thirteen functional

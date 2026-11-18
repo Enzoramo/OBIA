@@ -126,14 +126,25 @@ def check_memory(folder):
         return {"exists": False, "error": type(exc).__name__}
 
 
+def prepare_skill(folder):
+    import ruamel.yaml
+    shutil.copytree(REPO / "skills/obia", folder / "obia-skill",
+                    ignore=shutil.ignore_patterns("_packages", "__pycache__", "*.pyc"))
+    # Match the installed layout: login shells may not retain uv's Python PATH.
+    shutil.copytree(Path(ruamel.yaml.__file__).parent.parent,
+                    folder / "obia-skill/_packages/ruamel",
+                    ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    probe = "import importlib.util; s=importlib.util.spec_from_file_location('o','obia-skill/scripts/obia.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); assert m.YAML is not None; assert m.YAML(typ='rt').load('x: 1')['x']==1"
+    subprocess.run([sys.executable, "-I", "-c", probe], cwd=folder, check=True, capture_output=True)
+
+
 def run_pair(base, size, repeat, model, effort, timeout):
     pair = base / f"{size}-{repeat}"
     pair.mkdir()
     for arm in ("baseline", "obia"):
         setup(pair / arm, size)
     memory = pair / "obia"
-    shutil.copytree(REPO / "skills/obia", memory / "obia-skill",
-                    ignore=shutil.ignore_patterns("_packages", "__pycache__", "*.pyc"))
+    prepare_skill(memory)
     (memory / "vault").mkdir()
     obia.initialize(memory / "vault")
     results = {"case": size, "repeat": repeat, "history_characters": len(history(size)), "arms": {}}

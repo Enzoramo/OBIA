@@ -35,6 +35,12 @@ def select_ready(records, now, limit):
 
 
 class AgentEvaluationTests(unittest.TestCase):
+    def test_fixture_contains_installed_layout_yaml_dependency(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            evaluation.prepare_skill(root)
+            self.assertTrue((root / 'obia-skill/_packages/ruamel/yaml/__init__.py').is_file())
+
     def test_usage_sums_cache_as_subset_and_never_double_counts_reasoning(self):
         a = dict(input_tokens=100, cached_input_tokens=60, output_tokens=30, reasoning_output_tokens=20)
         b = dict(input_tokens=200, cached_input_tokens=80, output_tokens=40, reasoning_output_tokens=30)
