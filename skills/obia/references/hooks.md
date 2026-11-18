@@ -9,10 +9,23 @@ python scripts/hooks.py --host codex --config-dir '/private/obia-config' bind --
 ```
 
 Binding resolves or creates this project's vault and returns its location and
-project ID. For an existing task, it also returns bounded recall immediately.
+project ID. For an existing task, it returns bounded brief recall immediately.
 Reuse that task ID for the same objective. A different chat or host has a separate
 binding; explicitly bind the same task to hand off. Never automatically load the
 last task worked on by an unrelated chat.
+
+If the current note context is already visible, add `--known-sha SHA` to bind.
+Matching bytes return only `memory: {status: unchanged, path, sha256}`; changed
+bytes return fresh brief recall. This is an explicit context-reuse request, not
+an ack. Never infer available context from a receipt left by an earlier session.
+The full note SHA still identifies the persisted note even for a brief view.
+
+SessionStart always restores brief context, including after compaction: no
+persistent suppression flag can know what the model retained. A brief view keeps
+Resume, Constraints, Decisions and Corrections whole and lists deferred sections
+and source IDs. Read details with `read --section` or `--source`, using
+`--expect-sha` to prevent mixing snapshots. A deferred/omitted main note needs a
+full read before acting. Related-note locators require reading before use.
 
 Save using `obia.py save` for a new task or `obia.py patch --expect-sha ...` for an
 existing one, following the command and memory-format references. Then verify the
@@ -25,7 +38,10 @@ python scripts/hooks.py --host codex --config-dir '/private/obia-config' ack --s
 For Claude Code change `--host codex` to `--host claude`. `ack` only verifies an
 existing persisted note against that SHA. It does **not** generate or save a
 checkpoint. If nothing materially changed, read the current note and acknowledge
-its SHA without rewriting it. If work or constraints changed, save them first.
+its SHA without rewriting it. For context already read, `read --if-changed SHA`
+can check freshness without echoing unchanged content. A brief projection or
+receipt does not establish that deferred evidence has been read or verified.
+If work or constraints changed, save them first.
 
 SessionStart restores the bound task and its limited same-project links. A
 UserPromptSubmit event advances the private prompt counter without storing the

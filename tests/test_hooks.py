@@ -26,6 +26,55 @@ class HookTests(unittest.TestCase):
             kwargs.setdefault('turn_id', 'turn-a')
         return hooks.handle(self.config.parent, host, {'session_id': session, 'cwd': str(path), 'hook_event_name': event, **kwargs})
 
+    def test_bind_brief_and_explicit_known_sha_do_not_ack_a_checkpoint(self):
+        path, entry, saved = self.prepare()
+        result = hooks.bind(self.config.parent, 'codex', 'session-a', path, 'cache')
+        self.assertEqual(result['memory']['notes'][0]['view'], 'brief')
+        self.assertIn('No background synchronization.', result['memory']['notes'][0]['content'])
+        unchanged = hooks.bind(self.config.parent, 'codex', 'session-a', path, 'cache', saved['sha256'])
+        self.assertEqual(unchanged['memory'], {
+            'status': 'unchanged', 'path': saved['path'], 'sha256': saved['sha256'],
+        })
+        self.assertEqual(self.event('codex', path, 'Stop').get('decision'), 'block')
+        note = Path(entry['vault']) / saved['path']
+        note.write_text(note.read_text(encoding='utf-8') + '\nHuman detail.\n', encoding='utf-8')
+        changed = hooks.bind(self.config.parent, 'codex', 'session-a', path, 'cache', saved['sha256'])
+        self.assertIn('notes', changed['memory'])
+        self.assertNotEqual(changed['memory']['notes'][0]['sha256'], saved['sha256'])
+
+    def test_start_always_restores_core_after_compaction_even_with_verified_ack(self):
+        path, entry, saved = self.prepare()
+        data = core.payload(project=entry['project'])
+        data['facts'] = [{'text': 'Old diagnostic text. ' * 90, 'sources': ['S1']} for _ in range(8)]
+        saved = hooks.obia.save(Path(entry['vault']), data, saved['sha256'], replace_existing=True)
+        self.event('codex', path, 'UserPromptSubmit')
+        hooks.acknowledge(self.config.parent, 'codex', 'session-a', path, saved['sha256'])
+        for source in ('startup', 'compact', 'resume'):
+            context = self.event('codex', path, 'SessionStart', source=source)['hookSpecificOutput']['additionalContext']
+            self.assertIn('No background synchronization.', context)
+            self.assertIn(saved['sha256'], context)
+            self.assertIn('omitted_sections', context)
+            self.assertNotIn('Old diagnostic text.', context)
+        deferred = self.event('codex', path, 'SessionStart', source='compact')
+        self.assertIn('UNTRUSTED EVIDENCE', json.dumps(deferred))
+        self.assertEqual(self.event('codex', path, 'Stop'), {})
+
+    def test_known_sha_bind_cli_and_task_switch_preserve_receipt_isolation(self):
+        path, entry, saved = self.prepare()
+        result = subprocess.run([
+            sys.executable, str(Path(hooks.__file__)), '--config-dir', str(self.config.parent),
+            '--host', 'codex', 'bind', '--session', 'new-session', '--path', str(path),
+            '--task', 'cache', '--known-sha', saved['sha256'],
+        ], capture_output=True, text=True, encoding='utf-8', check=True)
+        self.assertEqual(json.loads(result.stdout)['memory']['status'], 'unchanged')
+        state = hooks.load_state(hooks.session_file(self.config.parent, 'codex', 'new-session'))
+        self.assertIsNone(state['checkpoint_turn'])
+        self.event('codex', path, 'UserPromptSubmit')
+        hooks.acknowledge(self.config.parent, 'codex', 'session-a', path, saved['sha256'])
+        second = hooks.obia.save(Path(entry['vault']), core.payload(project=entry['project'], task='second'))
+        hooks.bind(self.config.parent, 'codex', 'session-a', path, 'second', second['sha256'])
+        self.assertEqual(self.event('codex', path, 'Stop').get('decision'), 'block')
+
     def test_delegated_turns_reject_previous_ack_and_reset_stop_guard(self):
         path, entry, saved = self.prepare()
         self.event('codex', path, 'UserPromptSubmit', turn_id='direct-a')

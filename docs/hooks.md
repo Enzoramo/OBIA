@@ -24,7 +24,7 @@ follow any host review/restart prompts.
 
 | Event | OBIA behavior |
 | --- | --- |
-| SessionStart | Supplies the session ID and workflow; restores bounded memory when a task is bound. Includes restart after compaction. |
+| SessionStart | Supplies the session ID and workflow; restores brief memory with whole essential sections and explicit omissions. Includes restart after compaction. |
 | UserPromptSubmit | Advances a private prompt counter and records the Codex turn ID when supplied. Does not store the prompt. |
 | PreCompact | Observes the Codex turn ID and checks whether the current saved note has a verified receipt for that turn. Reports unsaved state; never blocks compaction. |
 | Stop | Observes the Codex turn ID and requests one checkpoint pass if needed; accepts a verified current SHA for that turn and prevents repeated continuation loops. |
@@ -33,6 +33,15 @@ The agent uses `bind` to associate a session with a task, then saves through the
 normal memory helper and uses `ack` to verify the note SHA. Existing task bindings
 survive process restarts. A new chat must explicitly bind its intended task. See
 [the agent workflow](../skills/obia/references/hooks.md).
+
+SessionStart and bind use `recall --view brief`. Related notes are locators for
+later reading; source definitions and nonessential sections are deferred. An
+essential projection that cannot fit is marked `deferred` and requires a full
+read, rather than silently dropping constraints. The CLI's default full recall
+remains available. Binding can use `--known-sha SHA` when that context is already
+present, returning only unchanged metadata. This never grants an ack or suppresses
+recovery after compaction. These changes require no new hook definitions or trust
+updates.
 
 Codex receipts match both the prompt counter and the host's `turn_id`, in addition
 to the saved note SHA. Delegated tool-output turns may skip UserPromptSubmit;

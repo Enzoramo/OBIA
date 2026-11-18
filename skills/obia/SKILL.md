@@ -37,13 +37,22 @@ skill repository and a user's private task memories are separate things.
 Resolve `scripts/obia.py` relative to this SKILL.md, not the working directory.
 Read [the command reference](references/commands.md) when using the helper, and
 [the memory format](references/memory-format.md) when preparing a checkpoint.
+Reuse instructions already available in the current context; do not reload every
+reference at every checkpoint.
 
 ## Recover before continuing
 
-1. If the task ID is known, request its bounded recall packet. Otherwise search
+1. If the task ID is known, use its injected context or `recall --view brief`.
+   Otherwise search
    within the configured project using distinctive entities from the request.
    Start with a small result set; do not load the whole vault or every linked note.
-2. Read the relevant task's objective, constraints, current state and next actions.
+2. Brief packets preserve whole Resume, Constraints, Decisions and Corrections
+   sections when present. Read the objective, current state and next actions too.
+   Inspect `omitted_sections`; expand details relevant to the request with repeated
+   `read --section` or `--source ID`, guarded by `--expect-sha`. A deferred/omitted
+   main note requires a full read before acting. A linked locator is not recovered
+   evidence. If a read reports a changed SHA, recover the new state before combining
+   it with earlier evidence.
    Follow a link only when its stated relation helps the current question.
    Cross-project or personal-note access needs scope from the user; the helper
    never automatically expands into those notes.
@@ -67,6 +76,10 @@ authorization to send, publish, delete or deploy.
 Read [the hook workflow](references/hooks.md). Bind the host/session to the current
 task ID before project work; do not assume a new chat means the latest task.
 A known binding restores bounded memory at startup/resume/after compaction.
+If that note context is already available, `bind --known-sha SHA` avoids returning
+it again while still binding explicitly. Never use an old ack to infer that a new
+context contains the note. For context already read, `read --if-changed SHA`
+checks freshness without repeating unchanged text; it does not load new sections.
 After saving a checkpoint, acknowledge its current SHA through the hook helper.
 If nothing worth saving changed, read and acknowledge the existing note instead
 of creating duplicate checkpoints. Do not acknowledge stale or unverified state.
@@ -119,8 +132,9 @@ just to fill the graph. Obsidian derives backlinks; reciprocal edits are unneces
 ## Keep retrieval useful as memory grows
 
 Use a short summary for discovery and the full task note only when needed. The
-helper's recall budget is in characters, not model tokens. It returns complete
-notes that fit and reports omissions; read selected sections for larger notes.
+helper's recall budget is in characters, not model tokens. Hooks return brief
+projections with explicit omissions; the CLI also retains `--view full`. Essential
+sections are never truncated. Nonstandard notes can require a full fallback.
 Do not interpret a summary without checking its evidence.
 
 Keep current notes concise; remove superseded current-state details only with a
