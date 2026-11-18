@@ -1,0 +1,1319 @@
+{
+  "schema": 1,
+  "model_requested": "gpt-6-astra",
+  "reasoning_effort": "xhigh",
+  "codex_version": "codex-cli 0.169.0-alpha.11.1",
+  "source_commit": "ccc8545824e8988b1a9510c8db67a8c87963373c",
+  "repeats": 3,
+  "workers": 2,
+  "workflow": "economical",
+  "measurement": "actual_codex_turn_completed_usage",
+  "scope": "One fresh-context handoff, including initial checkpoint creation and final checkpoint maintenance.",
+  "exclusions": [
+    "earlier common task work",
+    "parent chat and evaluation development",
+    "monetary billing",
+    "human time",
+    "native compaction comparison"
+  ],
+  "pairs": [
+    {
+      "case": "long",
+      "repeat": 0,
+      "order": "obia_then_baseline",
+      "history_characters": 81250,
+      "checkpoint_creation": {
+        "elapsed_seconds": 74.297,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 145725,
+          "cached_input_tokens": 117632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3080,
+          "reasoning_output_tokens": 581,
+          "total_tokens": 148805,
+          "uncached_input_tokens": 28093
+        },
+        "command_count": 6,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "334c0be8e91c5a593abefd06f5ed77653dfa1086c25d2c6185583ac18e818bc1",
+        "tool_action_count": 6,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 5,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Initial active checkpoint saved with positive helper receipt using local fixtures only. Accepted rules explicitly retain the cancellation flag, strict boundaries and filtering before deduplication; policy 3 is marked volatile and latency unverified. Tests correctly described as not run. Creation recall found no existing note; positive save receipt ended tool work without redundant post-save read/check."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 79.273,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 223617,
+            "cached_input_tokens": 190848,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2824,
+            "reasoning_output_tokens": 570,
+            "total_tokens": 226441,
+            "uncached_input_tokens": 32769
+          },
+          "command_count": 9,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "26e38fea0f4c015b6a61bef6106613a335050c1472fa8d50aee83bb40479734e",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 10,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 8,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Live policy 2 observed; two smoke and six additional tests passed, including policy rereading with in-memory mocks. Protected-file hashes match; final answer retains unverified latency."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 223617,
+            "cached_input_tokens": 190848,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2824,
+            "reasoning_output_tokens": 570,
+            "total_tokens": 226441,
+            "uncached_input_tokens": 32769
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 163.2,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 222365,
+            "cached_input_tokens": 180224,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 7305,
+            "reasoning_output_tokens": 1237,
+            "total_tokens": 229670,
+            "uncached_input_tokens": 42141
+          },
+          "command_count": 12,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "31f02ad21b33e9ee4262a5659db34dac6e4f073e9310b28499158bc30ac929bb",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 13,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 11,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and eight additional tests passed; policy-file and history hashes unchanged. Live policy 2 replaces historical 3 and latency remains unverified. Final checkpoint has a positive helper receipt and correct completed Resume/Facts, but retains stale current-stub wording in an older Corrections bullet alongside a new superseding correction. Recovery returned brief plus source definitions; omitted sections were expanded before replacement. Positive patch receipt ended tool work without redundant post-write read/check."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 368090,
+            "cached_input_tokens": 297856,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 10385,
+            "reasoning_output_tokens": 1818,
+            "total_tokens": 378475,
+            "uncached_input_tokens": 70234
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "initial_note_bytes": 7294,
+        "final_note_bytes": 8943
+      },
+      "net_token_reduction_percent": -67.141
+    },
+    {
+      "case": "long",
+      "repeat": 1,
+      "order": "baseline_then_obia",
+      "history_characters": 81250,
+      "checkpoint_creation": {
+        "elapsed_seconds": 78.597,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 144495,
+          "cached_input_tokens": 117248,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3465,
+          "reasoning_output_tokens": 500,
+          "total_tokens": 147960,
+          "uncached_input_tokens": 27247
+        },
+        "command_count": 6,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "99d408446875f00c98190d6462a2766c837f21ce50acd4e6c6ced22ce6e80729",
+        "tool_action_count": 6,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 5,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Initial active checkpoint preserves accepted rules including cancellation flag, volatile policy 3, rejected proposal and unverified latency with source locators. Local fixtures only; no tests claimed. Creation recall correctly reported no existing note. Positive save receipt was the final command, with no redundant post-save read/check."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 77.91,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 192622,
+            "cached_input_tokens": 172160,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3000,
+            "reasoning_output_tokens": 450,
+            "total_tokens": 195622,
+            "uncached_input_tokens": 20462
+          },
+          "command_count": 9,
+          "failed_commands": 2,
+          "other_tool_types": [],
+          "event_sha256": "d8ebc712623fd1705aca2ecce78f937e6c04ab9b41b8488d6b15a051ac2a7a87",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 10,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 7,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and ten additional tests passed, including policy rereads. Changing process cwd to the pair parent only tested module-relative policy lookup; no outside data was read. Protected hashes match, live policy 2 reported and latency unverified."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 192622,
+            "cached_input_tokens": 172160,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3000,
+            "reasoning_output_tokens": 450,
+            "total_tokens": 195622,
+            "uncached_input_tokens": 20462
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 132.964,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 150503,
+            "cached_input_tokens": 127232,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6020,
+            "reasoning_output_tokens": 1276,
+            "total_tokens": 156523,
+            "uncached_input_tokens": 23271
+          },
+          "command_count": 14,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "e113e2c43b24b9443f19568bec19845ba6f4aaa6974aad92d2759d7d20fc1261",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 15,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 13,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work and local result artifacts only. Two smoke and eight additional tests passed, including 360 eligibility combinations; protected hashes match. Brief-plus-sources recovery and omitted-section expansion preceded update. Final Resume/Facts correctly state completion, policy 2 and unverified latency, but an older Corrections bullet still says current stub confirms unfinished work; later correction explicitly supersedes it without removing the contradictory wording. Positive patch receipt was final, without redundant post-write read/check."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 294998,
+            "cached_input_tokens": 244480,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 9485,
+            "reasoning_output_tokens": 1776,
+            "total_tokens": 304483,
+            "uncached_input_tokens": 50518
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "initial_note_bytes": 8633,
+        "final_note_bytes": 10620
+      },
+      "net_token_reduction_percent": -55.649
+    },
+    {
+      "case": "long",
+      "repeat": 2,
+      "order": "obia_then_baseline",
+      "history_characters": 81250,
+      "checkpoint_creation": {
+        "elapsed_seconds": 79.968,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 144007,
+          "cached_input_tokens": 116864,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3157,
+          "reasoning_output_tokens": 579,
+          "total_tokens": 147164,
+          "uncached_input_tokens": 27143
+        },
+        "command_count": 6,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "22eb068f7b184a4dd1deeb8db0795038163912218512a8406352a997382a5365",
+        "tool_action_count": 6,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 5,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Initial active checkpoint saved with positive helper receipt; local fixtures only, no implementation/test pass claimed. Accepted ordering, boundaries, deduplication, volatile policy 3 and unverified latency are retained with sources. Cancellation wording treats cancelled as an excluded state and does not explicitly retain the independent cancellation flag; H03 remains available. Creation recall found no existing note; no redundant post-save read/check."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 68.492,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 192068,
+            "cached_input_tokens": 159488,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2669,
+            "reasoning_output_tokens": 311,
+            "total_tokens": 194737,
+            "uncached_input_tokens": 32580
+          },
+          "command_count": 7,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "a1891945ad5472db801c90489695d9970c0b7f4f2c6afa000a229b2b4a741db4",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 8,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 7,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Two smoke and eight additional tests passed, including cancellation, strict boundaries, deduplication, input preservation and mocked policy reloads. Protected hashes match; live policy 2 and unverified latency reported."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 192068,
+            "cached_input_tokens": 159488,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2669,
+            "reasoning_output_tokens": 311,
+            "total_tokens": 194737,
+            "uncached_input_tokens": 32580
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 133.717,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 204685,
+            "cached_input_tokens": 174848,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5658,
+            "reasoning_output_tokens": 779,
+            "total_tokens": 210343,
+            "uncached_input_tokens": 29837
+          },
+          "command_count": 12,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "ce121093268fecdf5492050b536a15aa879069e08eed6c0f4d68ca0e6a0f1f49",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 13,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 11,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and ten additional tests passed, including 432 eligibility combinations and cancellation flag checks. H03 was actually reread (event line 16), implementation handles cancelled=True correctly, and final Constraints explicitly resolves the initial state/flag ambiguity. Brief-plus-sources recovery and section expansion preceded update. Final stub/policy state is reconciled, latency remains unverified and individual citations are discoverable. Positive patch receipt was final, without redundant post-write read/check."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 348692,
+            "cached_input_tokens": 291712,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 8815,
+            "reasoning_output_tokens": 1358,
+            "total_tokens": 357507,
+            "uncached_input_tokens": 56980
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "initial_note_bytes": 7397,
+        "final_note_bytes": 9543
+      },
+      "net_token_reduction_percent": -83.585
+    },
+    {
+      "case": "short",
+      "repeat": 0,
+      "order": "baseline_then_obia",
+      "history_characters": 3810,
+      "checkpoint_creation": {
+        "elapsed_seconds": 81.107,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 81569,
+          "cached_input_tokens": 71040,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3590,
+          "reasoning_output_tokens": 726,
+          "total_tokens": 85159,
+          "uncached_input_tokens": 10529
+        },
+        "command_count": 8,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "6c0d4f58dd0aeed31ce4e82e9fe8ff0c79af4d14aa892609c7401c3b5619357b",
+        "tool_action_count": 8,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 7,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Initial active checkpoint saved with positive helper receipt; no implementation or test pass claimed. Retains accepted corrections, volatile policy 3, source locators and unverified latency. Cancellation wording is ambiguous about flag versus state; the cited H03 source remains available. Creation recall found no existing note; positive save receipt ended tool work without redundant post-save read/check."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 83.236,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 128357,
+            "cached_input_tokens": 120832,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3069,
+            "reasoning_output_tokens": 679,
+            "total_tokens": 131426,
+            "uncached_input_tokens": 7525
+          },
+          "command_count": 9,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "4585cb39f7166a2774fadc2d94946316ec922eb5f62d787f7ade29ba00e1cf7e",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 10,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 8,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Observed live policy 2, two smoke tests and ten additional tests including 500 seeded comparisons; matching protected-file hashes. Final answer retains unverified latency."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 128357,
+            "cached_input_tokens": 120832,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3069,
+            "reasoning_output_tokens": 679,
+            "total_tokens": 131426,
+            "uncached_input_tokens": 7525
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 142.946,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 201780,
+            "cached_input_tokens": 177408,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5837,
+            "reasoning_output_tokens": 850,
+            "total_tokens": 207617,
+            "uncached_input_tokens": 24372
+          },
+          "command_count": 13,
+          "failed_commands": 2,
+          "other_tool_types": [],
+          "event_sha256": "01cd2dabc8a2f901054f83c9042ec04256ef79dda655bb5a663e52eda0a96fed",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 14,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 11,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and eleven additional tests passed, including 288 eligibility combinations and policy reloads. H03 was actually reread (event line 20), cancellation flag implemented and tested correctly, and final Constraints makes it explicit, resolving the initial ambiguity for this continuation. Policy 3-to-2 and unverified latency retained. Final Corrections still contains stale present-tense stub wording despite completed Resume/Facts; this memory inconsistency remains a caveat. Recovery returned brief plus source definitions; omitted sections were expanded before replacement. Positive patch receipt ended tool work without redundant post-write read/check."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 283349,
+            "cached_input_tokens": 248448,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 9427,
+            "reasoning_output_tokens": 1576,
+            "total_tokens": 292776,
+            "uncached_input_tokens": 34901
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "initial_note_bytes": 7975,
+        "final_note_bytes": 9837
+      },
+      "net_token_reduction_percent": -122.769
+    },
+    {
+      "case": "short",
+      "repeat": 1,
+      "order": "obia_then_baseline",
+      "history_characters": 3810,
+      "checkpoint_creation": {
+        "elapsed_seconds": 87.425,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 99566,
+          "cached_input_tokens": 74752,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3626,
+          "reasoning_output_tokens": 1020,
+          "total_tokens": 103192,
+          "uncached_input_tokens": 24814
+        },
+        "command_count": 9,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "1d0a71b072499feb8032a68d76925d522a9c7643cbe3baa2d5fa745c6bd36aa2",
+        "tool_action_count": 9,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 8,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Initial active checkpoint preserves accepted rules, volatile policy 3 and unverified latency; no implementation/test pass claimed. Some Resume citations use grouped forms such as [S1, S5, S6], outside the single-ID bundling syntax, although all sources are defined. Creation recall reported no existing note. Positive save receipt was final; no redundant post-save read/check."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 62.64,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 106220,
+            "cached_input_tokens": 87808,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2398,
+            "reasoning_output_tokens": 245,
+            "total_tokens": 108618,
+            "uncached_input_tokens": 18412
+          },
+          "command_count": 7,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "dfa13dd87c37fbdcece120407c40bfe927e4ebd0e5ed8d1cdc58d95a841683f9",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 8,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 6,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and ten additional tests passed, with matching protected hashes, live policy 2 and unverified latency. Process cwd changed to filesystem root solely to test module-relative lookup; the selector still read its fixture policy and no external data access was observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 106220,
+            "cached_input_tokens": 87808,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2398,
+            "reasoning_output_tokens": 245,
+            "total_tokens": 108618,
+            "uncached_input_tokens": 18412
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 141.428,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 177225,
+            "cached_input_tokens": 152320,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5844,
+            "reasoning_output_tokens": 883,
+            "total_tokens": 183069,
+            "uncached_input_tokens": 24905
+          },
+          "command_count": 15,
+          "failed_commands": 2,
+          "other_tool_types": [],
+          "event_sha256": "948ab1551e32fd629e32a6ebba7d5f5c3c0039251b702835eaa7ee81c3085a22",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 16,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 13,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and twelve additional tests passed. Initial recovery was brief plus sources; grouped citations omitted S6/S7 from automatic bundling, then explicit source reads recovered them. Invalid mixed source/section request was corrected. Final policy 3-to-2 and prior stub are reconciled correctly, with latency unverified; grouped citations persist throughout final Resume and other sections, so automatic evidence bundling remains incomplete. Positive patch receipt was final; no redundant post-write read/check."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 276791,
+            "cached_input_tokens": 227072,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 9470,
+            "reasoning_output_tokens": 1903,
+            "total_tokens": 286261,
+            "uncached_input_tokens": 49719
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "initial_note_bytes": 6769,
+        "final_note_bytes": 9246
+      },
+      "net_token_reduction_percent": -163.548
+    },
+    {
+      "case": "short",
+      "repeat": 2,
+      "order": "baseline_then_obia",
+      "history_characters": 3810,
+      "checkpoint_creation": {
+        "elapsed_seconds": 98.149,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 110756,
+          "cached_input_tokens": 98432,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3770,
+          "reasoning_output_tokens": 1007,
+          "total_tokens": 114526,
+          "uncached_input_tokens": 12324
+        },
+        "command_count": 8,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "bfdb9ac87e99d11541bed0c6872cb44cd8dcf9baa558fc7a366175bf8d624582",
+        "tool_action_count": 8,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 7,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Initial active checkpoint retains accepted constraints, corrected historical proposal, volatile policy 3, genuine observed stub and unverified latency with file/line source locators. Tests were read but not claimed run. Local helper save returned a positive receipt and ended tool work without redundant read/check."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 56.969,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 108744,
+            "cached_input_tokens": 101504,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2196,
+            "reasoning_output_tokens": 257,
+            "total_tokens": 110940,
+            "uncached_input_tokens": 7240
+          },
+          "command_count": 7,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "b50d5ce6b17a1d62f7e231f8a7b34e44b7f6371f511be081ba7865c788cf2f56",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 8,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 7,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and six additional tests passed, including 480 eligibility combinations and mocked policy reads. Protected hashes match, live policy 2 reported and latency unverified."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 108744,
+            "cached_input_tokens": 101504,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2196,
+            "reasoning_output_tokens": 257,
+            "total_tokens": 110940,
+            "uncached_input_tokens": 7240
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 137.397,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 172214,
+            "cached_input_tokens": 161280,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5753,
+            "reasoning_output_tokens": 1261,
+            "total_tokens": 177967,
+            "uncached_input_tokens": 10934
+          },
+          "command_count": 13,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "a35e060baa4e61eb59692504a12c8260c7a01891ee797820f9014645c66bc0ff",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 14,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 12,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and seven additional tests passed, including 480 eligibility combinations, mocked policy reloads and path resolution. Brief-plus-sources recovery, source-history inspection and omitted-section expansion preceded update. Final note reconciles stub and policy 3-to-2, retains unverified latency and uses discoverable individual citations; no contradictory current-state assertion found. Positive patch receipt was final, without redundant post-write read/check."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 282970,
+            "cached_input_tokens": 259712,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 9523,
+            "reasoning_output_tokens": 2268,
+            "total_tokens": 292493,
+            "uncached_input_tokens": 23258
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "initial_note_bytes": 7472,
+        "final_note_bytes": 9376
+      },
+      "net_token_reduction_percent": -163.65
+    }
+  ],
+  "by_case": {
+    "short": {
+      "planned_pairs": 3,
+      "recorded_pairs": 3,
+      "complete_metered_pairs": 3,
+      "arms": {
+        "baseline": {
+          "usage": {
+            "input_tokens": 343321,
+            "cached_input_tokens": 310144,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 7663,
+            "reasoning_output_tokens": 1181,
+            "total_tokens": 350984,
+            "uncached_input_tokens": 33177
+          },
+          "median_total_tokens": 110940,
+          "min_total_tokens": 108618,
+          "max_total_tokens": 131426,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 0,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        },
+        "obia": {
+          "usage": {
+            "input_tokens": 843110,
+            "cached_input_tokens": 735232,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 28420,
+            "reasoning_output_tokens": 5747,
+            "total_tokens": 871530,
+            "uncached_input_tokens": 107878
+          },
+          "median_total_tokens": 292493,
+          "min_total_tokens": 286261,
+          "max_total_tokens": 292776,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 0,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        }
+      },
+      "checkpoint_creation_usage": {
+        "input_tokens": 291891,
+        "cached_input_tokens": 244224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 10986,
+        "reasoning_output_tokens": 2753,
+        "total_tokens": 302877,
+        "uncached_input_tokens": 47667
+      },
+      "obia_resume_and_maintenance_usage": {
+        "input_tokens": 551219,
+        "cached_input_tokens": 491008,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17434,
+        "reasoning_output_tokens": 2994,
+        "total_tokens": 568653,
+        "uncached_input_tokens": 60211
+      },
+      "net_token_reduction_percent": -148.31,
+      "resume_only_token_reduction_percent": -62.017,
+      "median_paired_net_reduction_percent": -163.548
+    },
+    "long": {
+      "planned_pairs": 3,
+      "recorded_pairs": 3,
+      "complete_metered_pairs": 3,
+      "arms": {
+        "baseline": {
+          "usage": {
+            "input_tokens": 608307,
+            "cached_input_tokens": 522496,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 8493,
+            "reasoning_output_tokens": 1331,
+            "total_tokens": 616800,
+            "uncached_input_tokens": 85811
+          },
+          "median_total_tokens": 195622,
+          "min_total_tokens": 194737,
+          "max_total_tokens": 226441,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 0,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        },
+        "obia": {
+          "usage": {
+            "input_tokens": 1011780,
+            "cached_input_tokens": 834048,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 28685,
+            "reasoning_output_tokens": 4952,
+            "total_tokens": 1040465,
+            "uncached_input_tokens": 177732
+          },
+          "median_total_tokens": 357507,
+          "min_total_tokens": 304483,
+          "max_total_tokens": 378475,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 0,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        }
+      },
+      "checkpoint_creation_usage": {
+        "input_tokens": 434227,
+        "cached_input_tokens": 351744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9702,
+        "reasoning_output_tokens": 1660,
+        "total_tokens": 443929,
+        "uncached_input_tokens": 82483
+      },
+      "obia_resume_and_maintenance_usage": {
+        "input_tokens": 577553,
+        "cached_input_tokens": 482304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18983,
+        "reasoning_output_tokens": 3292,
+        "total_tokens": 596536,
+        "uncached_input_tokens": 95249
+      },
+      "net_token_reduction_percent": -68.688,
+      "resume_only_token_reduction_percent": 3.285,
+      "median_paired_net_reduction_percent": -67.141
+    }
+  }
+}

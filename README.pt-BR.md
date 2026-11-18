@@ -19,7 +19,8 @@ não precisa estar aberto para a gravação funcionar.
 - Ligações com justificativa entre notas existentes.
 - Separação entre fatos, decisões, hipóteses e correções, com referências às fontes.
 - Busca por palavras e recuperação adaptativa: núcleo integral e detalhes sob demanda.
-- Leitura seletiva de seções/fontes e reutilização explícita de contexto pelo SHA.
+- Leitura seletiva, fontes citadas na mesma chamada e reutilização explícita de contexto pelo SHA.
+- Confirmação de leitura após gravar, evitando chamadas rotineiras separadas de leitura/verificação.
 - Proteção contra sobrescritas concorrentes pelo utilitário e histórico local.
 - Edição parcial que preserva seções humanas, propriedades e comentários YAML.
 - Instalador público com um cofre separado por projeto, incluindo worktrees.

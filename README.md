@@ -24,7 +24,8 @@ flowchart LR
 - One current note per task, grouped by project, with explicit relationships.
 - Separate facts, decisions, hypotheses, sources and corrections.
 - Lexical search and adaptive recall: whole essential sections, details on demand.
-- Snapshot-safe section/source reads and explicit SHA-based context reuse.
+- Snapshot-safe section/source reads, optional cited-source bundling and explicit SHA-based context reuse.
+- Checkpoint readback receipts that avoid separate routine read/check calls.
 - SHA-based conflict detection, atomic replacement and previous-version snapshots.
 - Partial updates that preserve human sections, YAML properties and comments.
 - Public installer for Codex and Claude Code, with one private vault per project.
