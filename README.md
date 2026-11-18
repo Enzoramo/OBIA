@@ -23,7 +23,8 @@ flowchart LR
 
 - One current note per task, grouped by project, with explicit relationships.
 - Separate facts, decisions, hypotheses, sources and corrections.
-- Lexical search with small discovery results; bounded recall of complete notes.
+- Lexical search and adaptive recall: whole essential sections, details on demand.
+- Snapshot-safe section/source reads and explicit SHA-based context reuse.
 - SHA-based conflict detection, atomic replacement and previous-version snapshots.
 - Partial updates that preserve human sections, YAML properties and comments.
 - Public installer for Codex and Claude Code, with one private vault per project.
@@ -32,10 +33,11 @@ flowchart LR
 - Skill instructions for recovery after context resets and handoffs between agents.
 
 OBIA is designed to reduce repeated context loading and make claims easier to
-check. **Token savings and reduced hallucination rates have not been benchmarked.**
+check. **End-to-end token savings and reduced hallucination rates remain unmeasured.**
 The [work and token analysis](docs/economia-trabalho-tokens.md) (Portuguese)
 provides local payload counts and conditional savings scenarios, not measured
-end-to-end savings.
+end-to-end savings. The [progressive retrieval benchmark](docs/progressive-retrieval.md)
+adds reproducible synthetic comparisons, including source expansion and negative results.
 It cannot recover unsaved messages, make a model remember without reading files,
 or guarantee that a host activates a skill before context compaction.
 
@@ -102,8 +104,11 @@ your-private-vault/OBIA/
 An index helps discovery. Each task carries a short current summary plus evidence.
 Known-task recall can include directly related tasks within the same project.
 Search is lexical, not semantic, and normal retrieval excludes snapshots and
-archived tasks. A character budget bounds the returned context; a note that does
-not fit is reported as omitted, never silently cut in half.
+archived tasks. Hooks use adaptive brief retrieval, preserving whole essential
+sections and exposing omitted details; short notes can be returned whole when
+smaller. A character budget bounds the output. Essential content that cannot fit
+requires a full read; it is never silently truncated. CLI recall defaults to full
+notes for compatibility; select `--view brief` explicitly for adaptive retrieval.
 
 See [the command reference](skills/obia/references/commands.md) for operations,
 failure recovery and limits; [the format](skills/obia/references/memory-format.md)

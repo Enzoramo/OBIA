@@ -1,0 +1,261 @@
+{
+  "schema": 1,
+  "measurement": "local_text_tokenization_not_model_usage",
+  "tiktoken_version": "0.12.0",
+  "encodings": [
+    "o200k_base",
+    "cl100k_base"
+  ],
+  "scope": "Explicit task notes, their read-only recall packets and public skill instructions. No transcripts or hooks executed.",
+  "exclusions": [
+    "model message framing",
+    "tool-call arguments",
+    "reasoning and output tokens",
+    "cache billing",
+    "checkpoint authoring",
+    "source verification",
+    "repeated context across model requests",
+    "human time",
+    "task quality equivalence"
+  ],
+  "static_instructions": {
+    "SKILL.md": {
+      "characters": 6160,
+      "o200k_base": 1206,
+      "cl100k_base": 1206
+    },
+    "references/commands.md": {
+      "characters": 5920,
+      "o200k_base": 1322,
+      "cl100k_base": 1327
+    },
+    "references/memory-format.md": {
+      "characters": 5595,
+      "o200k_base": 1315,
+      "cl100k_base": 1298
+    },
+    "references/hooks.md": {
+      "characters": 3122,
+      "o200k_base": 657,
+      "cl100k_base": 659
+    }
+  },
+  "samples": [
+    {
+      "sample": 1,
+      "selected_view": "full",
+      "metrics": {
+        "note_markdown": {
+          "characters": 972,
+          "o200k_base": 237,
+          "cl100k_base": 237
+        },
+        "read_full_json": {
+          "characters": 1174,
+          "o200k_base": 335,
+          "cl100k_base": 335
+        },
+        "read_resume_json": {
+          "characters": 402,
+          "o200k_base": 114,
+          "cl100k_base": 114
+        },
+        "section_resume_text": {
+          "characters": 242,
+          "o200k_base": 42,
+          "cl100k_base": 42
+        },
+        "read_constraints_json": {
+          "characters": 252,
+          "o200k_base": 92,
+          "cl100k_base": 92
+        },
+        "section_constraints_text": {
+          "characters": 96,
+          "o200k_base": 24,
+          "cl100k_base": 24
+        },
+        "read_decisions_json": {
+          "characters": 245,
+          "o200k_base": 91,
+          "cl100k_base": 92
+        },
+        "section_decisions_text": {
+          "characters": 90,
+          "o200k_base": 24,
+          "cl100k_base": 25
+        },
+        "read_sources_json": {
+          "characters": 379,
+          "o200k_base": 129,
+          "cl100k_base": 129
+        },
+        "section_sources_text": {
+          "characters": 223,
+          "o200k_base": 61,
+          "cl100k_base": 61
+        },
+        "recall_12000_json": {
+          "characters": 1392,
+          "o200k_base": 395,
+          "cl100k_base": 395
+        },
+        "recall_full_main_json": {
+          "characters": 1392,
+          "o200k_base": 395,
+          "cl100k_base": 395
+        },
+        "recall_brief_main_json": {
+          "characters": 1410,
+          "o200k_base": 402,
+          "cl100k_base": 402
+        },
+        "brief_core_sources_expansion_json": {
+          "characters": 0,
+          "o200k_base": 0,
+          "cl100k_base": 0
+        },
+        "brief_then_core_sources_total": {
+          "characters": 1410,
+          "o200k_base": 402,
+          "cl100k_base": 402
+        },
+        "brief_then_full_read_total": {
+          "characters": 1410,
+          "o200k_base": 402,
+          "cl100k_base": 402
+        },
+        "unchanged_read_json": {
+          "characters": 160,
+          "o200k_base": 67,
+          "cl100k_base": 67
+        }
+      },
+      "recall_included_notes": 1,
+      "recall_omitted_notes": 0
+    },
+    {
+      "sample": 2,
+      "selected_view": "brief",
+      "metrics": {
+        "note_markdown": {
+          "characters": 4872,
+          "o200k_base": 1184,
+          "cl100k_base": 1184
+        },
+        "read_full_json": {
+          "characters": 5108,
+          "o200k_base": 1317,
+          "cl100k_base": 1317
+        },
+        "read_resume_json": {
+          "characters": 401,
+          "o200k_base": 115,
+          "cl100k_base": 115
+        },
+        "section_resume_text": {
+          "characters": 242,
+          "o200k_base": 42,
+          "cl100k_base": 42
+        },
+        "read_constraints_json": {
+          "characters": 251,
+          "o200k_base": 93,
+          "cl100k_base": 93
+        },
+        "section_constraints_text": {
+          "characters": 96,
+          "o200k_base": 24,
+          "cl100k_base": 24
+        },
+        "read_facts_json": {
+          "characters": 1804,
+          "o200k_base": 438,
+          "cl100k_base": 438
+        },
+        "section_facts_text": {
+          "characters": 1635,
+          "o200k_base": 355,
+          "cl100k_base": 355
+        },
+        "read_decisions_json": {
+          "characters": 244,
+          "o200k_base": 92,
+          "cl100k_base": 93
+        },
+        "section_decisions_text": {
+          "characters": 90,
+          "o200k_base": 24,
+          "cl100k_base": 25
+        },
+        "read_sources_json": {
+          "characters": 2659,
+          "o200k_base": 738,
+          "cl100k_base": 738
+        },
+        "section_sources_text": {
+          "characters": 2488,
+          "o200k_base": 653,
+          "cl100k_base": 653
+        },
+        "recall_12000_json": {
+          "characters": 5326,
+          "o200k_base": 1377,
+          "cl100k_base": 1377
+        },
+        "recall_full_main_json": {
+          "characters": 5326,
+          "o200k_base": 1377,
+          "cl100k_base": 1377
+        },
+        "recall_brief_main_json": {
+          "characters": 1530,
+          "o200k_base": 414,
+          "cl100k_base": 415
+        },
+        "brief_core_sources_expansion_json": {
+          "characters": 380,
+          "o200k_base": 131,
+          "cl100k_base": 131
+        },
+        "brief_then_core_sources_total": {
+          "characters": 1910,
+          "o200k_base": 545,
+          "cl100k_base": 546
+        },
+        "brief_then_full_read_total": {
+          "characters": 6638,
+          "o200k_base": 1731,
+          "cl100k_base": 1732
+        },
+        "unchanged_read_json": {
+          "characters": 159,
+          "o200k_base": 68,
+          "cl100k_base": 68
+        }
+      },
+      "recall_included_notes": 1,
+      "recall_omitted_notes": 0
+    }
+  ],
+  "fixture": "benchmark_progressive_recall.py; sample 1 short, sample 2 long; fixed synthetic timestamp",
+  "checks": [
+    {
+      "case": "short",
+      "selected_view": "full",
+      "whole_core_preserved": true,
+      "referenced_sources_recoverable": true,
+      "same_note_snapshot": true,
+      "full_baseline_fits_budget": true
+    },
+    {
+      "case": "long",
+      "selected_view": "brief",
+      "whole_core_preserved": true,
+      "referenced_sources_recoverable": true,
+      "same_note_snapshot": true,
+      "full_baseline_fits_budget": true
+    }
+  ],
+  "interpretation": "Checks prove deterministic retrieval coverage, not model task success or billed-token savings."
+}

@@ -18,7 +18,8 @@ não precisa estar aberto para a gravação funcionar.
 - Uma nota atual por tarefa, organizada por projeto.
 - Ligações com justificativa entre notas existentes.
 - Separação entre fatos, decisões, hipóteses e correções, com referências às fontes.
-- Busca por palavras e recuperação com limite de caracteres.
+- Busca por palavras e recuperação adaptativa: núcleo integral e detalhes sob demanda.
+- Leitura seletiva de seções/fontes e reutilização explícita de contexto pelo SHA.
 - Proteção contra sobrescritas concorrentes pelo utilitário e histórico local.
 - Edição parcial que preserva seções humanas, propriedades e comentários YAML.
 - Instalador público com um cofre separado por projeto, incluindo worktrees.
@@ -26,10 +27,11 @@ não precisa estar aberto para a gravação funcionar.
 - Python 3.10+ e ruamel.yaml, sem APIs pagas ou plugins de Obsidian.
 - Formato Agent Skills e instruções de instalação para Codex e Claude Code.
 
-**Economia de tokens e redução de alucinações são objetivos ainda não medidos.**
+**Economia total de tokens e redução de alucinações ainda não foram medidas.**
 Veja a [análise de trabalho e tokens](docs/economia-trabalho-tokens.md) para
 contagens locais do contexto e cenários de poupança, separados de resultados
-de uma comparação controlada.
+de uma comparação controlada. O [benchmark de recuperação progressiva](docs/progressive-retrieval.md)
+acrescenta comparações sintéticas reproduzíveis, incluindo fontes e casos negativos.
 A skill não recupera o que nunca foi salvo, não amplia a janela do modelo e não
 garante ativação automática antes de toda compactação. Ela mantém uma memória
 externa que o agente precisa consultar e conferir.
@@ -96,7 +98,10 @@ meu-cofre/OBIA/
 Os índices ajudam a localizar tarefas. A nota contém o estado atual e as fontes.
 O histórico guarda versões anteriores, mas fica fora da busca normal. Ao retomar,
 o agente começa pelo projeto e pela tarefa relevantes, em vez de ler todo o cofre.
-Notas que ultrapassem o limite de recuperação são sinalizadas como omitidas.
+Os hooks carregam as seções essenciais inteiras e indicam os detalhes omitidos;
+notas pequenas podem ser devolvidas completas quando isso custa menos caracteres.
+Um núcleo que não caiba exige leitura integral, sem truncar restrições. O comando
+`recall` mantém notas completas por padrão; `--view brief` ativa a seleção adaptativa.
 
 **O repositório da skill é público; suas memórias continuam locais.** A OBIA não
 publica nem sincroniza o cofre. Quando um agente lê as notas, o conteúdo pode ser

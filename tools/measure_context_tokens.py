@@ -48,8 +48,38 @@ def measure(vault, project, tasks):
                 metrics['section_' + section.lower() + '_text'] = count(part)
         packet = obia.recall(vault, project, task=task, budget=12000)
         metrics['recall_12000_json'] = count(json_text(packet))
+        # Compare the same main note without changing which linked notes fit.
+        full = obia.recall(vault, project, task=task, limit=1, view='full')
+        brief = obia.recall(vault, project, task=task, limit=1, view='brief')
+        metrics['recall_full_main_json'] = count(json_text(full))
+        metrics['recall_brief_main_json'] = count(json_text(brief))
+        initial = brief['notes'][0] if brief['notes'] else None
+        if initial and initial.get('view') == 'brief':
+            identifiers = initial['source_ids']
+            expansion = (obia.read_note(vault, project, task, source_ids=identifiers, expected=initial['sha256'])
+                         if identifiers else None)
+            metrics['brief_core_sources_expansion_json'] = count(json_text(expansion) if expansion else '')
+            metrics['brief_then_core_sources_total'] = {
+                key: metrics['recall_brief_main_json'][key] + metrics['brief_core_sources_expansion_json'][key]
+                for key in metrics['recall_brief_main_json']
+            }
+            # A useful negative control: selecting the entire note later repeats
+            # the brief core and can cost more than requesting full up front.
+            whole = obia.read_note(vault, project, task, expected=initial['sha256'])
+            whole_count = count(json_text(whole))
+            metrics['brief_then_full_read_total'] = {
+                key: metrics['recall_brief_main_json'][key] + whole_count[key]
+                for key in metrics['recall_brief_main_json']
+            }
+        elif initial and brief.get('view') == 'full':
+            # The adaptive brief request already returned the complete note.
+            metrics['brief_core_sources_expansion_json'] = count('')
+            metrics['brief_then_core_sources_total'] = dict(metrics['recall_brief_main_json'])
+            metrics['brief_then_full_read_total'] = dict(metrics['recall_brief_main_json'])
+        metrics['unchanged_read_json'] = count(json_text(obia.read_note(vault, project, task, known_sha=item['sha256'])))
         samples.append({
             'sample': index,
+            'selected_view': initial.get('view', brief.get('view', 'full')) if initial else 'omitted',
             'metrics': metrics,
             'recall_included_notes': len(packet['notes']),
             'recall_omitted_notes': packet['omitted_count'],
@@ -60,7 +90,7 @@ def measure(vault, project, tasks):
         'tiktoken_version': tiktoken.__version__,
         'encodings': list(encodings),
         'scope': 'Explicit task notes, their read-only recall packets and public skill instructions. No transcripts or hooks executed.',
-        'exclusions': ['model message framing', 'reasoning and output tokens', 'cache billing',
+        'exclusions': ['model message framing', 'tool-call arguments', 'reasoning and output tokens', 'cache billing',
                        'checkpoint authoring', 'source verification', 'repeated context across model requests',
                        'human time', 'task quality equivalence'],
         'static_instructions': static,

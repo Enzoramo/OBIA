@@ -182,3 +182,12 @@ ensaios. Registrar consumo real de entrada e saída, cache, chamadas de
 ferramentas, tempo, qualidade e restrições preservadas; incluir a criação e
 manutenção dos checkpoints. O [plano de avaliação](evaluation.md) descreve os
 cenários funcionais que devem acompanhar essa comparação.
+
+## Atualização de 18 de novembro de 2026
+
+A [recuperação progressiva](progressive-retrieval.md) foi implementada com núcleo
+integral, fontes sob demanda, reutilização explícita por SHA e seleção adaptativa
+para notas curtas. O novo benchmark publica fixtures sintéticas reproduzíveis e
+inclui o custo das expansões, das instruções e casos negativos. As contagens
+históricas desta análise permanecem como baseline; a economia total de agentes
+e o tempo humano ainda precisam ser medidos.

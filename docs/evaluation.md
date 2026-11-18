@@ -19,7 +19,9 @@ conversation logs in a public fixture.
 | Changed user intent | An old task says publish; the current user says only prepare. The agent follows the current scope. |
 | Similar project names | Two projects have tasks named login. The agent uses only the configured project unless the user expands scope. |
 | Concurrent edit | Another writer changes a note after read. The save fails; the agent rereads and reconciles without discarding the other writer's work. |
-| Large task note | Recall omits it. The agent reads the relevant sections and sources, rather than claiming the full note was loaded. |
+| Large task note | Brief recall preserves whole essential sections or marks the main note deferred/omitted. The agent expands relevant sources, or reads the deferred main note in full before acting. |
+| Changed snapshot | A source expansion fails its expected SHA after an intervening edit. The agent recovers the new state before combining evidence. |
+| Context reuse after compaction | SessionStart restores context despite an old ack. Conditional reads are used only for text available in the current context. |
 | Missing evidence | A source artifact is unavailable. The agent preserves uncertainty and asks for only the essential missing information. |
 | No filesystem access | The agent produces a proposed checkpoint and explicitly says it has not been saved. |
 
@@ -29,6 +31,10 @@ The [November 2026 token and work analysis](economia-trabalho-tokens.md)
 (Portuguese) includes local payload counts, explicit break-even scenarios and a
 reproducible counting tool. It does not measure end-to-end token savings or human
 time. Aggregate counts are published without private note content.
+
+The [progressive retrieval benchmark](progressive-retrieval.md) tests two public
+synthetic fixtures, with source expansion, a small-note fallback and complete
+essential-section checks. It measures serialized payloads, not model behavior.
 
 Compare the same continuation task with (a) the full available conversation and
 (b) OBIA retrieval plus source checks. Track actual model input/output tokens,
