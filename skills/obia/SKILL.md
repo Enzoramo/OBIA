@@ -78,8 +78,8 @@ python3 scripts/obia.py patch --vault VAULT --project PROJECT --task TASK --expe
 ```
 
 Patch only changed fields/sections. Replacing a section requires knowing its
-current content; expand an omitted section first. Choose an unused source ID from `available_source_ids` or Sources already
-visible in a full note; read Sources only if neither inventory is available. Unmentioned human text/metadata survives;
+current content; expand an omitted section first. Choose a new source ID absent from `available_source_ids`, or check the IDs in
+Sources already visible in a full note. Read Sources only if neither is available. Unmentioned human text/metadata survives;
 prior versions remain in `.history`. A stale SHA fails before writing: reread and
 reconcile, never blindly retry. Whole-body replacement needs `save --replace`
 and reconciliation of the entire body. Replace disproved current facts and

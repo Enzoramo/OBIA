@@ -138,7 +138,7 @@ def prepare_skill(folder):
     subprocess.run([sys.executable, "-I", "-c", probe], cwd=folder, check=True, capture_output=True)
 
 
-def run_pair(base, size, repeat, model, effort, timeout):
+def run_pair(base, size, repeat, model, effort, timeout, workflow="legacy"):
     pair = base / f"{size}-{repeat}"
     pair.mkdir()
     for arm in ("baseline", "obia"):
@@ -158,6 +158,9 @@ def run_pair(base, size, repeat, model, effort, timeout):
             prompt = BOUNDARY + "\nThe complete historical task context follows. No checkpoint is needed.\n\n" + history(size) + "\n" + CONTINUE
         else:
             prompt = BOUNDARY + "\nRead obia-skill/SKILL.md. Recover benchmark/queue from ./vault with the OBIA helper's --view brief; expand relevant sources as needed.\n" + CONTINUE + "\nBefore finishing, read the current note/SHA and use the helper to update its sourced checkpoint with your actual results and remaining issues. Verify persistence. Do not use hooks.py: this fixture has no host binding.\n"
+            if workflow == "economical":
+                prompt = prompt.replace("--view brief;", "--view brief --with-sources;")
+                prompt = prompt.replace("read the current note/SHA and use the helper to update", "use the helper and the documented checkpoint workflow to update")
         result, artifacts = run_agent(folder, "resume", prompt, model, effort, timeout, ANSWER_SCHEMA)
         result["protected_files_unchanged"] = all((folder / name).is_file() and (folder / name).read_bytes() == content for name, content in protected.items())
         if result.get("answer") is not None:
@@ -208,6 +211,8 @@ def main():
     parser.add_argument("--repeats", type=int, default=3, choices=range(1, 4))
     parser.add_argument("--workers", type=int, default=2, choices=(1, 2))
     parser.add_argument("--timeout", type=int, default=480)
+    parser.add_argument("--workflow", choices=("legacy", "economical"), default="legacy",
+                        help="Economical uses bundled sources and permits the skill's SHA/receipt reuse")
     args = parser.parse_args()
     base = args.run_dir.expanduser().resolve()
     if base == REPO or REPO in base.parents:
@@ -216,10 +221,10 @@ def main():
     report = {"schema": 1, "model_requested": args.model, "reasoning_effort": args.effort,
               "codex_version": subprocess.check_output(["codex", "--version"], text=True).strip(),
               "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip(),
-              "repeats": args.repeats, "workers": args.workers, "pairs": []}
+              "repeats": args.repeats, "workers": args.workers, "workflow": args.workflow, "pairs": []}
     jobs = [(size, repeat) for repeat in range(args.repeats) for size in ("short", "long")]
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = {pool.submit(run_pair, base, size, repeat, args.model, args.effort, args.timeout): (size, repeat) for size, repeat in jobs}
+        futures = {pool.submit(run_pair, base, size, repeat, args.model, args.effort, args.timeout, args.workflow): (size, repeat) for size, repeat in jobs}
         for future in as_completed(futures):
             size, repeat = futures[future]
             try:

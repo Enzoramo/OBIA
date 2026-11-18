@@ -64,6 +64,7 @@ def summarize(root, manual_audit=None):
     manual_audit = manual_audit or {}
     original = json.loads((root / "report.json").read_text(encoding="utf-8"))
     report = {key: original[key] for key in ("schema", "model_requested", "reasoning_effort", "codex_version", "source_commit", "repeats", "workers")}
+    report["workflow"] = original.get("workflow", "legacy")
     report["measurement"] = "actual_codex_turn_completed_usage"
     report["scope"] = "One fresh-context handoff, including initial checkpoint creation and final checkpoint maintenance."
     report["exclusions"] = ["earlier common task work", "parent chat and evaluation development", "monetary billing", "human time", "native compaction comparison"]
@@ -96,6 +97,9 @@ def summarize(root, manual_audit=None):
             "checkpoint_changed": initial.get("sha256") != final.get("sha256"),
             "previous_version_retained": (folder / "obia/vault/OBIA/.history/benchmark/queue" / (initial_sha + ".md")).is_file(),
         }
+        for label, path in (("initial", folder / "obia/vault/OBIA/.history/benchmark/queue" / (initial_sha + ".md")),
+                            ("final", folder / "obia/vault/OBIA/projects/benchmark/tasks/queue.md")):
+            sample["checkpoint_audit"][label + "_note_bytes"] = path.stat().st_size if path.is_file() else None
         a, b = (sample["arms"][arm]["inclusive_usage"] for arm in ("baseline", "obia"))
         assert a == sample["arms"]["baseline"]["usage"]
         if creation["usage"] is not None and sample["arms"]["obia"]["usage"] is not None:
