@@ -11,6 +11,7 @@ python3 skills/obia/scripts/obia.py init --vault '/path/to/vault'
 python3 skills/obia/scripts/obia.py save --vault '/path/to/vault' --input checkpoint.json
 python3 skills/obia/scripts/obia.py search --vault '/path/to/vault' --project my-app --query 'login offline'
 python3 skills/obia/scripts/obia.py recall --vault '/path/to/vault' --project my-app --task login --max-chars 12000
+python3 skills/obia/scripts/obia.py recall --vault '/path/to/vault' --project my-app --task login --view brief
 python3 skills/obia/scripts/obia.py read --vault '/path/to/vault' --project my-app --task login --section Sources
 python3 skills/obia/scripts/obia.py check --vault '/path/to/vault' --project my-app
 ```
@@ -65,12 +66,35 @@ from a current note does not erase historical copies or external backups.
   (default 3). It does not traverse recursively or open personal/cross-project links.
 - `--max-chars` limits the serialized JSON output, including its trailing newline,
   to 1,024–64,000 Unicode characters (default 12,000). This is **not** a token count.
-- Notes are included whole or omitted. `omitted_count` counts candidate notes that
+- `recall --view full` (the CLI/API default) includes notes whole or omits them.
+  `omitted_count` counts candidate notes that
   do not fit the character budget, not every unselected note in the vault. `omitted`
   lists their paths where space permits. `read --section Resume`, followed by
   relevant evidence sections and `Sources`, handles an oversized note.
-- `read` has no recall budget; one note is limited to 128 KiB on disk. It supports
-  a level-2 section name such as `Facts`, `Decisions`, or `Sources`.
+- `recall --view brief` includes the main note's complete `Resume`, `Constraints`,
+  `Decisions` and `Corrections` sections when present, its preamble, status and
+  updated time. The SHA always identifies the full persisted note. It lists
+  omitted sections and referenced source IDs; source definitions are deferred.
+  Known-task links return only locators, titles and summaries, not recovered
+  context. Query matches each receive a brief projection.
+- Brief views never truncate essential sections to make them fit. A `deferred`
+  entry has `read_required: full` and no content; if even its locator cannot fit,
+  the note is counted as omitted. Read a deferred/omitted main note in full before
+  acting. Linked locators need a read before relying on their evidence. Notes
+  without `Resume` or with custom frontmatter use a full fallback to preserve
+  nonstandard context. Custom body sections remain explicitly listed as omitted.
+- `read` has no recall budget; one note is limited to 128 KiB on disk. Repeat
+  `--section` to fetch several level-two sections in one response, or repeat
+  `--source S1` to fetch selected definitions from `Sources`, including multiline
+  records. The two selectors are mutually exclusive. Fenced examples and source
+  IDs outside `Sources` are not definitions; missing or duplicate IDs fail.
+- Use `read --expect-sha SHA` when expanding a retrieved snapshot. If the note
+  changed, recover its new state instead of combining old claims with new sources.
+- `read --if-changed SHA` returns only path/SHA and `status: unchanged` when the
+  persisted note matches. Use this only for context already available to the
+  agent, not as a substitute for reading a newly needed section or source. If the
+  SHA differs, the requested content is returned normally. It neither saves a
+  checkpoint nor acknowledges a receipt.
 - Archived tasks are absent from normal search and linked recall; use
   `search --include-archived` or an explicitly known task ID to recover them.
 
