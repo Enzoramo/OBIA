@@ -169,3 +169,8 @@ raw traces ficaram fora do repositório público.
 A execução consome uso real do Codex; siga o comando do protocolo para reproduzir.
 A estrutura do repositório foi validada por 77 testes locais. As traces completas
 são locais; somente dados sintéticos, agregados e código de reprodução entram no Git.
+
+
+Uma [otimização posterior](economical-checkpoints.md) reduziu custos e corrigiu
+regressões de memória, mas ainda não demonstrou economia líquida contra o baseline.
+Esta primeira avaliação e seus resultados permanecem preservados.

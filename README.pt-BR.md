@@ -37,6 +37,11 @@ Um [piloto com 18 execuções reais](docs/real-agent-evaluation.md) mediu maior 
 total numa única retomada via CLI, incluindo criação/manutenção de checkpoints,
 com todos os critérios funcionais e de retenção aprovados. Não avaliou a injeção
 automática de contexto pelos hooks.
+Uma [otimização posterior com 24 execuções medidas](docs/economical-checkpoints.md)
+reduziu os tokens inclusivos do OBIA em 35,1% e chamadas de comando em 28,9%.
+As seis retomadas finais passaram nos 16 critérios e na auditoria de memória;
+ainda custaram cerca do dobro do baseline, com criação incluída. Essa validação
+reutiliza explicitamente os custos anteriores de criação/baseline.
 A skill não recupera o que nunca foi salvo, não amplia a janela do modelo e não
 garante ativação automática antes de toda compactação. Ela mantém uma memória
 externa que o agente precisa consultar e conferir.

@@ -106,3 +106,7 @@ avaliou a injeção automática dos hooks. Os números desta página continuam s
 contagens do pacote, não economia total. Tokens de texto, tokens faturados e
 trabalho humano são medidas distintas. O [plano de avaliação](evaluation.md)
 descreve os cenários seguintes.
+
+A [avaliação dos checkpoints econômicos](economical-checkpoints.md) posterior
+inclui recibos de gravação, fontes na mesma recuperação e correção de estado nas
+notas. Mede redução de custo do OBIA, sem demonstrar economia líquida nesta tarefa.

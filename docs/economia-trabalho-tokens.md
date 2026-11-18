@@ -201,3 +201,9 @@ de retenção passaram. Esse resultado não mede a injeção automática dos hoo
 poupança de trabalho humano; demonstra que a redução do texto recuperado não
 basta para afirmar economia líquida. Os resultados negativos, cache, desvio de
 escopo e tentativa inválida de preparação estão documentados.
+
+A [iteração seguinte com checkpoints econômicos](economical-checkpoints.md)
+reduziu o custo inclusivo do OBIA em 35,1% na validação final e preservou os
+critérios medidos, mas ainda custou cerca do dobro do baseline com criação incluída.
+Ela separa 18 execuções pareadas novas de seis retomadas adicionais com evidência
+de criação/baseline explicitamente reutilizada.

@@ -52,3 +52,7 @@ deviation and an invalid infrastructure attempt are reported separately.
 Keep failures and negative results. Tune checkpoint selection based on observed
 misses, not a growing list of speculative instructions. Evaluate separate models
 and hosts before claiming interoperability beyond file-format compatibility.
+
+The [economical-checkpoint follow-up](economical-checkpoints.md) preserves negative
+results, reports 24 new measured executions, and distinguishes fresh paired tests
+from six replays with reused creation/baseline costs and added semantic audits.

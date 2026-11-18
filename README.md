@@ -41,7 +41,12 @@ end-to-end savings. The [progressive retrieval benchmark](docs/progressive-retri
 adds reproducible synthetic comparisons, including source expansion and negative results.
 An [18-execution real-agent pilot](docs/real-agent-evaluation.md) measured higher
 total token usage for a single CLI handoff when checkpoint creation/maintenance
-were included, with all predefined functional and retention checks passing.
+were included, with all predefined functional and retention checks passing. A
+[follow-up optimization and 24 measured executions](docs/economical-checkpoints.md)
+reduced OBIA's inclusive scenario tokens by 35.1% and command calls by 28.9%; the
+final six replay continuations passed all 16 checks and the added memory audit.
+OBIA still cost about twice the baseline in this task, with checkpoint creation
+included; the replay explicitly reuses the original creation/baseline evidence.
 It did not test automatic context injection by lifecycle hooks.
 It cannot recover unsaved messages, make a model remember without reading files,
 or guarantee that a host activates a skill before context compaction.
