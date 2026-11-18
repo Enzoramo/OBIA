@@ -1,0 +1,1375 @@
+{
+  "schema": 1,
+  "model_requested": "gpt-6-astra",
+  "reasoning_effort": "xhigh",
+  "codex_version": "codex-cli 0.169.0-alpha.11.1",
+  "source_commit": "73a4e5e945cc2b878f7d2863919a760a95dd54b2",
+  "repeats": 3,
+  "workers": 2,
+  "measurement": "actual_codex_turn_completed_usage",
+  "scope": "One fresh-context handoff, including initial checkpoint creation and final checkpoint maintenance.",
+  "exclusions": [
+    "earlier common task work",
+    "parent chat and evaluation development",
+    "monetary billing",
+    "human time",
+    "native compaction comparison"
+  ],
+  "pairs": [
+    {
+      "case": "long",
+      "repeat": 0,
+      "order": "obia_then_baseline",
+      "history_characters": 81250,
+      "checkpoint_creation": {
+        "elapsed_seconds": 126.159,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 265625,
+          "cached_input_tokens": 236416,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4807,
+          "reasoning_output_tokens": 1077,
+          "total_tokens": 270432,
+          "uncached_input_tokens": 29209
+        },
+        "command_count": 10,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "80fef2ee360fe6a177dc0ddde1f2783d48bd6f9f67c4ec0db3e5ca9efc112b4f",
+        "tool_action_count": 10,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 9,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 72.406,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 191806,
+            "cached_input_tokens": 159360,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2805,
+            "reasoning_output_tokens": 410,
+            "total_tokens": 194611,
+            "uncached_input_tokens": 32446
+          },
+          "command_count": 6,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "df9baa10414d2e1e1aa3c4ba43ddbac72368393ca471092e94e1201623db5af9",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 191806,
+            "cached_input_tokens": 159360,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2805,
+            "reasoning_output_tokens": 410,
+            "total_tokens": 194611,
+            "uncached_input_tokens": 32446
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 177.862,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 316432,
+            "cached_input_tokens": 281856,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 7430,
+            "reasoning_output_tokens": 1389,
+            "total_tokens": 323862,
+            "uncached_input_tokens": 34576
+          },
+          "command_count": 14,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "81bc936b33ba5f15cc4c8d0613f13e922b87f6a2c4b5a8efcf64eabeb78dd451",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 15,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 14,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 582057,
+            "cached_input_tokens": 518272,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 12237,
+            "reasoning_output_tokens": 2466,
+            "total_tokens": 594294,
+            "uncached_input_tokens": 63785
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true
+      },
+      "net_token_reduction_percent": -205.375
+    },
+    {
+      "case": "long",
+      "repeat": 1,
+      "order": "baseline_then_obia",
+      "history_characters": 81250,
+      "checkpoint_creation": {
+        "elapsed_seconds": 105.65,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 225271,
+          "cached_input_tokens": 195840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4514,
+          "reasoning_output_tokens": 756,
+          "total_tokens": 229785,
+          "uncached_input_tokens": 29431
+        },
+        "command_count": 10,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "97c0088d157e455881b9b0a46d3f4f35a01081c72e073ed978f27639093d1379",
+        "tool_action_count": 10,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 9,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 76.991,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 191604,
+            "cached_input_tokens": 171136,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2629,
+            "reasoning_output_tokens": 258,
+            "total_tokens": 194233,
+            "uncached_input_tokens": 20468
+          },
+          "command_count": 6,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "59b5d992a6a9112c7186acff92ba4169ab09fcba02c15d93aeaa904477b0845f",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 191604,
+            "cached_input_tokens": 171136,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2629,
+            "reasoning_output_tokens": 258,
+            "total_tokens": 194233,
+            "uncached_input_tokens": 20468
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 154.896,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 284702,
+            "cached_input_tokens": 249344,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6590,
+            "reasoning_output_tokens": 1142,
+            "total_tokens": 291292,
+            "uncached_input_tokens": 35358
+          },
+          "command_count": 15,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "01707aa901fcd8ea10794c9f89c74008501e566f2663dd592d4d5b0e3cf36402",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 15,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 15,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 509973,
+            "cached_input_tokens": 445184,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 11104,
+            "reasoning_output_tokens": 1898,
+            "total_tokens": 521077,
+            "uncached_input_tokens": 64789
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true
+      },
+      "net_token_reduction_percent": -168.274
+    },
+    {
+      "case": "long",
+      "repeat": 2,
+      "order": "obia_then_baseline",
+      "history_characters": 81250,
+      "checkpoint_creation": {
+        "elapsed_seconds": 103.204,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 221820,
+          "cached_input_tokens": 192640,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4375,
+          "reasoning_output_tokens": 652,
+          "total_tokens": 226195,
+          "uncached_input_tokens": 29180
+        },
+        "command_count": 10,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "b3ca2550fb349d84bf00e0489ee174140ea30ebd7e3c342b4cff7a546123a025",
+        "tool_action_count": 10,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 9,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 72.279,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 157735,
+            "cached_input_tokens": 125696,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2705,
+            "reasoning_output_tokens": 387,
+            "total_tokens": 160440,
+            "uncached_input_tokens": 32039
+          },
+          "command_count": 5,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "b0ce6a0aa298ec541067f102177d0dbf0e3d44240da8259792e83e3904a93042",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 6,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 157735,
+            "cached_input_tokens": 125696,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2705,
+            "reasoning_output_tokens": 387,
+            "total_tokens": 160440,
+            "uncached_input_tokens": 32039
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 178.153,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 303651,
+            "cached_input_tokens": 270080,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 7205,
+            "reasoning_output_tokens": 1306,
+            "total_tokens": 310856,
+            "uncached_input_tokens": 33571
+          },
+          "command_count": 17,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "902af72dd41561999d091e87819a23a766ec7783ab65cc11f07344e2456d8a5b",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 17,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 17,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 525471,
+            "cached_input_tokens": 462720,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 11580,
+            "reasoning_output_tokens": 1958,
+            "total_tokens": 537051,
+            "uncached_input_tokens": 62751
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true
+      },
+      "net_token_reduction_percent": -234.736
+    },
+    {
+      "case": "short",
+      "repeat": 0,
+      "order": "baseline_then_obia",
+      "history_characters": 3810,
+      "checkpoint_creation": {
+        "elapsed_seconds": 96.649,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 137356,
+          "cached_input_tokens": 122496,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4239,
+          "reasoning_output_tokens": 730,
+          "total_tokens": 141595,
+          "uncached_input_tokens": 14860
+        },
+        "command_count": 12,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "184e3a220f245428fb984e8d7e3f072deaa6bff0d378109099545e8b2cb044db",
+        "tool_action_count": 12,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 11,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 73.255,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 106631,
+            "cached_input_tokens": 88448,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3064,
+            "reasoning_output_tokens": 598,
+            "total_tokens": 109695,
+            "uncached_input_tokens": 18183
+          },
+          "command_count": 7,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "24281d809b4bc7e734a1d215603f62d0fa1d4fdcc083ae3121c197b582c78771",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 8,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 7,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 1
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Temporary cwd change was a fixture policy-path test; it did not read unrelated project data."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 106631,
+            "cached_input_tokens": 88448,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3064,
+            "reasoning_output_tokens": 598,
+            "total_tokens": 109695,
+            "uncached_input_tokens": 18183
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 210.704,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 355339,
+            "cached_input_tokens": 323584,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 9148,
+            "reasoning_output_tokens": 1986,
+            "total_tokens": 364487,
+            "uncached_input_tokens": 31755
+          },
+          "command_count": 20,
+          "failed_commands": 6,
+          "other_tool_types": [],
+          "event_sha256": "19f72562e956cc5b4d3764f735e1a35f02f01c4ed408b95848c84bd1c7753862",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 21,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 14,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 3
+          },
+          "manual_review": {
+            "scope": "deviation",
+            "test_claims": "consistent_with_observed_execution",
+            "event_lines": [
+              27,
+              35,
+              40
+            ],
+            "note": "Listed and probed temporary Python interpreters outside the supplied workspace. Included in primary costs; no checkpoint configuration edits or private conversation reads observed."
+          },
+          "protocol_deviation": true,
+          "inclusive_usage": {
+            "input_tokens": 492695,
+            "cached_input_tokens": 446080,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 13387,
+            "reasoning_output_tokens": 2716,
+            "total_tokens": 506082,
+            "uncached_input_tokens": 46615
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true
+      },
+      "net_token_reduction_percent": -361.354
+    },
+    {
+      "case": "short",
+      "repeat": 1,
+      "order": "obia_then_baseline",
+      "history_characters": 3810,
+      "checkpoint_creation": {
+        "elapsed_seconds": 117.551,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 134618,
+          "cached_input_tokens": 120832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5188,
+          "reasoning_output_tokens": 1093,
+          "total_tokens": 139806,
+          "uncached_input_tokens": 13786
+        },
+        "command_count": 13,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "4cc272cfd3ce045a0efdf8685556794d72093ba88757cdbdf1f7637be61de11c",
+        "tool_action_count": 13,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 12,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 63.664,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 109208,
+            "cached_input_tokens": 102016,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2493,
+            "reasoning_output_tokens": 178,
+            "total_tokens": 111701,
+            "uncached_input_tokens": 7192
+          },
+          "command_count": 8,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "b20be5a79745f8f38ec936306e871ab34a17bb2aac47a25f0acde04e0b7bc47e",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 9,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 8,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 109208,
+            "cached_input_tokens": 102016,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2493,
+            "reasoning_output_tokens": 178,
+            "total_tokens": 111701,
+            "uncached_input_tokens": 7192
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 199.428,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 299790,
+            "cached_input_tokens": 269696,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6427,
+            "reasoning_output_tokens": 1092,
+            "total_tokens": 306217,
+            "uncached_input_tokens": 30094
+          },
+          "command_count": 16,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "dab91be3367720f3aa342ceceb7de078ed78e5670701519d8bb04fb45362d275",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 17,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 15,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 1
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 434408,
+            "cached_input_tokens": 390528,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 11615,
+            "reasoning_output_tokens": 2185,
+            "total_tokens": 446023,
+            "uncached_input_tokens": 43880
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true
+      },
+      "net_token_reduction_percent": -299.301
+    },
+    {
+      "case": "short",
+      "repeat": 2,
+      "order": "baseline_then_obia",
+      "history_characters": 3810,
+      "checkpoint_creation": {
+        "elapsed_seconds": 112.341,
+        "exit_code": 0,
+        "timed_out": false,
+        "completed_turns": 1,
+        "usage": {
+          "input_tokens": 135477,
+          "cached_input_tokens": 94592,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4687,
+          "reasoning_output_tokens": 905,
+          "total_tokens": 140164,
+          "uncached_input_tokens": 40885
+        },
+        "command_count": 11,
+        "failed_commands": 1,
+        "other_tool_types": [],
+        "event_sha256": "bef5a2e90fd2aaf711933dfdc3fe055c38b725479e902dea047397101df9594a",
+        "tool_action_count": 11,
+        "audit": {
+          "hook_or_router_command_mentions": 1,
+          "completed_successful_commands": 10,
+          "test_output_observed": false,
+          "outside_workspace_temp_probe_commands": 0
+        },
+        "manual_review": {
+          "scope": "pass",
+          "test_claims": "not_applicable",
+          "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+        },
+        "protocol_deviation": false
+      },
+      "arms": {
+        "baseline": {
+          "elapsed_seconds": 84.046,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 143926,
+            "cached_input_tokens": 137344,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2912,
+            "reasoning_output_tokens": 503,
+            "total_tokens": 146838,
+            "uncached_input_tokens": 6582
+          },
+          "command_count": 9,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "d2a6d05b11a49db844c31c38e05b48b9204f41901381ca5310cd3d0848f35f2c",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 10,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 8,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 143926,
+            "cached_input_tokens": 137344,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2912,
+            "reasoning_output_tokens": 503,
+            "total_tokens": 146838,
+            "uncached_input_tokens": 6582
+          }
+        },
+        "obia": {
+          "elapsed_seconds": 158.127,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 260046,
+            "cached_input_tokens": 228992,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6470,
+            "reasoning_output_tokens": 483,
+            "total_tokens": 266516,
+            "uncached_input_tokens": 31054
+          },
+          "command_count": 18,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "e8ab6208a7a774816aa18aa8a34f9e4d1824d62c789fe097b0d218e7ae554c10",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 19,
+          "audit": {
+            "hook_or_router_command_mentions": 1,
+            "completed_successful_commands": 17,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Reviewed command inventory and outputs; no external-service tool use or private data access observed."
+          },
+          "protocol_deviation": false,
+          "inclusive_usage": {
+            "input_tokens": 395523,
+            "cached_input_tokens": 323584,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 11157,
+            "reasoning_output_tokens": 1388,
+            "total_tokens": 406680,
+            "uncached_input_tokens": 71939
+          }
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_status": "active",
+        "initial_implementation_untouched": true,
+        "initial_policy_untouched": true,
+        "initial_history_untouched": true,
+        "final_valid": true,
+        "final_status": "complete",
+        "checkpoint_changed": true,
+        "previous_version_retained": true
+      },
+      "net_token_reduction_percent": -176.958
+    }
+  ],
+  "by_case": {
+    "short": {
+      "planned_pairs": 3,
+      "recorded_pairs": 3,
+      "complete_metered_pairs": 3,
+      "arms": {
+        "baseline": {
+          "usage": {
+            "input_tokens": 359765,
+            "cached_input_tokens": 327808,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 8469,
+            "reasoning_output_tokens": 1279,
+            "total_tokens": 368234,
+            "uncached_input_tokens": 31957
+          },
+          "median_total_tokens": 111701,
+          "min_total_tokens": 109695,
+          "max_total_tokens": 146838,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 0,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        },
+        "obia": {
+          "usage": {
+            "input_tokens": 1322626,
+            "cached_input_tokens": 1160192,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 36159,
+            "reasoning_output_tokens": 6289,
+            "total_tokens": 1358785,
+            "uncached_input_tokens": 162434
+          },
+          "median_total_tokens": 446023,
+          "min_total_tokens": 406680,
+          "max_total_tokens": 506082,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 1,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        }
+      },
+      "checkpoint_creation_usage": {
+        "input_tokens": 407451,
+        "cached_input_tokens": 337920,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14114,
+        "reasoning_output_tokens": 2728,
+        "total_tokens": 421565,
+        "uncached_input_tokens": 69531
+      },
+      "obia_resume_and_maintenance_usage": {
+        "input_tokens": 915175,
+        "cached_input_tokens": 822272,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22045,
+        "reasoning_output_tokens": 3561,
+        "total_tokens": 937220,
+        "uncached_input_tokens": 92903
+      },
+      "net_token_reduction_percent": -269.0,
+      "resume_only_token_reduction_percent": -154.518,
+      "median_paired_net_reduction_percent": -299.301
+    },
+    "long": {
+      "planned_pairs": 3,
+      "recorded_pairs": 3,
+      "complete_metered_pairs": 3,
+      "arms": {
+        "baseline": {
+          "usage": {
+            "input_tokens": 541145,
+            "cached_input_tokens": 456192,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 8139,
+            "reasoning_output_tokens": 1055,
+            "total_tokens": 549284,
+            "uncached_input_tokens": 84953
+          },
+          "median_total_tokens": 194233,
+          "min_total_tokens": 160440,
+          "max_total_tokens": 194611,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 0,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        },
+        "obia": {
+          "usage": {
+            "input_tokens": 1617501,
+            "cached_input_tokens": 1426176,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 34921,
+            "reasoning_output_tokens": 6322,
+            "total_tokens": 1652422,
+            "uncached_input_tokens": 191325
+          },
+          "median_total_tokens": 537051,
+          "min_total_tokens": 521077,
+          "max_total_tokens": 594294,
+          "quality_evaluated": 3,
+          "quality_all_pass": 3,
+          "protocol_deviations": 0,
+          "scope_unreviewed": 0,
+          "functional_passed": 39,
+          "functional_total": 39,
+          "retention_passed": 9,
+          "retention_total": 9
+        }
+      },
+      "checkpoint_creation_usage": {
+        "input_tokens": 712716,
+        "cached_input_tokens": 624896,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 13696,
+        "reasoning_output_tokens": 2485,
+        "total_tokens": 726412,
+        "uncached_input_tokens": 87820
+      },
+      "obia_resume_and_maintenance_usage": {
+        "input_tokens": 904785,
+        "cached_input_tokens": 801280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 21225,
+        "reasoning_output_tokens": 3837,
+        "total_tokens": 926010,
+        "uncached_input_tokens": 103505
+      },
+      "net_token_reduction_percent": -200.832,
+      "resume_only_token_reduction_percent": -68.585,
+      "median_paired_net_reduction_percent": -205.375
+    }
+  },
+  "setup_attempts_outside_comparison": [
+    {
+      "kind": "invalid_fixture_setup",
+      "stage": "long-0/obia-checkpoint",
+      "usage": {
+        "input_tokens": 264710,
+        "cached_input_tokens": 234880,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4847,
+        "reasoning_output_tokens": 1112,
+        "total_tokens": 269557,
+        "uncached_input_tokens": 29830
+      },
+      "interrupted_usage_unknown": false
+    },
+    {
+      "kind": "invalid_fixture_setup",
+      "stage": "long-0/obia-resume",
+      "usage": null,
+      "interrupted_usage_unknown": true
+    },
+    {
+      "kind": "invalid_fixture_setup",
+      "stage": "short-0/baseline-resume",
+      "usage": {
+        "input_tokens": 86044,
+        "cached_input_tokens": 68352,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2740,
+        "reasoning_output_tokens": 372,
+        "total_tokens": 88784,
+        "uncached_input_tokens": 17692
+      },
+      "interrupted_usage_unknown": false
+    },
+    {
+      "kind": "invalid_fixture_setup",
+      "stage": "short-0/obia-checkpoint",
+      "usage": null,
+      "interrupted_usage_unknown": true
+    },
+    {
+      "kind": "connectivity_probe",
+      "usage": {
+        "input_tokens": 14799,
+        "cached_input_tokens": 12032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 14806,
+        "uncached_input_tokens": 2767
+      }
+    }
+  ],
+  "setup_known_usage_lower_bound": {
+    "input_tokens": 365553,
+    "cached_input_tokens": 315264,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 7594,
+    "reasoning_output_tokens": 1484,
+    "total_tokens": 373147,
+    "uncached_input_tokens": 50289
+  },
+  "setup_executions_without_final_usage": 2
+}

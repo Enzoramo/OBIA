@@ -27,11 +27,15 @@ não precisa estar aberto para a gravação funcionar.
 - Python 3.10+ e ruamel.yaml, sem APIs pagas ou plugins de Obsidian.
 - Formato Agent Skills e instruções de instalação para Codex e Claude Code.
 
-**Economia total de tokens e redução de alucinações ainda não foram medidas.**
+**Economia geral de tokens e redução de alucinações não estão demonstradas.**
 Veja a [análise de trabalho e tokens](docs/economia-trabalho-tokens.md) para
 contagens locais do contexto e cenários de poupança, separados de resultados
 de uma comparação controlada. O [benchmark de recuperação progressiva](docs/progressive-retrieval.md)
 acrescenta comparações sintéticas reproduzíveis, incluindo fontes e casos negativos.
+Um [piloto com 18 execuções reais](docs/real-agent-evaluation.md) mediu maior consumo
+total numa única retomada via CLI, incluindo criação/manutenção de checkpoints,
+com todos os critérios funcionais e de retenção aprovados. Não avaliou a injeção
+automática de contexto pelos hooks.
 A skill não recupera o que nunca foi salvo, não amplia a janela do modelo e não
 garante ativação automática antes de toda compactação. Ela mantém uma memória
 externa que o agente precisa consultar e conferir.

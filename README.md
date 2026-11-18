@@ -33,11 +33,15 @@ flowchart LR
 - Skill instructions for recovery after context resets and handoffs between agents.
 
 OBIA is designed to reduce repeated context loading and make claims easier to
-check. **End-to-end token savings and reduced hallucination rates remain unmeasured.**
+check. **General token savings and reduced hallucination rates are not established.**
 The [work and token analysis](docs/economia-trabalho-tokens.md) (Portuguese)
 provides local payload counts and conditional savings scenarios, not measured
 end-to-end savings. The [progressive retrieval benchmark](docs/progressive-retrieval.md)
 adds reproducible synthetic comparisons, including source expansion and negative results.
+An [18-execution real-agent pilot](docs/real-agent-evaluation.md) measured higher
+total token usage for a single CLI handoff when checkpoint creation/maintenance
+were included, with all predefined functional and retention checks passing.
+It did not test automatic context injection by lifecycle hooks.
 It cannot recover unsaved messages, make a model remember without reading files,
 or guarantee that a host activates a skill before context compaction.
 

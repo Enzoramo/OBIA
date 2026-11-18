@@ -3,7 +3,9 @@
 The automated suite verifies filesystem and retrieval behavior. It does not prove
 that a model reliably selects useful context, follows the skill, resists every
 injection, or hallucinates less. Use these synthetic scenarios with an actual
-agent before making those claims. No provider-model evaluation is bundled.
+agent before making those claims. An optional [real-agent pilot and harness](real-agent-evaluation.md)
+now covers one synthetic continuation task with two history sizes; it does not
+establish general agent reliability. Running the harness consumes model usage.
 
 Run each trial in an isolated temporary vault. Record the agent/model version,
 task, files read, tool outputs, final answer and checkpoint. Never use private
@@ -41,6 +43,11 @@ Compare the same continuation task with (a) the full available conversation and
 extra tool calls, task success, unsupported claims, missed constraints and stale
 facts. Include the cost of checkpoint creation and follow-up source reads. A smaller
 recall packet alone does not prove lower total cost or fewer hallucinations.
+
+The [first real-agent results](real-agent-evaluation.md) counted checkpoint
+creation and maintenance and found higher total tokens in the measured CLI
+workflow, despite passing all predefined functional/retention checks. One scope
+deviation and an invalid infrastructure attempt are reported separately.
 
 Keep failures and negative results. Tune checkpoint selection based on observed
 misses, not a growing list of speculative instructions. Evaluate separate models

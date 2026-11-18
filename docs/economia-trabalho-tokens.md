@@ -190,4 +190,14 @@ integral, fontes sob demanda, reutilização explícita por SHA e seleção adap
 para notas curtas. O novo benchmark publica fixtures sintéticas reproduzíveis e
 inclui o custo das expansões, das instruções e casos negativos. As contagens
 históricas desta análise permanecem como baseline; a economia total de agentes
-e o tempo humano ainda precisam ser medidos.
+e o tempo humano ainda precisam ser medidos em cenários mais amplos.
+
+## Piloto posterior com agentes reais
+
+O [teste de 18 execuções reais](real-agent-evaluation.md), também de 18 de novembro,
+incluiu criação e manutenção de checkpoints numa única retomada via CLI. Houve
+maior consumo total de tokens nos seis pares e todos os critérios funcionais e
+de retenção passaram. Esse resultado não mede a injeção automática dos hooks nem
+poupança de trabalho humano; demonstra que a redução do texto recuperado não
+basta para afirmar economia líquida. Os resultados negativos, cache, desvio de
+escopo e tentativa inválida de preparação estão documentados.

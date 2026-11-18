@@ -99,7 +99,10 @@ Execute da raiz do repositório e escolha um arquivo de saída inexistente. O
 horário sintético fixo para tornar SHA e contagens reproduzíveis. Não é preciso
 configurar um cofre pessoal ou credencial. As dependências de medição são opcionais.
 
-Ainda falta a comparação com agentes reais: entrada/saída, cache, chamadas,
-checkpoints, tempo e restrições preservadas. Dois exemplos não demonstram economia
-universal; tokens de texto, tokens faturados e trabalho humano são medidas distintas.
-O [plano de avaliação](evaluation.md) descreve os cenários seguintes.
+O [piloto posterior com agentes reais](real-agent-evaluation.md) incluiu entrada,
+saída, cache, chamadas e checkpoints: nesse fluxo de uma única retomada via CLI,
+o consumo total aumentou, mantendo os critérios funcionais e de retenção. Não
+avaliou a injeção automática dos hooks. Os números desta página continuam sendo
+contagens do pacote, não economia total. Tokens de texto, tokens faturados e
+trabalho humano são medidas distintas. O [plano de avaliação](evaluation.md)
+descreve os cenários seguintes.
