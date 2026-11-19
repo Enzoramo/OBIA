@@ -21,6 +21,10 @@ hook-trust bypass may repair that missing evidence.
 
 ## Reviewable full-app comparison
 
+**Not executed:** the user chose to keep only subagents and document the
+limitation. The following proposed four-chat design remains a future option;
+it is not authorization to create chats in this task.
+
 Four explicitly authorized temporary desktop chats are required: planning and
 fresh continuation for each of two arms. Creation/control messages and archival
 need the user's explicit authorization; use the app's supported thread tools.
@@ -72,3 +76,40 @@ cannot confirm universal daily savings. Report total tokens, uncached input,
 output, duration and quality separately, whether the result is positive or
 negative. Parent development/orchestration and this protocol's review are outside
 the paired workload and must not be presented as measured workload savings.
+
+## Authorized subagent comparison
+
+Before comparative agents run, freeze three arms of the same workload:
+baseline without task memory, the prior manual OBIA workflow from `6c7ba8e`,
+and the synchronous desktop workflow. Each arm gets a fresh planning subagent
+(two requested turns: inspection then accepted correction) and a fresh
+implementation subagent. Six fresh native agents, nine requested work turns;
+all actual paid continuations remain counted. No model/effort override.
+
+Use the frozen request/correction and independent checks in
+`tools/desktop_eval_cases.py`. The grader stays outside agent workspaces. It
+tests the renderer using real exported project reports and small explicit
+accounting fixtures; these fixtures are never described as real hook events.
+
+The initial/continuation costs for all three arms are included, not treated as
+common free work. Both OBIA arms record initial and corrected planning state,
+recover in a fresh agent, reconcile completion, and retain note history. The
+manual arm reads its frozen skill/helper copy; the new arm uses the installed
+desktop helper. The baseline receives its own full visible planning history,
+excluding hidden reasoning. No memory prose or implementation is authored by
+the evaluator for an agent. Only each arm's own evidence may cross its phases.
+
+For the subagent identity, use the directly observed CODEX_THREAD_ID and verify
+it against session metadata. Never use inherited CODEX_SESSION_ID. Bind explicit
+task IDs, not another chat's inferred task. With no lifecycle events, null turn
+IDs stay null; save verification and ack_scope do not become Stop verification.
+No hook run/handle, seeded turn state, new user-owned chat, configuration or
+trust change is allowed. Model-generated note writes and acknowledgements are
+normal task operations; their tool rounds and outputs are counted.
+
+Primary numeric comparison: inclusive synchronous OBIA versus the no-memory
+baseline. Secondary: synchronous versus manual OBIA. Functional and semantic
+quality must pass independently of token results. Even if both show savings,
+the conclusion is restricted to this subagent task: **daily end-to-end savings
+with native Stop are not established**. Calibration cost stays visible outside
+the comparison; parent development/review/orchestration remains excluded.
