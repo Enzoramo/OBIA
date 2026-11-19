@@ -38,9 +38,22 @@ CHECKPOINT_SCHEMA = object_schema({
         'ref': TEXT, 'observed_at': TEXT})),
 })
 INSTRUCTIONS = """OBIA structured handoff. Fill the checkpoint in the supplied response schema.
-The caller saves and verifies it after your response; do not claim it is already
-saved. No memory-helper calls or skill/reference discovery are needed for this
-protocol. Work and source verification still use the normal tools when needed.
+The caller handles persistence separately and reports its verified receipt.
+The checkpoint describes TASK progress, never its own capture/save/ack status
+(neither saved nor awaiting persistence). Omit this protocol's temporary phase
+restrictions from task constraints. No memory-helper calls or skill/reference
+discovery are needed for this protocol.
+Reuse accepted requirements and historical evidence already supplied in context.
+Source locators enable targeted follow-up; they are not a reread checklist. Do
+not reopen an already supplied history merely to cite it or repeat its content.
+Recover sources when context is missing, ambiguous or contradictory. Still
+inspect current files and verify volatile state and implementation with normal
+tools and meaningful tests. Batch independent observations when practical; do
+not reduce necessary verification to save calls.
+For checkpoint-only requests, synthesize the supplied evidence directly. No
+filesystem discovery or live inspection is needed unless explicitly requested
+or essential to resolve a material gap. Attribute supplied historical evidence
+as such; never invent a fresh inspection or test.
 Keep only context needed to continue: objective, accepted constraints/corrections,
 current state, unresolved uncertainty, useful evidence locators and next actions.
 Aim for a few hundred words, each claim once; preserve essential detail even if

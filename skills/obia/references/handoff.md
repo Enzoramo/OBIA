@@ -38,6 +38,14 @@ checks, index warnings, readback and history. Checkpoints use the existing v1
 Markdown format; source dates and locators come from the agent's observed evidence.
 The adapter invents neither facts nor sources and does not inspect transcripts.
 
+The model instructions distinguish task state from storage state: checkpoint
+text must not say that its own save is pending or successful. The caller's actual
+receipt supplies that information. Supplied historical context can be reused
+without rereading it merely for citation. Missing or contradictory evidence still
+requires targeted recovery; current files, volatile facts and implementation
+claims still need appropriate verification. Independent observations may be
+batched without cutting tests or hiding tool costs.
+
 ## Preservation and failures
 
 Full-body replacement is allowed only for a note last written by this protocol
