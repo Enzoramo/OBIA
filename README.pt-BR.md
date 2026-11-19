@@ -21,6 +21,7 @@ não precisa estar aberto para a gravação funcionar.
 - Busca por palavras e recuperação adaptativa: núcleo integral e detalhes sob demanda.
 - Leitura seletiva, fontes citadas na mesma chamada e reutilização explícita de contexto pelo SHA.
 - Confirmação de leitura após gravar, evitando chamadas rotineiras separadas de leitura/verificação.
+- [Fluxo síncrono no app Codex](skills/obia/references/desktop.md): recuperação/vínculo e gravação/ack reunidos pela ferramenta de terminal existente, sem mudar configuração ou confiança dos hooks.
 - [Adaptador opcional de handoff estruturado](skills/obia/references/handoff.md) para hosts que injetam memória e gravam a saída estruturada do modelo.
 - Proteção contra sobrescritas concorrentes pelo utilitário e histórico local.
 - Edição parcial que preserva seções humanas, propriedades e comentários YAML.
@@ -50,6 +51,13 @@ Históricos longos economizaram 29,6%; os curtos ainda custaram 5,3% a mais. O m
 exige integração explícita do host e não mede o fluxo padrão dos hooks. Entrada
 não cacheada, saída e duração aumentaram; não há economia financeira ou ganho de
 velocidade demonstrados. A primeira rodada negativa e seus custos permanecem no relatório.
+Um [teste com subagentes nativos do Codex](docs/desktop-native-evaluation.md)
+avalia o fluxo síncrono, incluindo todo o planejamento e os checkpoints. O
+consumo medido foi menor, mas a comparação de qualidade congelada ficou
+inconclusiva por ambiguidade nos requisitos dos metadados do formato. O diagnóstico
+separado não substitui os placares originais. Os subagentes não exercitaram o Stop
+nativo; economia diária de ponta a ponta com qualidade equivalente **não está
+demonstrada**.
 A skill não recupera o que nunca foi salvo, não amplia a janela do modelo e não
 garante ativação automática antes de toda compactação. Ela mantém uma memória
 externa que o agente precisa consultar e conferir.

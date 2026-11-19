@@ -30,6 +30,20 @@ This manual block is an opt-in project convention. For lifecycle integration,
 use the installer with `--hooks` and follow [the hook setup](hooks.md). The host
 must still load the instructions, trust the hooks and provide filesystem access.
 
+## Existing Codex desktop chats
+
+When OBIA lifecycle context already supplies the session/configuration, use the
+[synchronous desktop workflow](../skills/obia/references/desktop.md). It combines
+explicit binding and sourced recovery in one shell call, and checkpoint storage
+plus acknowledgement in another. Updating the skill is sufficient; this route
+does not require changing hook configuration or trust. The existing per-turn
+validation still applies, and a delegated Stop may require a fresh `verify`.
+
+The [native subagent evaluation](desktop-native-evaluation.md) includes these
+model/tool costs but does not establish daily savings with real Stop coverage
+or equivalent quality. It is separate from the optional structured-output
+handoff adapter for hosts that support capture before Stop.
+
 ## After a reset or when changing agents
 
 ```text

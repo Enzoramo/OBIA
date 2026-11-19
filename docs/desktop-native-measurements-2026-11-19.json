@@ -1,0 +1,821 @@
+{
+  "schema": 1,
+  "workflow": "codex_desktop_synchronous",
+  "date": "2026-11-19",
+  "source_commit": "af879ad149fdc1091b53f79ae977765d7991578e",
+  "protocol_commit": "ea84d48",
+  "baseline_repair_protocol_commit": "a2aba1c",
+  "manual_workflow_commit": "6c7ba8e",
+  "measurement": "last valid cumulative native Codex input+output; no snapshot summation or cache/reasoning double counting",
+  "scope": "one developer scenario; seven comparative subagents plus one calibration; native desktop subagents, not user-owned chats",
+  "exclusions": [
+    "Parent development, orchestration, review and publication are outside the measured benchmark; total project expenditure is not measured.",
+    "No native Stop execution/continuation was observed in benchmark subagents.",
+    "No prices, financial savings or universal daily-quality equivalence inferred."
+  ],
+  "execution_ledger": [
+    {
+      "stage": "calibration",
+      "usage": {
+        "input_tokens": 46385,
+        "cached_input_tokens": 35840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 255,
+        "reasoning_output_tokens": 26,
+        "total_tokens": 46640,
+        "uncached_input_tokens": 10545
+      },
+      "complete_metering": true,
+      "trace_sha256": "a52da4000e14dc5207a28d0869ca9c3f940b87fc546a2cd8162734f4527120d9",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 1,
+      "shell_executions": 1,
+      "turn_duration_ms": [
+        11189
+      ],
+      "sum_turn_duration_ms": 11189,
+      "errors": []
+    },
+    {
+      "stage": "baseline/planning",
+      "usage": {
+        "input_tokens": 419130,
+        "cached_input_tokens": 380032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4170,
+        "reasoning_output_tokens": 658,
+        "total_tokens": 423300,
+        "uncached_input_tokens": 39098
+      },
+      "complete_metering": true,
+      "trace_sha256": "a958d70d7066e1c433f2b92b4336bb2a2651dfd383c0ee0eeaf07a8657150d07",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 2,
+      "model_tool_calls": 7,
+      "shell_executions": 12,
+      "turn_duration_ms": [
+        64863,
+        45803
+      ],
+      "sum_turn_duration_ms": 110666,
+      "errors": []
+    },
+    {
+      "stage": "baseline/resume",
+      "usage": {
+        "input_tokens": 1228036,
+        "cached_input_tokens": 1158528,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15085,
+        "reasoning_output_tokens": 4252,
+        "total_tokens": 1243121,
+        "uncached_input_tokens": 69508
+      },
+      "complete_metering": true,
+      "trace_sha256": "2ce8f5a3968dcad6640c8a7804fdbcb9ec3dae5c26aebf982cf8255ef85da1ef",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 18,
+      "shell_executions": 19,
+      "turn_duration_ms": [
+        386759
+      ],
+      "sum_turn_duration_ms": 386759,
+      "errors": []
+    },
+    {
+      "stage": "manual/planning",
+      "usage": {
+        "input_tokens": 645260,
+        "cached_input_tokens": 613248,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9538,
+        "reasoning_output_tokens": 1665,
+        "total_tokens": 654798,
+        "uncached_input_tokens": 32012
+      },
+      "complete_metering": true,
+      "trace_sha256": "bf800108499893c6ac55a7afb223879fef975f9127d90915e858c2e3b6e54ec0",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 2,
+      "model_tool_calls": 12,
+      "shell_executions": 24,
+      "turn_duration_ms": [
+        107073,
+        122398
+      ],
+      "sum_turn_duration_ms": 229471,
+      "errors": []
+    },
+    {
+      "stage": "manual/resume",
+      "usage": {
+        "input_tokens": 547065,
+        "cached_input_tokens": 522368,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15802,
+        "reasoning_output_tokens": 3496,
+        "total_tokens": 562867,
+        "uncached_input_tokens": 24697
+      },
+      "complete_metering": true,
+      "trace_sha256": "c0d8531370fc0c1762c0eb2a2acaa76f89c2d0700dd9abc20a3e0d3d2b9cb28b",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 12,
+      "shell_executions": 13,
+      "turn_duration_ms": [
+        364398
+      ],
+      "sum_turn_duration_ms": 364398,
+      "errors": []
+    },
+    {
+      "stage": "obia/planning",
+      "usage": {
+        "input_tokens": 425421,
+        "cached_input_tokens": 397056,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9995,
+        "reasoning_output_tokens": 2391,
+        "total_tokens": 435416,
+        "uncached_input_tokens": 28365
+      },
+      "complete_metering": true,
+      "trace_sha256": "a08dfcb0fda6c0f5d7a5a304bea228b950cda941d7b9465b7072c8dce5afadcb",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 2,
+      "model_tool_calls": 8,
+      "shell_executions": 16,
+      "turn_duration_ms": [
+        103078,
+        134298
+      ],
+      "sum_turn_duration_ms": 237376,
+      "errors": []
+    },
+    {
+      "stage": "obia/resume",
+      "usage": {
+        "input_tokens": 420373,
+        "cached_input_tokens": 398592,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12606,
+        "reasoning_output_tokens": 1707,
+        "total_tokens": 432979,
+        "uncached_input_tokens": 21781
+      },
+      "complete_metering": true,
+      "trace_sha256": "32ec24ad25aa768a34a3863692f17892eb001d986a7c6eaca4061334ff122e17",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 10,
+      "shell_executions": 11,
+      "turn_duration_ms": [
+        332604
+      ],
+      "sum_turn_duration_ms": 332604,
+      "errors": []
+    },
+    {
+      "stage": "baseline-replay/resume",
+      "usage": {
+        "input_tokens": 899336,
+        "cached_input_tokens": 823936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 13810,
+        "reasoning_output_tokens": 3457,
+        "total_tokens": 913146,
+        "uncached_input_tokens": 75400
+      },
+      "complete_metering": true,
+      "trace_sha256": "95bda2651ebf3c5fc62e3fca056f9e48a1df7f9935cb1ee996b28fc7ff2f8dc1",
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "xhigh"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 12,
+      "shell_executions": 12,
+      "turn_duration_ms": [
+        331829
+      ],
+      "sum_turn_duration_ms": 331829,
+      "errors": []
+    }
+  ],
+  "complete_metering": true,
+  "unique_measured_executor_tokens": 4712267,
+  "cohorts": {
+    "baseline_original": {
+      "stages": [
+        "baseline/planning",
+        "baseline/resume"
+      ],
+      "usage": {
+        "input_tokens": 1647166,
+        "cached_input_tokens": 1538560,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19255,
+        "reasoning_output_tokens": 4910,
+        "total_tokens": 1666421,
+        "uncached_input_tokens": 108606
+      },
+      "model_tool_calls": 25,
+      "shell_executions": 31,
+      "sum_turn_duration_ms": 497425
+    },
+    "baseline_corrected": {
+      "stages": [
+        "baseline/planning",
+        "baseline-replay/resume"
+      ],
+      "usage": {
+        "input_tokens": 1318466,
+        "cached_input_tokens": 1203968,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17980,
+        "reasoning_output_tokens": 4115,
+        "total_tokens": 1336446,
+        "uncached_input_tokens": 114498
+      },
+      "model_tool_calls": 19,
+      "shell_executions": 24,
+      "sum_turn_duration_ms": 442495
+    },
+    "manual": {
+      "stages": [
+        "manual/planning",
+        "manual/resume"
+      ],
+      "usage": {
+        "input_tokens": 1192325,
+        "cached_input_tokens": 1135616,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25340,
+        "reasoning_output_tokens": 5161,
+        "total_tokens": 1217665,
+        "uncached_input_tokens": 56709
+      },
+      "model_tool_calls": 24,
+      "shell_executions": 37,
+      "sum_turn_duration_ms": 593869
+    },
+    "synchronous": {
+      "stages": [
+        "obia/planning",
+        "obia/resume"
+      ],
+      "usage": {
+        "input_tokens": 845794,
+        "cached_input_tokens": 795648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22601,
+        "reasoning_output_tokens": 4098,
+        "total_tokens": 868395,
+        "uncached_input_tokens": 50146
+      },
+      "model_tool_calls": 18,
+      "shell_executions": 27,
+      "sum_turn_duration_ms": 569980
+    }
+  },
+  "observed_comparison": {
+    "baseline": "baseline_corrected",
+    "treatment": "synchronous",
+    "token_reduction": 468051,
+    "token_reduction_percent": 35.02206598695346,
+    "versus_manual_token_reduction_percent": 28.68358702927324,
+    "quality_gated_success": false,
+    "note": "Numeric observation only; functional acceptance is unresolved, not promoted to successful savings."
+  },
+  "baseline_export_repair": {
+    "original_history_sha256": "0c5d4128f8b3d46cc934a49b579db78ba3d0aa959f6af7049910f5d8335ebc22",
+    "original_history_bytes": 155506,
+    "plaintext_history_sha256": "7e7a7d7dcda2d9e55f362c5500736b8dbb472a56ce2e1e05711fc7942666f218",
+    "plaintext_history_bytes": 152437,
+    "excluded": {
+      "encrypted_blocks": 2,
+      "encrypted_characters": 2524
+    },
+    "reused_stage": "baseline/planning",
+    "retained_paid_attempt": "baseline/resume",
+    "replays": 1,
+    "causal_effect_of_opaque_blocks_known": false
+  },
+  "quality": {
+    "baseline": {
+      "frozen_grader": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 19,
+        "total": 19,
+        "all_pass": true
+      },
+      "explicit_format_diagnostic": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 19,
+        "total": 19,
+        "all_pass": true,
+        "diagnostic_not_primary": true,
+        "input_change": {
+          "schema": 1,
+          "workflow": "integrated_handoff"
+        },
+        "reason": "Original contract did not define whether these format identifiers could be absent. Original frozen scores are retained separately."
+      },
+      "scope": {
+        "original_files_unchanged": true,
+        "changed": [],
+        "added": [
+          "tools/render_measurements.py",
+          "tests/test_render_measurements.py"
+        ],
+        "only_allowed_additions": true
+      }
+    },
+    "baseline-replay": {
+      "frozen_grader": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": false,
+          "unknown_usage_not_zero": false,
+          "missing_stage_not_zero": false,
+          "unexpected_paid_stage_retained": false,
+          "quality_gate_storage_pass": false,
+          "quality_gate_task_quality_pass": false,
+          "quality_gate_manual_audit_pass": false,
+          "quality_gate_execution_pass": false,
+          "failure_cost_and_privacy": false,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": false,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": false,
+          "cli_read_only": true
+        },
+        "passed": 8,
+        "total": 19,
+        "all_pass": false
+      },
+      "explicit_format_diagnostic": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 19,
+        "total": 19,
+        "all_pass": true,
+        "diagnostic_not_primary": true,
+        "input_change": {
+          "schema": 1,
+          "workflow": "integrated_handoff"
+        },
+        "reason": "Frozen contract did not specify required/optional metadata; original grade retained."
+      },
+      "scope": {
+        "protected_files": 66,
+        "changed": [],
+        "added": [
+          "tests/test_render_measurements.py",
+          "tools/render_measurements.py"
+        ],
+        "pass": true
+      }
+    },
+    "manual": {
+      "frozen_grader": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": false,
+          "unknown_usage_not_zero": false,
+          "missing_stage_not_zero": false,
+          "unexpected_paid_stage_retained": false,
+          "quality_gate_storage_pass": false,
+          "quality_gate_task_quality_pass": false,
+          "quality_gate_manual_audit_pass": false,
+          "quality_gate_execution_pass": false,
+          "failure_cost_and_privacy": false,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": false,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": false,
+          "cli_read_only": true
+        },
+        "passed": 8,
+        "total": 19,
+        "all_pass": false
+      },
+      "explicit_format_diagnostic": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 19,
+        "total": 19,
+        "all_pass": true,
+        "diagnostic_not_primary": true,
+        "input_change": {
+          "schema": 1,
+          "workflow": "integrated_handoff"
+        },
+        "reason": "Original contract did not define whether these format identifiers could be absent. Original frozen scores are retained separately."
+      },
+      "scope": {
+        "original_files_unchanged": true,
+        "changed": [],
+        "added": [
+          "tools/render_measurements.py",
+          "tests/test_render_measurements.py"
+        ],
+        "only_allowed_additions": true
+      }
+    },
+    "obia": {
+      "frozen_grader": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": false,
+          "unknown_usage_not_zero": false,
+          "missing_stage_not_zero": false,
+          "unexpected_paid_stage_retained": false,
+          "quality_gate_storage_pass": false,
+          "quality_gate_task_quality_pass": false,
+          "quality_gate_manual_audit_pass": false,
+          "quality_gate_execution_pass": false,
+          "failure_cost_and_privacy": false,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": false,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": false,
+          "cli_read_only": true
+        },
+        "passed": 8,
+        "total": 19,
+        "all_pass": false
+      },
+      "explicit_format_diagnostic": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 19,
+        "total": 19,
+        "all_pass": true,
+        "diagnostic_not_primary": true,
+        "input_change": {
+          "schema": 1,
+          "workflow": "integrated_handoff"
+        },
+        "reason": "Original contract did not define whether these format identifiers could be absent. Original frozen scores are retained separately."
+      },
+      "scope": {
+        "original_files_unchanged": true,
+        "changed": [],
+        "added": [
+          "tools/render_measurements.py",
+          "tests/test_render_measurements.py"
+        ],
+        "only_allowed_additions": true
+      }
+    }
+  },
+  "quality_interpretation": "Frozen inputs omit schema/workflow, whose required/optional status was unspecified. Original baseline passes 19/19; repaired baseline and both OBIA arms pass 8/19. All four pass 19/19 only in the separate explicit-format diagnostic. Semantic audit cannot replace frozen functional acceptance or establish equivalence.",
+  "checkpoints": {
+    "per_memory_arm": 3,
+    "cost_accounting": "Initial and corrected planning, all creation/update/recovery commands and final completion checkpoint included in whole planning/resume usage. Checkpoint-only causal cost not separately identifiable.",
+    "manual_sha256": [
+      "f7d3256dcf91b90b32848bbd5c8c1dece9d939a1779cbbe0d43bc0005ee3c46c",
+      "d04f31f0cf8a9278b4184ffcdf550322a3273d46525551a13d8714f4f601fbc2",
+      "2d4334efdfa4bf111d9a636b21da9529a2edad00e6cd8ee0fdfb12799ff3fa44"
+    ],
+    "synchronous_sha256": [
+      "51caf991e2f2c2f12f2fe6bb256e6125231fca6496b177b710c8417b25ba177f",
+      "5ca42b72c56968905ec6792f63ac4e148d9e13d0a1a52e4d58250689bd7b833a",
+      "56113d815ecfe0c7f5b052968d5210f263ddca177c458ff1245e26c113dec34d"
+    ]
+  },
+  "hook_evidence": {
+    "direct_session_start_received_by_subagents": false,
+    "real_stop_validated": false,
+    "ack_turn_identity": null,
+    "user_owned_chats_created": 0,
+    "hook_code_unchanged": true,
+    "configuration_sha256_before_and_after": {
+      "hooks.json": "8b7a58c9a344daf0457b602f607944a5ebe853ac1b38271563ec998014e1912d",
+      "config.toml": "eee1a0894ee6e5d1426b2d17d4bc23cb8c60367623db82a6eb4e27fd3aac3891"
+    }
+  },
+  "primary_success": false,
+  "daily_end_to_end_savings_established": false,
+  "quality_equivalence_established": false,
+  "semantic_audit": {
+    "baseline/planning": {
+      "scope": "pass",
+      "test_claims": "not_applicable",
+      "memory_quality": "not_applicable",
+      "notes": "Both planning turns used local read-only inspection and correctly replaced stored aggregates with ledger-derived accounting and quality gates. No unit tests or raw-trace verification were claimed. No task memory operation or external service was observed."
+    },
+    "baseline/resume": {
+      "scope": "pass",
+      "test_claims": "consistent_with_observed_execution",
+      "memory_quality": "not_applicable",
+      "notes": "Only the renderer and its tests were added; all 66 protected files are unchanged. The observed 17 tests and CLI results match the final claims; original grader remains 19/19. The evaluator-supplied history also contained two opaque encrypted delegation blocks (2,524 characters), read as JSON rather than legible instructions; this is a history-transfer/comparability limitation, not an agent scope violation or hidden-reasoning evidence. Native Stop remains unverified."
+    },
+    "manual/planning": {
+      "scope": "pass",
+      "test_claims": "not_applicable",
+      "memory_quality": "pass",
+      "notes": "Initial and corrected notes retain the task, source locators, accepted ledger correction, unknown/extra costs, quality/privacy rules and evidence limits. No implementation or unit-test execution was claimed. Schema/workflow are identified as observations of the source reports, not explicitly required for every input. Both stored versions match their receipts. Null turn IDs are disclosed without claiming Stop validation."
+    },
+    "manual/resume": {
+      "scope": "pass",
+      "test_claims": "consistent_with_observed_execution",
+      "memory_quality": "pass",
+      "notes": "Only two authorized files were added; all 120 protected files are unchanged. The observed 18 tests, both CLI runs and final note agree; historical planning restrictions and old assertions are reconciled, with supported sources and no stale save claim. Original grader remains 8/19: eleven metadata-free fixture checks are rejected by mandatory schema/workflow guards. The frozen correction does not specify metadata optionality, so neither quality equivalence nor a causal memory-loss mechanism is established. Null ack is not Stop proof."
+    },
+    "obia/planning": {
+      "scope": "pass",
+      "test_claims": "not_applicable",
+      "memory_quality": "pass",
+      "notes": "Both synchronous checkpoints match their saved SHAs and preserve accepted behavior, the aggregate-to-ledger correction, validation/gating/privacy rules, uncertainty and source definitions. Product files were not changed and no unit-test success was claimed. The corrected note mentions the observed schema/workflow but does not explicitly resolve missing metadata. Null ack is accurately scoped to the last observed host turn, with no Stop assertion."
+    },
+    "obia/resume": {
+      "scope": "pass",
+      "test_claims": "consistent_with_observed_execution",
+      "memory_quality": "pass",
+      "notes": "Only the renderer and its tests were added; all 66 protected files are unchanged. The observed 15 renderer tests plus 5 exporter tests and both CLI runs support the claims. Final memory reconciles implementation, phase restrictions, sources and uncertainty without stale persistence statements. Original grader remains 8/19 because mandatory schema/workflow guards reject eleven metadata-free fixture checks; missing-metadata semantics are unspecified in the frozen request. This semantic-memory audit does not override functional failure or prove equivalence. Null ack does not establish Stop execution."
+    },
+    "baseline-replay/resume": {
+      "scope": "pass",
+      "test_claims": "consistent_with_observed_execution",
+      "memory_quality": "not_applicable",
+      "notes": "The exact authorized native session completed with consistent lifecycle and cumulative usage evidence. Only the renderer and its tests were added; all 66 protected files remain unchanged. Observed execution supports 21 passing tests, CLI runs on both reports and unchanged report hashes. The cleaned history preserves the original visible technical text and tool payloads without opaque blocks, bootstrap or reasoning. Original grader remains 8/19 because this no-memory implementation also requires schema/workflow; the 19/19 format-explicit result is diagnostic only, since metadata optionality was unspecified. No OBIA operation or Stop validation was observed."
+    }
+  },
+  "local_evidence_archive": {
+    "name": "2026-11-19-desktop-native/sanitized-evidence.tar.gz",
+    "sha256": "f8838f1d14462623005990a5612d6cd3b9f94c0f8748e370d600dd8132aa8cb0",
+    "files": 54,
+    "scope": "Eight explicitly authorized benchmark/calibration executors only. Raw transcripts, bootstrap, reasoning and opaque blocks are not archived. Metadata metrics retain exact source-trace hashes."
+  }
+}
