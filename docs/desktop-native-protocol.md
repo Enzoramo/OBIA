@@ -122,3 +122,21 @@ truncation. Exclude hidden reasoning and common bootstrap/developer context.
 This scoped history export is separate from the metadata-only usage reader;
 no pre-existing user conversation is processed. The fresh baseline reads that
 history as evidence, with the current implementation request taking precedence.
+
+## Baseline export correction, frozen before its one replay
+
+The first export mistakenly retained two opaque `encrypted_content` blocks from
+delegation messages (2,524 characters). They are not useful plaintext task
+evidence. Retain that attempt's cost, grade and input hash, but mark its numerical
+comparison as affected by this artifact defect. Do not call it hidden reasoning
+or claim that its causal token effect is known.
+
+Use `export_desktop_history.py` to export only plaintext messages/tool content,
+excluding opaque blocks and common bootstrap/reasoning. It preserves the actual
+request/correction file outputs, including original tool truncation. Run exactly
+one fresh baseline implementation against a clean copy of the original files.
+Reuse the already measured baseline planning cost explicitly; count that cost
+once in unique research usage. The two OBIA arms are not rerun or edited. Retain
+all original grades and expose the optional/required format-metadata ambiguity;
+diagnostics with explicit schema/workflow are separate from the frozen grader.
+This replay repairs an input-export defect, not an outcome-driven retry.
