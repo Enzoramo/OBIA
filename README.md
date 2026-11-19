@@ -26,6 +26,7 @@ flowchart LR
 - Lexical search and adaptive recall: whole essential sections, details on demand.
 - Snapshot-safe section/source reads, optional cited-source bundling and explicit SHA-based context reuse.
 - Checkpoint readback receipts that avoid separate routine read/check calls.
+- An [opt-in structured handoff adapter](skills/obia/references/handoff.md) for hosts that inject memory and persist structured model output.
 - SHA-based conflict detection, atomic replacement and previous-version snapshots.
 - Partial updates that preserve human sections, YAML properties and comments.
 - Public installer for Codex and Claude Code, with one private vault per project.
@@ -48,6 +49,13 @@ final six replay continuations passed all 16 checks and the added memory audit.
 OBIA still cost about twice the baseline in this task, with checkpoint creation
 included; the replay explicitly reuses the original creation/baseline evidence.
 It did not test automatic context injection by lifecycle hooks.
+A [36-execution integrated-adapter study](docs/integrated-handoff-evaluation.md)
+then measured **16.9% fewer total tokens** in its final fresh cohort, including
+checkpoint generation/maintenance, with all 16 checks and the memory audit passing.
+Long histories saved 29.6%; short histories still cost 5.3% more. This requires
+explicit host integration; it does not measure the default hook workflow. Higher
+uncached input/output and execution duration prevent claims of financial or speed
+savings. The unsuccessful first cohort and its full costs remain reported.
 It cannot recover unsaved messages, make a model remember without reading files,
 or guarantee that a host activates a skill before context compaction.
 

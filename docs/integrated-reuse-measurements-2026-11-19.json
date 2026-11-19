@@ -1,0 +1,1765 @@
+{
+  "schema": 1,
+  "workflow": "integrated_handoff",
+  "model_requested": "gpt-6-astra",
+  "reasoning_effort": "xhigh",
+  "codex_version": "codex-cli 0.169.0-alpha.11.1",
+  "source_commit": "8a4acdc41d872b8c716ce4acde6b45037c2d35d9",
+  "repeats": 3,
+  "workers": 2,
+  "planned_executions": 18,
+  "measurement": "actual_codex_turn_completed_usage",
+  "scope": "Six fresh paired scenarios; full initial model generation, injected context/schema and final checkpoint maintenance included.",
+  "exclusions": [
+    "parent orchestration and review agents",
+    "earlier common work",
+    "monetary billing",
+    "human hours"
+  ],
+  "execution_ledger": [
+    {
+      "stage": "long-0/baseline-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 222727,
+        "cached_input_tokens": 190080,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2765,
+        "reasoning_output_tokens": 367,
+        "total_tokens": 225492,
+        "uncached_input_tokens": 32647
+      },
+      "event_sha256": "6a53ad35c386a17ef7a1f6b657aaf1c744dbfd0b6de28d7f74f9efca590b08c9",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-0/obia-checkpoint",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 30881,
+        "cached_input_tokens": 12416,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1766,
+        "reasoning_output_tokens": 947,
+        "total_tokens": 32647,
+        "uncached_input_tokens": 18465
+      },
+      "event_sha256": "412adb8c6e129a110c10d325121b16db5a90ecc78d266bae627d6c7c272b8dd8",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-0/obia-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 111877,
+        "cached_input_tokens": 92672,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4706,
+        "reasoning_output_tokens": 1051,
+        "total_tokens": 116583,
+        "uncached_input_tokens": 19205
+      },
+      "event_sha256": "a7a0bdd98bf98c9aca02e4892890bf013969efc73ea9531acb7da06802301cd0",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-1/baseline-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 191400,
+        "cached_input_tokens": 158976,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2697,
+        "reasoning_output_tokens": 372,
+        "total_tokens": 194097,
+        "uncached_input_tokens": 32424
+      },
+      "event_sha256": "06277ef4a486695843ff59019dfafdb34e06cce3b591ffa88d855af82da93533",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-1/obia-checkpoint",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 30881,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1896,
+        "reasoning_output_tokens": 1015,
+        "total_tokens": 32777,
+        "uncached_input_tokens": 30881
+      },
+      "event_sha256": "71bc84c6f3685da398023aef062177f8e9cbe9891cafba7744f8e29e89d6ae21",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-1/obia-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 113334,
+        "cached_input_tokens": 94080,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4842,
+        "reasoning_output_tokens": 968,
+        "total_tokens": 118176,
+        "uncached_input_tokens": 19254
+      },
+      "event_sha256": "22e7338d5e2ef85f92d49563daccd0a6e260b20b3202e49be6cb9bf8c43a041f",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-2/baseline-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 192035,
+        "cached_input_tokens": 171776,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2939,
+        "reasoning_output_tokens": 351,
+        "total_tokens": 194974,
+        "uncached_input_tokens": 20259
+      },
+      "event_sha256": "23231eca2a62f51155fb717b5a38fc4138b9fad7ced421fb25244c8a88521e9f",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-2/obia-checkpoint",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 30881,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1713,
+        "reasoning_output_tokens": 897,
+        "total_tokens": 32594,
+        "uncached_input_tokens": 30881
+      },
+      "event_sha256": "8445c239c2759c365b4663db1b69b2c3fe5b832582beac8b54efab42a60c94dc",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "long-2/obia-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 94815,
+        "cached_input_tokens": 76160,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5173,
+        "reasoning_output_tokens": 1779,
+        "total_tokens": 99988,
+        "uncached_input_tokens": 18655
+      },
+      "event_sha256": "a4a7cacf4ed19ba08f79cc337d91c10feff5872c4250f0b5e06012f3a82f130a",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-0/baseline-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 126572,
+        "cached_input_tokens": 107648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3109,
+        "reasoning_output_tokens": 587,
+        "total_tokens": 129681,
+        "uncached_input_tokens": 18924
+      },
+      "event_sha256": "41fc9cc4ac5fa7d6dddae5c7db7475247979d86ae530062aae47094692cc6ce5",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-0/obia-checkpoint",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 16625,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2069,
+        "reasoning_output_tokens": 1380,
+        "total_tokens": 18694,
+        "uncached_input_tokens": 16625
+      },
+      "event_sha256": "bd9a59d99b058d9e2fe87a8aa8945329252b1131cb4930f7a8e7660628b60f2b",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-0/obia-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 119091,
+        "cached_input_tokens": 111360,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5243,
+        "reasoning_output_tokens": 1340,
+        "total_tokens": 124334,
+        "uncached_input_tokens": 7731
+      },
+      "event_sha256": "4f8285475f99c6f0b33484a95b9e9bbcf335c610c549d2338ee3a8313cd86a77",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-1/baseline-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 124146,
+        "cached_input_tokens": 105600,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2993,
+        "reasoning_output_tokens": 527,
+        "total_tokens": 127139,
+        "uncached_input_tokens": 18546
+      },
+      "event_sha256": "e8fdf2af859fda84682094bf621b36da115ba9480147a7a327543f9546183b87",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-1/obia-checkpoint",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 16625,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1648,
+        "reasoning_output_tokens": 862,
+        "total_tokens": 18273,
+        "uncached_input_tokens": 16625
+      },
+      "event_sha256": "1e5b44b43e13f9894e0f0d95496cf40902934639f083587eccca8c20adad0330",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-1/obia-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 89865,
+        "cached_input_tokens": 71552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4300,
+        "reasoning_output_tokens": 1221,
+        "total_tokens": 94165,
+        "uncached_input_tokens": 18313
+      },
+      "event_sha256": "53508d11a15f3911850b031fddb7ca8aa9924b39a0f37ea67347240482a8e11f",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-2/baseline-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 90610,
+        "cached_input_tokens": 72704,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3334,
+        "reasoning_output_tokens": 851,
+        "total_tokens": 93944,
+        "uncached_input_tokens": 17906
+      },
+      "event_sha256": "5f48474b9186657a28f25da36f184045ad9283274a34336472ac83ef474086e0",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-2/obia-checkpoint",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 16625,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1776,
+        "reasoning_output_tokens": 969,
+        "total_tokens": 18401,
+        "uncached_input_tokens": 16625
+      },
+      "event_sha256": "bb1b64241be10c4d4683826bee67ffc6565e03a723e8c3fdc3bb7fcad90b97e7",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    },
+    {
+      "stage": "short-2/obia-resume",
+      "completed_turns": 1,
+      "usage": {
+        "input_tokens": 90701,
+        "cached_input_tokens": 72064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4633,
+        "reasoning_output_tokens": 1205,
+        "total_tokens": 95334,
+        "uncached_input_tokens": 18637
+      },
+      "event_sha256": "2b7984d262c1bcab1a310a4863f346e2111cd3f7eaf86d1f1955c310f89b0650",
+      "encoding_error": false,
+      "incomplete_utf8_tail": false
+    }
+  ],
+  "complete_metering": true,
+  "known_usage_lower_bound": {
+    "input_tokens": 1709691,
+    "cached_input_tokens": 1337088,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 57602,
+    "reasoning_output_tokens": 16689,
+    "total_tokens": 1767293,
+    "uncached_input_tokens": 372603
+  },
+  "executions_without_final_usage": 0,
+  "missing_planned_stages": [],
+  "unexpected_stages": [],
+  "pairs": [
+    {
+      "case": "short",
+      "repeat": 0,
+      "order": "baseline_then_obia",
+      "history_characters": 3810,
+      "stages": {
+        "baseline-resume": {
+          "elapsed_seconds": 88.486,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 126572,
+            "cached_input_tokens": 107648,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3109,
+            "reasoning_output_tokens": 587,
+            "total_tokens": 129681,
+            "uncached_input_tokens": 18924
+          },
+          "command_count": 9,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "41fc9cc4ac5fa7d6dddae5c7db7475247979d86ae530062aae47094692cc6ce5",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 10,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 8,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Two smoke and eleven additional tests passed; protected hashes match. Process-directory testing uses only module-relative policy lookup. Final response truthfully reports policy 2 and unverified latency; no unrelated access or extra authored files observed."
+          },
+          "protocol_deviation": false
+        },
+        "obia-checkpoint": {
+          "elapsed_seconds": 55.144,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 16625,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2069,
+            "reasoning_output_tokens": 1380,
+            "total_tokens": 18694,
+            "uncached_input_tokens": 16625
+          },
+          "command_count": 0,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "bd9a59d99b058d9e2fe87a8aa8945329252b1131cb4930f7a8e7660628b60f2b",
+          "tool_action_count": 0,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 0,
+            "test_output_observed": false,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "not_applicable",
+            "memory_quality": "pass",
+            "note": "No tools or tests ran. The initial checkpoint preserves accepted behavior, rejected proposal, volatile historical policy and unverified latency. Source attribution explicitly denotes supplied history rather than fresh file inspection. No pending-save claim or temporary adapter-phase restriction is included."
+          },
+          "protocol_deviation": false
+        },
+        "obia-resume": {
+          "elapsed_seconds": 129.254,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 119091,
+            "cached_input_tokens": 111360,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5243,
+            "reasoning_output_tokens": 1340,
+            "total_tokens": 124334,
+            "uncached_input_tokens": 7731
+          },
+          "command_count": 6,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "4f8285475f99c6f0b33484a95b9e9bbcf335c610c549d2338ee3a8313cd86a77",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 1
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "memory_quality": "pass",
+            "note": "Local fixture work; two smoke and ten additional tests passed, including 480 eligibility combinations and a child-process module-relative policy check with no unrelated data access. Protected hashes match. Final memory truthfully reuses supplied historical evidence, verifies policy 2/current implementation, retains accepted behavior and unverified latency, and reconciles prior stub without stale persistence or phase claims."
+          },
+          "protocol_deviation": false
+        }
+      },
+      "inclusive_usage": {
+        "baseline": {
+          "input_tokens": 126572,
+          "cached_input_tokens": 107648,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3109,
+          "reasoning_output_tokens": 587,
+          "total_tokens": 129681,
+          "uncached_input_tokens": 18924
+        },
+        "obia": {
+          "input_tokens": 135716,
+          "cached_input_tokens": 111360,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7312,
+          "reasoning_output_tokens": 2720,
+          "total_tokens": 143028,
+          "uncached_input_tokens": 24356
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_active": true,
+        "initial_fixtures_unchanged": true,
+        "initial_receipt_valid": true,
+        "final_valid": true,
+        "final_complete": true,
+        "final_receipt_valid": true,
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "previous_bytes_match_receipt": true,
+        "current_bytes_match_receipt": true,
+        "current_ownership_matches": true,
+        "initial_note_bytes": 2807,
+        "final_note_bytes": 3278
+      },
+      "failures": [],
+      "infrastructure_error": false,
+      "storage_pass": true,
+      "task_quality_pass": true,
+      "manual_audit_pass": true,
+      "execution_pass": true,
+      "adapter_operations": [
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.000627,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.019736,
+          "success": true
+        },
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.00322,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.017549,
+          "success": true
+        }
+      ],
+      "net_token_reduction_percent": -10.292
+    },
+    {
+      "case": "short",
+      "repeat": 1,
+      "order": "obia_then_baseline",
+      "history_characters": 3810,
+      "stages": {
+        "baseline-resume": {
+          "elapsed_seconds": 81.441,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 124146,
+            "cached_input_tokens": 105600,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2993,
+            "reasoning_output_tokens": 527,
+            "total_tokens": 127139,
+            "uncached_input_tokens": 18546
+          },
+          "command_count": 9,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "e8fdf2af859fda84682094bf621b36da115ba9480147a7a327543f9546183b87",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 10,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 9,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work; two smoke and thirteen additional tests passed, with unchanged protected hashes and truthful policy/latency reporting. The claimed alternate working directory for the absolute-path smoke invocation is not exposed in exported command events, so that detail remains unverified; observed test counts and results are consistent."
+          },
+          "protocol_deviation": false
+        },
+        "obia-checkpoint": {
+          "elapsed_seconds": 42.138,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 16625,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1648,
+            "reasoning_output_tokens": 862,
+            "total_tokens": 18273,
+            "uncached_input_tokens": 16625
+          },
+          "command_count": 0,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "1e5b44b43e13f9894e0f0d95496cf40902934639f083587eccca8c20adad0330",
+          "tool_action_count": 0,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 0,
+            "test_output_observed": false,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "not_applicable",
+            "memory_quality": "pass",
+            "note": "No tools or tests ran. The initial note retains accepted behavior, rejected proposal, historical stub and volatile retry policy, plus unverified latency. Sources correctly identify supplied historical context and unavailable fresh verification. No stale persistence or adapter-phase assertion appears."
+          },
+          "protocol_deviation": false
+        },
+        "obia-resume": {
+          "elapsed_seconds": 105.512,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 89865,
+            "cached_input_tokens": 71552,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4300,
+            "reasoning_output_tokens": 1221,
+            "total_tokens": 94165,
+            "uncached_input_tokens": 18313
+          },
+          "command_count": 5,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "53508d11a15f3911850b031fddb7ca8aa9924b39a0f37ea67347240482a8e11f",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 6,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 4,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "memory_quality": "pass",
+            "note": "Local fixture work; two smoke and fourteen additional tests passed, including strict boundaries, policy reloads and module-relative path lookup. The checkpoint cites supplied memory as historical evidence without inventing a history read; actual policy/patch/test observations support completion and policy 3-to-2. Accepted behavior and unverified latency remain; no stale current-state or persistence assertion is present."
+          },
+          "protocol_deviation": false
+        }
+      },
+      "inclusive_usage": {
+        "baseline": {
+          "input_tokens": 124146,
+          "cached_input_tokens": 105600,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2993,
+          "reasoning_output_tokens": 527,
+          "total_tokens": 127139,
+          "uncached_input_tokens": 18546
+        },
+        "obia": {
+          "input_tokens": 106490,
+          "cached_input_tokens": 71552,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5948,
+          "reasoning_output_tokens": 2083,
+          "total_tokens": 112438,
+          "uncached_input_tokens": 34938
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_active": true,
+        "initial_fixtures_unchanged": true,
+        "initial_receipt_valid": true,
+        "final_valid": true,
+        "final_complete": true,
+        "final_receipt_valid": true,
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "previous_bytes_match_receipt": true,
+        "current_bytes_match_receipt": true,
+        "current_ownership_matches": true,
+        "initial_note_bytes": 2884,
+        "final_note_bytes": 2504
+      },
+      "failures": [],
+      "infrastructure_error": false,
+      "storage_pass": true,
+      "task_quality_pass": true,
+      "manual_audit_pass": true,
+      "execution_pass": true,
+      "adapter_operations": [
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.000273,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.015993,
+          "success": true
+        },
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.003498,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.019006,
+          "success": true
+        }
+      ],
+      "net_token_reduction_percent": 11.563
+    },
+    {
+      "case": "short",
+      "repeat": 2,
+      "order": "baseline_then_obia",
+      "history_characters": 3810,
+      "stages": {
+        "baseline-resume": {
+          "elapsed_seconds": 85.002,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 90610,
+            "cached_input_tokens": 72704,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3334,
+            "reasoning_output_tokens": 851,
+            "total_tokens": 93944,
+            "uncached_input_tokens": 17906
+          },
+          "command_count": 6,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "5f48474b9186657a28f25da36f184045ad9283274a34336472ac83ef474086e0",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 6,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Two smoke and nine additional tests passed, including eligibility boundaries, duplicates and mocked policy reloads. Protected hashes match. Final response truthfully reports current policy 2 and unverified latency."
+          },
+          "protocol_deviation": false
+        },
+        "obia-checkpoint": {
+          "elapsed_seconds": 46.132,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 16625,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1776,
+            "reasoning_output_tokens": 969,
+            "total_tokens": 18401,
+            "uncached_input_tokens": 16625
+          },
+          "command_count": 0,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "bb1b64241be10c4d4683826bee67ffc6565e03a723e8c3fdc3bb7fcad90b97e7",
+          "tool_action_count": 0,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 0,
+            "test_output_observed": false,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "not_applicable",
+            "memory_quality": "pass",
+            "note": "No tools or tests ran. Initial memory retains all accepted selector behavior, rejected proposal and discarded boundary implementation, historical stub/volatile policy and unverified latency. Sources distinguish receipt of supplied history from original observation dates and fresh verification. No stale persistence or temporary phase restriction appears."
+          },
+          "protocol_deviation": false
+        },
+        "obia-resume": {
+          "elapsed_seconds": 119.456,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 90701,
+            "cached_input_tokens": 72064,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4633,
+            "reasoning_output_tokens": 1205,
+            "total_tokens": 95334,
+            "uncached_input_tokens": 18637
+          },
+          "command_count": 7,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "2b7984d262c1bcab1a310a4863f346e2111cd3f7eaf86d1f1955c310f89b0650",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 8,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 6,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 1
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "memory_quality": "pass",
+            "note": "Local fixture work; two smoke and eleven additional tests passed, including 432 eligibility combinations, policy reloads and module-relative path lookup. Sources distinguish historical memory from observed live policy, applied code and tests. Final note reconciles stub/policy 3-to-2, preserves accepted corrections and unverified latency, and contains no stale persistence or phase claims."
+          },
+          "protocol_deviation": false
+        }
+      },
+      "inclusive_usage": {
+        "baseline": {
+          "input_tokens": 90610,
+          "cached_input_tokens": 72704,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3334,
+          "reasoning_output_tokens": 851,
+          "total_tokens": 93944,
+          "uncached_input_tokens": 17906
+        },
+        "obia": {
+          "input_tokens": 107326,
+          "cached_input_tokens": 72064,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6409,
+          "reasoning_output_tokens": 2174,
+          "total_tokens": 113735,
+          "uncached_input_tokens": 35262
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_active": true,
+        "initial_fixtures_unchanged": true,
+        "initial_receipt_valid": true,
+        "final_valid": true,
+        "final_complete": true,
+        "final_receipt_valid": true,
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "previous_bytes_match_receipt": true,
+        "current_bytes_match_receipt": true,
+        "current_ownership_matches": true,
+        "initial_note_bytes": 3043,
+        "final_note_bytes": 3147
+      },
+      "failures": [],
+      "infrastructure_error": false,
+      "storage_pass": true,
+      "task_quality_pass": true,
+      "manual_audit_pass": true,
+      "execution_pass": true,
+      "adapter_operations": [
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.000579,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.01513,
+          "success": true
+        },
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.002657,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.01419,
+          "success": true
+        }
+      ],
+      "net_token_reduction_percent": -21.067
+    },
+    {
+      "case": "long",
+      "repeat": 0,
+      "order": "obia_then_baseline",
+      "history_characters": 81250,
+      "stages": {
+        "baseline-resume": {
+          "elapsed_seconds": 77.51,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 222727,
+            "cached_input_tokens": 190080,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2765,
+            "reasoning_output_tokens": 367,
+            "total_tokens": 225492,
+            "uncached_input_tokens": 32647
+          },
+          "command_count": 7,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "6a53ad35c386a17ef7a1f6b657aaf1c744dbfd0b6de28d7f74f9efca590b08c9",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 8,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 6,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Two smoke and nine additional tests passed, including strict boundaries and in-memory policy reloads. Protected hashes match. The final response truthfully reports current policy 2 and unverified latency."
+          },
+          "protocol_deviation": false
+        },
+        "obia-checkpoint": {
+          "elapsed_seconds": 47.529,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 30881,
+            "cached_input_tokens": 12416,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1766,
+            "reasoning_output_tokens": 947,
+            "total_tokens": 32647,
+            "uncached_input_tokens": 18465
+          },
+          "command_count": 0,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "412adb8c6e129a110c10d325121b16db5a90ecc78d266bae627d6c7c272b8dd8",
+          "tool_action_count": 0,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 0,
+            "test_output_observed": false,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "not_applicable",
+            "memory_quality": "pass",
+            "note": "No tools or tests ran. The saved initial note retains all accepted selector requirements, rejected proposal, volatile historical policy and unverified latency. Sources explicitly describe supplied historical evidence without inventing live inspections. No pending-save claim or temporary adapter-phase restriction remains in task state."
+          },
+          "protocol_deviation": false
+        },
+        "obia-resume": {
+          "elapsed_seconds": 115.204,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 111877,
+            "cached_input_tokens": 92672,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4706,
+            "reasoning_output_tokens": 1051,
+            "total_tokens": 116583,
+            "uncached_input_tokens": 19205
+          },
+          "command_count": 6,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "a7a0bdd98bf98c9aca02e4892890bf013969efc73ea9531acb7da06802301cd0",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 1
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "memory_quality": "pass",
+            "note": "Local fixture work; two smoke and twelve additional tests passed, with unchanged protected hashes. Supplied historical evidence was reused without claiming a fresh history inspection; live code/policy and test outputs were actually observed. Final memory reconciles stub and policy 3-to-2, retains accepted behavior and unverified latency, and contains no stale persistence or phase restriction."
+          },
+          "protocol_deviation": false
+        }
+      },
+      "inclusive_usage": {
+        "baseline": {
+          "input_tokens": 222727,
+          "cached_input_tokens": 190080,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2765,
+          "reasoning_output_tokens": 367,
+          "total_tokens": 225492,
+          "uncached_input_tokens": 32647
+        },
+        "obia": {
+          "input_tokens": 142758,
+          "cached_input_tokens": 105088,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6472,
+          "reasoning_output_tokens": 1998,
+          "total_tokens": 149230,
+          "uncached_input_tokens": 37670
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_active": true,
+        "initial_fixtures_unchanged": true,
+        "initial_receipt_valid": true,
+        "final_valid": true,
+        "final_complete": true,
+        "final_receipt_valid": true,
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "previous_bytes_match_receipt": true,
+        "current_bytes_match_receipt": true,
+        "current_ownership_matches": true,
+        "initial_note_bytes": 3063,
+        "final_note_bytes": 3361
+      },
+      "failures": [],
+      "infrastructure_error": false,
+      "storage_pass": true,
+      "task_quality_pass": true,
+      "manual_audit_pass": true,
+      "execution_pass": true,
+      "adapter_operations": [
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.000548,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.022091,
+          "success": true
+        },
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.003413,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.020378,
+          "success": true
+        }
+      ],
+      "net_token_reduction_percent": 33.82
+    },
+    {
+      "case": "long",
+      "repeat": 1,
+      "order": "baseline_then_obia",
+      "history_characters": 81250,
+      "stages": {
+        "baseline-resume": {
+          "elapsed_seconds": 69.887,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 191400,
+            "cached_input_tokens": 158976,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2697,
+            "reasoning_output_tokens": 372,
+            "total_tokens": 194097,
+            "uncached_input_tokens": 32424
+          },
+          "command_count": 6,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "06277ef4a486695843ff59019dfafdb34e06cce3b591ffa88d855af82da93533",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 6,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Two smoke and eight additional tests passed, including live policy boundaries and mocked policy changes. Protected hashes match. The final response truthfully reports current policy 2 and unverified latency."
+          },
+          "protocol_deviation": false
+        },
+        "obia-checkpoint": {
+          "elapsed_seconds": 45.842,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 30881,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1896,
+            "reasoning_output_tokens": 1015,
+            "total_tokens": 32777,
+            "uncached_input_tokens": 30881
+          },
+          "command_count": 0,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "71bc84c6f3685da398023aef062177f8e9cbe9891cafba7744f8e29e89d6ae21",
+          "tool_action_count": 0,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 0,
+            "test_output_observed": false,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "not_applicable",
+            "memory_quality": "pass",
+            "note": "No tools or tests ran. Initial memory retains all accepted behavior, explicit rejected proposals and discarded boundary implementation, volatile historical policy and unverified latency. Sources identify supplied history rather than fresh inspection. No persistence-status or temporary adapter-phase claims are stored."
+          },
+          "protocol_deviation": false
+        },
+        "obia-resume": {
+          "elapsed_seconds": 119.546,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 113334,
+            "cached_input_tokens": 94080,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4842,
+            "reasoning_output_tokens": 968,
+            "total_tokens": 118176,
+            "uncached_input_tokens": 19254
+          },
+          "command_count": 6,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "22e7338d5e2ef85f92d49563daccd0a6e260b20b3202e49be6cb9bf8c43a041f",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "memory_quality": "pass",
+            "note": "Local fixture work; two smoke and thirteen additional tests passed, including 384 eligibility combinations; syntax and protected-hash checks also succeeded. Supplied historical memory is truthfully distinguished from actual code/policy observations. Final note reconciles stub and policy 3-to-2, preserves accepted corrections and unverified latency, and has no stale persistence or phase claims."
+          },
+          "protocol_deviation": false
+        }
+      },
+      "inclusive_usage": {
+        "baseline": {
+          "input_tokens": 191400,
+          "cached_input_tokens": 158976,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2697,
+          "reasoning_output_tokens": 372,
+          "total_tokens": 194097,
+          "uncached_input_tokens": 32424
+        },
+        "obia": {
+          "input_tokens": 144215,
+          "cached_input_tokens": 94080,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6738,
+          "reasoning_output_tokens": 1983,
+          "total_tokens": 150953,
+          "uncached_input_tokens": 50135
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_active": true,
+        "initial_fixtures_unchanged": true,
+        "initial_receipt_valid": true,
+        "final_valid": true,
+        "final_complete": true,
+        "final_receipt_valid": true,
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "previous_bytes_match_receipt": true,
+        "current_bytes_match_receipt": true,
+        "current_ownership_matches": true,
+        "initial_note_bytes": 3177,
+        "final_note_bytes": 3160
+      },
+      "failures": [],
+      "infrastructure_error": false,
+      "storage_pass": true,
+      "task_quality_pass": true,
+      "manual_audit_pass": true,
+      "execution_pass": true,
+      "adapter_operations": [
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.00066,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.008457,
+          "success": true
+        },
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.001652,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.014995,
+          "success": true
+        }
+      ],
+      "net_token_reduction_percent": 22.228
+    },
+    {
+      "case": "long",
+      "repeat": 2,
+      "order": "obia_then_baseline",
+      "history_characters": 81250,
+      "stages": {
+        "baseline-resume": {
+          "elapsed_seconds": 84.354,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 192035,
+            "cached_input_tokens": 171776,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2939,
+            "reasoning_output_tokens": 351,
+            "total_tokens": 194974,
+            "uncached_input_tokens": 20259
+          },
+          "command_count": 6,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "23231eca2a62f51155fb717b5a38fc4138b9fad7ced421fb25244c8a88521e9f",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "note": "Local fixture work only. Two smoke and ten additional tests passed, including 480 eligibility combinations and mocked policy reloads. Protected hashes match. Final response truthfully reports live policy 2 and unverified latency."
+          },
+          "protocol_deviation": false
+        },
+        "obia-checkpoint": {
+          "elapsed_seconds": 41.524,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 30881,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1713,
+            "reasoning_output_tokens": 897,
+            "total_tokens": 32594,
+            "uncached_input_tokens": 30881
+          },
+          "command_count": 0,
+          "failed_commands": 0,
+          "other_tool_types": [],
+          "event_sha256": "8445c239c2759c365b4663db1b69b2c3fe5b832582beac8b54efab42a60c94dc",
+          "tool_action_count": 0,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 0,
+            "test_output_observed": false,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "not_applicable",
+            "memory_quality": "pass",
+            "note": "No tools or tests ran. The initial note retains accepted behavior, rejected proposal and discarded boundary implementation, historical stub/volatile policy, and unverified latency. Sources explicitly describe supplied history and unspecified original event dates. No stale persistence or temporary adapter-phase claims are included."
+          },
+          "protocol_deviation": false
+        },
+        "obia-resume": {
+          "elapsed_seconds": 130.619,
+          "exit_code": 0,
+          "timed_out": false,
+          "completed_turns": 1,
+          "usage": {
+            "input_tokens": 94815,
+            "cached_input_tokens": 76160,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5173,
+            "reasoning_output_tokens": 1779,
+            "total_tokens": 99988,
+            "uncached_input_tokens": 18655
+          },
+          "command_count": 6,
+          "failed_commands": 1,
+          "other_tool_types": [],
+          "event_sha256": "a4a7cacf4ed19ba08f79cc337d91c10feff5872c4250f0b5e06012f3a82f130a",
+          "protected_files_unchanged": true,
+          "quality": {
+            "functional": {
+              "empty": true,
+              "eligible_states": true,
+              "cancelled": true,
+              "ready_boundary": true,
+              "expiry_boundary": true,
+              "live_retry_policy": true,
+              "stable_order": true,
+              "eligible_duplicates": true,
+              "filter_before_dedupe": true,
+              "limit": true,
+              "zero_limit": true,
+              "negative_limit": true,
+              "input_unchanged": true
+            },
+            "functional_passed": 13,
+            "functional_total": 13,
+            "retention": {
+              "current_policy_reported": true,
+              "unverified_latency_retained": true,
+              "policy_evidence_named": true
+            },
+            "retention_passed": 3,
+            "retention_total": 3,
+            "all_quality_checks_passed": true
+          },
+          "tool_action_count": 7,
+          "audit": {
+            "hook_or_router_command_mentions": 0,
+            "completed_successful_commands": 5,
+            "test_output_observed": true,
+            "outside_workspace_temp_probe_commands": 0
+          },
+          "manual_review": {
+            "scope": "pass",
+            "test_claims": "consistent_with_observed_execution",
+            "memory_quality": "pass",
+            "note": "Local fixture work; two smoke and fourteen additional tests passed, with observed policy/smoke file comparisons. Sources support implemented behavior and live policy 2; historical evidence is reused without claiming a fresh history inspection. Final memory preserves accepted constraints, rejected retry boundary and unverified latency, reconciles the prior stub, and contains no stale persistence or phase assertion."
+          },
+          "protocol_deviation": false
+        }
+      },
+      "inclusive_usage": {
+        "baseline": {
+          "input_tokens": 192035,
+          "cached_input_tokens": 171776,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2939,
+          "reasoning_output_tokens": 351,
+          "total_tokens": 194974,
+          "uncached_input_tokens": 20259
+        },
+        "obia": {
+          "input_tokens": 125696,
+          "cached_input_tokens": 76160,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6886,
+          "reasoning_output_tokens": 2676,
+          "total_tokens": 132582,
+          "uncached_input_tokens": 49536
+        }
+      },
+      "checkpoint_audit": {
+        "initial_valid": true,
+        "initial_active": true,
+        "initial_fixtures_unchanged": true,
+        "initial_receipt_valid": true,
+        "final_valid": true,
+        "final_complete": true,
+        "final_receipt_valid": true,
+        "checkpoint_changed": true,
+        "previous_version_retained": true,
+        "previous_bytes_match_receipt": true,
+        "current_bytes_match_receipt": true,
+        "current_ownership_matches": true,
+        "initial_note_bytes": 3059,
+        "final_note_bytes": 2865
+      },
+      "failures": [],
+      "infrastructure_error": false,
+      "storage_pass": true,
+      "task_quality_pass": true,
+      "manual_audit_pass": true,
+      "execution_pass": true,
+      "adapter_operations": [
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.000236,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.009857,
+          "success": true
+        },
+        {
+          "operation": "prepare",
+          "elapsed_seconds": 0.00188,
+          "success": true
+        },
+        {
+          "operation": "capture",
+          "elapsed_seconds": 0.01758,
+          "success": true
+        }
+      ],
+      "net_token_reduction_percent": 32.0
+    }
+  ],
+  "by_case": {
+    "short": {
+      "planned_pairs": 3,
+      "usage_known": {
+        "baseline": {
+          "input_tokens": 341328,
+          "cached_input_tokens": 285952,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9436,
+          "reasoning_output_tokens": 1965,
+          "total_tokens": 350764,
+          "uncached_input_tokens": 55376
+        },
+        "obia": {
+          "input_tokens": 349532,
+          "cached_input_tokens": 254976,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 19669,
+          "reasoning_output_tokens": 6977,
+          "total_tokens": 369201,
+          "uncached_input_tokens": 94556
+        }
+      },
+      "net_token_reduction_percent": -5.256,
+      "median_paired_reduction_percent": -10.292,
+      "all_quality_and_storage_pass": true
+    },
+    "long": {
+      "planned_pairs": 3,
+      "usage_known": {
+        "baseline": {
+          "input_tokens": 606162,
+          "cached_input_tokens": 520832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 8401,
+          "reasoning_output_tokens": 1090,
+          "total_tokens": 614563,
+          "uncached_input_tokens": 85330
+        },
+        "obia": {
+          "input_tokens": 412669,
+          "cached_input_tokens": 275328,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 20096,
+          "reasoning_output_tokens": 6657,
+          "total_tokens": 432765,
+          "uncached_input_tokens": 137341
+        }
+      },
+      "net_token_reduction_percent": 29.582,
+      "median_paired_reduction_percent": 32.0,
+      "all_quality_and_storage_pass": true
+    }
+  },
+  "aggregate": {
+    "usage_known": {
+      "baseline": {
+        "input_tokens": 947490,
+        "cached_input_tokens": 806784,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17837,
+        "reasoning_output_tokens": 3055,
+        "total_tokens": 965327,
+        "uncached_input_tokens": 140706
+      },
+      "obia": {
+        "input_tokens": 762201,
+        "cached_input_tokens": 530304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 39765,
+        "reasoning_output_tokens": 13634,
+        "total_tokens": 801966,
+        "uncached_input_tokens": 231897
+      }
+    },
+    "net_token_reduction_percent": 16.923,
+    "quality_and_persistence_pass": true
+  },
+  "primary_success": true
+}

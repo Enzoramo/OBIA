@@ -21,6 +21,7 @@ não precisa estar aberto para a gravação funcionar.
 - Busca por palavras e recuperação adaptativa: núcleo integral e detalhes sob demanda.
 - Leitura seletiva, fontes citadas na mesma chamada e reutilização explícita de contexto pelo SHA.
 - Confirmação de leitura após gravar, evitando chamadas rotineiras separadas de leitura/verificação.
+- [Adaptador opcional de handoff estruturado](skills/obia/references/handoff.md) para hosts que injetam memória e gravam a saída estruturada do modelo.
 - Proteção contra sobrescritas concorrentes pelo utilitário e histórico local.
 - Edição parcial que preserva seções humanas, propriedades e comentários YAML.
 - Instalador público com um cofre separado por projeto, incluindo worktrees.
@@ -42,6 +43,13 @@ reduziu os tokens inclusivos do OBIA em 35,1% e chamadas de comando em 28,9%.
 As seis retomadas finais passaram nos 16 critérios e na auditoria de memória;
 ainda custaram cerca do dobro do baseline, com criação incluída. Essa validação
 reutiliza explicitamente os custos anteriores de criação/baseline.
+Um [estudo do adaptador integrado com 36 execuções](docs/integrated-handoff-evaluation.md)
+mediu **16,9% menos tokens totais** na rodada final nova, incluindo criação e
+atualização dos checkpoints, com os 16 critérios e auditoria de memória aprovados.
+Históricos longos economizaram 29,6%; os curtos ainda custaram 5,3% a mais. O modo
+exige integração explícita do host e não mede o fluxo padrão dos hooks. Entrada
+não cacheada, saída e duração aumentaram; não há economia financeira ou ganho de
+velocidade demonstrados. A primeira rodada negativa e seus custos permanecem no relatório.
 A skill não recupera o que nunca foi salvo, não amplia a janela do modelo e não
 garante ativação automática antes de toda compactação. Ela mantém uma memória
 externa que o agente precisa consultar e conferir.
