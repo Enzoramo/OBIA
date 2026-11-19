@@ -113,3 +113,12 @@ quality must pass independently of token results. Even if both show savings,
 the conclusion is restricted to this subagent task: **daily end-to-end savings
 with native Stop are not established**. Calibration cost stays visible outside
 the comparison; parent development/review/orchestration remains excluded.
+
+Before the fresh continuation, the app read-thread API was found to cap command
+output at 20,000 characters. Export the baseline's actual model-visible message
+and tool payloads from its exact newly created planning trace instead. Do not use
+the fuller command-stdout log as if the model saw it; preserve original tool
+truncation. Exclude hidden reasoning and common bootstrap/developer context.
+This scoped history export is separate from the metadata-only usage reader;
+no pre-existing user conversation is processed. The fresh baseline reads that
+history as evidence, with the current implementation request taking precedence.
