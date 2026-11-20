@@ -316,5 +316,13 @@ class DesktopTests(unittest.TestCase):
         self.assertEqual(failure['saved_checkpoint']['sha256'], self.note()['sha256'])
 
 
+    def test_changed_focus_recovers_even_when_note_sha_is_known(self):
+        receipt=self.save();sha=receipt['checkpoint']['sha256']
+        import desktop
+        result=desktop.recover(self.config.parent,self.session,self.cwd,'cache',sha,focus='offline')
+        self.assertNotEqual(result['memory'].get('status'),'unchanged')
+        self.assertEqual(result['memory']['notes'][0]['sha256'],sha)
+        self.assertEqual(self.invoke('recover','--known-sha',sha,'--focus','offline')['memory']['view'],'focused')
+
 if __name__ == '__main__':
     unittest.main()

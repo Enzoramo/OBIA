@@ -66,6 +66,13 @@ for project-wide audits; keep the separate exact-SHA `hooks.py ack` when bound.
 title/summary boosts. It returns metadata/SHA, not note bodies. `--limit` is 1–10
 (default 5). Archived tasks need `--include-archived` or a known task ID.
 
+`recall --task TASK --focus TEXT` selects complete sections by lexical matches
+to the current task need, together with core constraints, decisions, corrections
+and uncertainty. It bundles cited sources from the same snapshot, lists omitted
+sections and preserves the note SHA for expansion. Selection is deterministic;
+no match does not prove irrelevance. Focus requires an explicit task and does not
+load linked note bodies. Defaults without `--focus` remain unchanged.
+
 `recall` accepts exactly one of `--task` or `--query`. A known task can include
 one-hop, same-project, nonarchived links up to `--limit` (default 3, maximum 10).
 No recursive, personal-note or cross-project traversal occurs. `--max-chars`

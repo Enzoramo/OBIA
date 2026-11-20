@@ -20,6 +20,15 @@ through ordinary `obia.py read`; deferred context still needs recovery.
 `--known-sha SHA` suppresses repeated content only when that exact context is
 already visible. A stored acknowledgement never substitutes for recovery.
 
+For a specific next task, add `--focus "renderer ledger accounting"`. This
+selects whole sections of the bound task by deterministic lexical matching,
+keeps the core/uncertainties and cited source definitions, and lists omitted
+sections. No linked-note bodies are loaded in focused mode. Expand needed
+omissions with `read --section` and the returned SHA; matching is not semantic
+understanding. If the core cannot fit, the response requires a full read.
+`--known-sha` does not suppress focused recovery, since the requested need may
+have changed even when the note has not.
+
 ## Save and acknowledge before the final response
 
 ```sh

@@ -21,14 +21,16 @@ class DesktopError(obia.ObiaError):
         self.saved = saved
 
 
-def recover(config, session, cwd, task, known_sha=None):
+def recover(config, session, cwd, task, known_sha=None, focus=None):
+    if focus is not None:
+        obia.validate_focus(focus)
     result = hooks.bind(config, 'codex', session, cwd, task, known_sha)
     memory = result.get('memory')
-    if memory and memory.get('status') != 'unchanged':
+    if memory and (focus is not None or memory.get('status') != 'unchanged'):
         # bind performs project routing and explicit session ownership. Bundle
         # source definitions in the one model-visible recovery response.
         result['memory'] = obia.recall(Path(result['vault']), result['project'],
-                                     task=task, view='brief', with_sources=True)
+                                     task=task, view='brief', with_sources=True, focus=focus)
     return result
 
 
@@ -97,6 +99,7 @@ def main(argv=None):
             command.add_argument('--' + key, required=True)
         if name == 'recover':
             command.add_argument('--known-sha')
+            command.add_argument('--focus')
         elif name == 'checkpoint':
             command.add_argument('--input', required=True)
             command.add_argument('--expect-sha')
@@ -106,7 +109,7 @@ def main(argv=None):
     try:
         config = Path(args.config_dir).expanduser().resolve()
         if args.command == 'recover':
-            result = recover(config, args.session, args.path, args.task, args.known_sha)
+            result = recover(config, args.session, args.path, args.task, args.known_sha, args.focus)
         elif args.command == 'verify':
             result = verify(config, args.session, args.path, args.task, args.sha)
         else:

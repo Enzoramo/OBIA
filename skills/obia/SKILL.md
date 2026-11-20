@@ -49,6 +49,13 @@ from one snapshot; small notes return whole. Inspect omissions. Expand relevant
 sections with `read --section NAME --expect-sha SHA`; repeat `--section` as needed.
 Read deferred/omitted main notes in full before acting. Linked locators are not
 evidence. If the task is unknown, `search --query TERMS` within the project first.
+For a known task with a specific current need, add `--focus "need or question"`
+to `recall` or desktop `recover`. Focused recall selects complete sections by
+lexical matches, always includes the core and its cited sources, and reports
+omissions. It is not semantic understanding: inspect unmatched sections and
+expand any needed evidence with the returned SHA. A known SHA alone cannot
+suppress a new focused read.
+
 Missing matches are not proof of absence. Follow only useful, scoped sources.
 
 ## Checkpoint
