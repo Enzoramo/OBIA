@@ -1,0 +1,996 @@
+{
+  "schema": 1,
+  "workflow": "task_focused_retrieval",
+  "date": "2026-11-20",
+  "product_commit": "c5fc531",
+  "protocol_commit": "2153105",
+  "scope": "One scenario, six fresh native subagents, nine requested work turns; parent development/review/orchestration excluded.",
+  "execution_ledger": [
+    {
+      "stage": "baseline/planning",
+      "usage": {
+        "input_tokens": 416976,
+        "cached_input_tokens": 373504,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3046,
+        "reasoning_output_tokens": 75,
+        "total_tokens": 420022,
+        "uncached_input_tokens": 43472
+      },
+      "trace_sha256": "037d130939b152a8ce416b07499e0c08cf8fb4c42db3de8afb72b7a0aca98fe4",
+      "complete_metering": true,
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "medium"
+        ]
+      },
+      "completed_turns": 2,
+      "model_tool_calls": 8,
+      "shell_executions": 19,
+      "turn_duration_ms": [
+        53934,
+        26381
+      ]
+    },
+    {
+      "stage": "baseline/resume",
+      "usage": {
+        "input_tokens": 604083,
+        "cached_input_tokens": 540416,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7784,
+        "reasoning_output_tokens": 710,
+        "total_tokens": 611867,
+        "uncached_input_tokens": 63667
+      },
+      "trace_sha256": "fb0d85256d4f52b0e92f37b7abb3a87229f25df8e56a8ff1203caa981ee35b38",
+      "complete_metering": true,
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "medium"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 10,
+      "shell_executions": 14,
+      "turn_duration_ms": [
+        180544
+      ]
+    },
+    {
+      "stage": "brief/planning",
+      "usage": {
+        "input_tokens": 796683,
+        "cached_input_tokens": 756864,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6833,
+        "reasoning_output_tokens": 181,
+        "total_tokens": 803516,
+        "uncached_input_tokens": 39819
+      },
+      "trace_sha256": "9cac4d332958625c8d8205ec7825df008a38b80d618ae2128995a9d6fe820166",
+      "complete_metering": true,
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "medium"
+        ]
+      },
+      "completed_turns": 2,
+      "model_tool_calls": 14,
+      "shell_executions": 24,
+      "turn_duration_ms": [
+        108645,
+        60582
+      ]
+    },
+    {
+      "stage": "brief/resume",
+      "usage": {
+        "input_tokens": 326615,
+        "cached_input_tokens": 294912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7072,
+        "reasoning_output_tokens": 318,
+        "total_tokens": 333687,
+        "uncached_input_tokens": 31703
+      },
+      "trace_sha256": "906e3855525d599ffaa01b03ac0e77fbbd0d2dfbd9e7a59aea1d5b7a89d03afc",
+      "complete_metering": true,
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "medium"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 8,
+      "shell_executions": 13,
+      "turn_duration_ms": [
+        161388
+      ]
+    },
+    {
+      "stage": "focused/planning",
+      "usage": {
+        "input_tokens": 678478,
+        "cached_input_tokens": 644992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6434,
+        "reasoning_output_tokens": 128,
+        "total_tokens": 684912,
+        "uncached_input_tokens": 33486
+      },
+      "trace_sha256": "e2745901b74013ca1c5f0756fa3e02d0d60917e05029ba049ad1273379657f75",
+      "complete_metering": true,
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "medium"
+        ]
+      },
+      "completed_turns": 2,
+      "model_tool_calls": 13,
+      "shell_executions": 22,
+      "turn_duration_ms": [
+        101528,
+        63208
+      ]
+    },
+    {
+      "stage": "focused/resume",
+      "usage": {
+        "input_tokens": 255597,
+        "cached_input_tokens": 239488,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6555,
+        "reasoning_output_tokens": 199,
+        "total_tokens": 262152,
+        "uncached_input_tokens": 16109
+      },
+      "trace_sha256": "c0d6f6c6558ca8b7f1d8e46603fef1b3f27588db5194e7cc89cdeaec379bfdd5",
+      "complete_metering": true,
+      "session_identity_verified": true,
+      "metadata": {
+        "originator": [
+          "Codex Desktop"
+        ],
+        "model_provider": [
+          "openai"
+        ],
+        "cli_version": [
+          "0.169.0-alpha.11.1"
+        ],
+        "source": [
+          "subagent"
+        ],
+        "model": [
+          "gpt-6-astra"
+        ],
+        "effort": [
+          "medium"
+        ]
+      },
+      "completed_turns": 1,
+      "model_tool_calls": 7,
+      "shell_executions": 11,
+      "turn_duration_ms": [
+        150709
+      ]
+    }
+  ],
+  "complete_metering": true,
+  "unique_measured_executor_tokens": 3116156,
+  "arms": {
+    "baseline": {
+      "usage": {
+        "input_tokens": 1021059,
+        "cached_input_tokens": 913920,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 10830,
+        "reasoning_output_tokens": 785,
+        "total_tokens": 1031889,
+        "uncached_input_tokens": 107139
+      },
+      "model_tool_calls": 18,
+      "shell_executions": 33,
+      "sum_turn_duration_ms": 260859,
+      "grade": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "missing_schema_rejected": true,
+          "missing_workflow_rejected": true,
+          "unsupported_schema_rejected": true,
+          "boolean_schema_rejected": true,
+          "float_schema_rejected": true,
+          "unsupported_workflow_rejected": true,
+          "extra_cost_not_guessed_into_arm": true,
+          "partial_usage_unknown_despite_total": true,
+          "planned_count_mismatch_incomplete": true,
+          "empty_study_not_success": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 29,
+        "total": 29,
+        "all_pass": true
+      },
+      "scope": {
+        "protected": 23,
+        "changed": [],
+        "added": [
+          "tests/test_render_measurements.py",
+          "tools/render_measurements.py"
+        ],
+        "pass": true
+      }
+    },
+    "brief": {
+      "usage": {
+        "input_tokens": 1123298,
+        "cached_input_tokens": 1051776,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 13905,
+        "reasoning_output_tokens": 499,
+        "total_tokens": 1137203,
+        "uncached_input_tokens": 71522
+      },
+      "model_tool_calls": 22,
+      "shell_executions": 37,
+      "sum_turn_duration_ms": 330615,
+      "grade": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "missing_schema_rejected": true,
+          "missing_workflow_rejected": true,
+          "unsupported_schema_rejected": true,
+          "boolean_schema_rejected": true,
+          "float_schema_rejected": true,
+          "unsupported_workflow_rejected": true,
+          "extra_cost_not_guessed_into_arm": true,
+          "partial_usage_unknown_despite_total": true,
+          "planned_count_mismatch_incomplete": true,
+          "empty_study_not_success": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 29,
+        "total": 29,
+        "all_pass": true
+      },
+      "scope": {
+        "protected": 23,
+        "changed": [],
+        "added": [
+          "tests/test_render_measurements.py",
+          "tools/render_measurements.py"
+        ],
+        "pass": true
+      }
+    },
+    "focused": {
+      "usage": {
+        "input_tokens": 934075,
+        "cached_input_tokens": 884480,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12989,
+        "reasoning_output_tokens": 327,
+        "total_tokens": 947064,
+        "uncached_input_tokens": 49595
+      },
+      "model_tool_calls": 20,
+      "shell_executions": 33,
+      "sum_turn_duration_ms": 315445,
+      "grade": {
+        "checks": {
+          "derived_totals_subsets_and_no_mutation": true,
+          "unknown_usage_not_zero": true,
+          "missing_stage_not_zero": true,
+          "unexpected_paid_stage_retained": true,
+          "quality_gate_storage_pass": true,
+          "quality_gate_task_quality_pass": true,
+          "quality_gate_manual_audit_pass": true,
+          "quality_gate_execution_pass": true,
+          "failure_cost_and_privacy": true,
+          "missing_schema_rejected": true,
+          "missing_workflow_rejected": true,
+          "unsupported_schema_rejected": true,
+          "boolean_schema_rejected": true,
+          "float_schema_rejected": true,
+          "unsupported_workflow_rejected": true,
+          "extra_cost_not_guessed_into_arm": true,
+          "partial_usage_unknown_despite_total": false,
+          "planned_count_mismatch_incomplete": true,
+          "empty_study_not_success": true,
+          "duplicate_stage_rejected": true,
+          "negative_usage_rejected": true,
+          "boolean_usage_rejected": true,
+          "inconsistent_usage_rejected": true,
+          "invalid_subset_rejected": true,
+          "all_pairs_and_regressions_retained": true,
+          "real_negative_study": true,
+          "real_final_study": true,
+          "markdown_labels_numbers_and_privacy": true,
+          "cli_read_only": true
+        },
+        "passed": 28,
+        "total": 29,
+        "all_pass": false
+      },
+      "scope": {
+        "protected": 23,
+        "changed": [],
+        "added": [
+          "tests/test_render_measurements.py",
+          "tools/render_measurements.py"
+        ],
+        "pass": true
+      }
+    }
+  },
+  "primary_success": false,
+  "daily_stop_savings_established": false,
+  "numeric_observation": {
+    "baseline_minus_focused_tokens": 84825,
+    "reduction_percent_vs_baseline": 8.22036091091193,
+    "reduction_percent_vs_brief": 16.719882026340063,
+    "quality_gated_success": false
+  },
+  "protocol_version_tested": 1,
+  "prospective_protocol_version": 2,
+  "prospective_protocol_commit": "6063abf",
+  "prospective_version_real_agent_tested": false,
+  "semantic_audit": {
+    "scope": "Private independent audit of exactly six authorized executor sessions and own task notes; visible task/tool evidence only. No new model execution. Reviewer costs excluded from executor sum.",
+    "stages": {
+      "baseline/planning": {
+        "scope": "pass",
+        "source_preservation": "23 frozen files match manifest SHA; only renderer and test additions",
+        "accepted_ledger_correction": "retained",
+        "metadata_unknown_extra_quality_privacy_contract": "retained",
+        "test_claims": "not_applicable",
+        "observed_unittest_count": null,
+        "memory_quality": "not_applicable",
+        "complete_metering": true,
+        "turns": 2,
+        "hook_diagnostic": "deferred; no lifecycle validation claimed",
+        "note": "Planning only, own source inspection and accepted correction."
+      },
+      "baseline/resume": {
+        "scope": "pass",
+        "source_preservation": "23 frozen files match manifest SHA; only renderer and test additions",
+        "accepted_ledger_correction": "retained",
+        "metadata_unknown_extra_quality_privacy_contract": "retained",
+        "test_claims": "consistent_with_observed_execution",
+        "observed_unittest_count": 9,
+        "memory_quality": "not_applicable",
+        "complete_metering": true,
+        "turns": 1,
+        "hook_diagnostic": "deferred; no lifecycle validation claimed",
+        "note": "Fresh source inspection and actual tests observed; implementation scope preserved."
+      },
+      "brief/planning": {
+        "scope": "pass",
+        "source_preservation": "23 frozen files match manifest SHA; only renderer and test additions",
+        "accepted_ledger_correction": "retained",
+        "metadata_unknown_extra_quality_privacy_contract": "retained",
+        "test_claims": "not_applicable",
+        "observed_unittest_count": null,
+        "memory_quality": "pass",
+        "complete_metering": true,
+        "turns": 2,
+        "hook_diagnostic": "deferred; no lifecycle validation claimed",
+        "note": "Planning only, own source inspection and accepted correction."
+      },
+      "brief/resume": {
+        "scope": "pass",
+        "source_preservation": "23 frozen files match manifest SHA; only renderer and test additions",
+        "accepted_ledger_correction": "retained",
+        "metadata_unknown_extra_quality_privacy_contract": "retained",
+        "test_claims": "consistent_with_observed_execution",
+        "observed_unittest_count": 8,
+        "memory_quality": "pass",
+        "complete_metering": true,
+        "turns": 1,
+        "hook_diagnostic": "deferred; no lifecycle validation claimed",
+        "note": "Fresh source inspection and actual tests observed; implementation scope preserved."
+      },
+      "focused/planning": {
+        "scope": "pass",
+        "source_preservation": "23 frozen files match manifest SHA; only renderer and test additions",
+        "accepted_ledger_correction": "retained",
+        "metadata_unknown_extra_quality_privacy_contract": "retained",
+        "test_claims": "not_applicable",
+        "observed_unittest_count": null,
+        "memory_quality": "pass",
+        "complete_metering": true,
+        "turns": 2,
+        "hook_diagnostic": "deferred; no lifecycle validation claimed",
+        "note": "Planning only, own source inspection and accepted correction."
+      },
+      "focused/resume": {
+        "scope": "pass",
+        "source_preservation": "23 frozen files match manifest SHA; only renderer and test additions",
+        "accepted_ledger_correction": "retained",
+        "metadata_unknown_extra_quality_privacy_contract": "retained",
+        "test_claims": "consistent_with_observed_execution",
+        "observed_unittest_count": 9,
+        "memory_quality": "pass",
+        "complete_metering": true,
+        "turns": 1,
+        "hook_diagnostic": "deferred; no lifecycle validation claimed",
+        "note": "Fresh source inspection and actual tests observed; implementation scope preserved.",
+        "functional_qualification": "Frozen acceptance 28/29: known_total_tokens counts known partial component; no loss of unknown-cost rule in handoff."
+      }
+    },
+    "note_versions": [
+      {
+        "arm": "brief",
+        "phase": "initial",
+        "sha256": "1d8897efaa6811f11e501424a47814d6d4e0b0cc4c2ed25ee578b6d7dbe95010",
+        "bytes": 7603,
+        "receipt_matches": true,
+        "sources_observed": "pass",
+        "state_reconciled": "pass",
+        "contract_retention": "initial aggregate proposal and uncertainties",
+        "deferred_hook_diagnostic_retained": true,
+        "final_test_claims_consistent": null,
+        "no_stale_persistence_claim": true
+      },
+      {
+        "arm": "brief",
+        "phase": "corrected",
+        "sha256": "3f14caadc1a6153ed13c9f406955cb30bc57429c107908eb9e652877233a41ce",
+        "bytes": 11281,
+        "receipt_matches": true,
+        "sources_observed": "pass",
+        "state_reconciled": "pass",
+        "contract_retention": "accepted ledger correction, strict metadata, unknown totals, extra costs, quality, privacy retained",
+        "deferred_hook_diagnostic_retained": true,
+        "final_test_claims_consistent": null,
+        "no_stale_persistence_claim": true
+      },
+      {
+        "arm": "brief",
+        "phase": "final",
+        "sha256": "98b02cf047790edc4f9caff30977ca336b3f38b2a75d14fdedf3c0e2398d4662",
+        "bytes": 12952,
+        "receipt_matches": true,
+        "sources_observed": "pass",
+        "state_reconciled": "pass",
+        "contract_retention": "accepted ledger correction, strict metadata, unknown totals, extra costs, quality, privacy retained",
+        "deferred_hook_diagnostic_retained": true,
+        "final_test_claims_consistent": true,
+        "no_stale_persistence_claim": true
+      },
+      {
+        "arm": "focused",
+        "phase": "initial",
+        "sha256": "18851192aa953773d10ff2ccf0625c6395f5024175f5183709bc23a1262e89dc",
+        "bytes": 7890,
+        "receipt_matches": true,
+        "sources_observed": "pass",
+        "state_reconciled": "pass",
+        "contract_retention": "initial aggregate proposal and uncertainties",
+        "deferred_hook_diagnostic_retained": true,
+        "final_test_claims_consistent": null,
+        "no_stale_persistence_claim": true
+      },
+      {
+        "arm": "focused",
+        "phase": "corrected",
+        "sha256": "2fdc652f16ef1907ebf08ebb0551e36ad0e1ac18761e9e00daeefe85caccb87d",
+        "bytes": 11242,
+        "receipt_matches": true,
+        "sources_observed": "pass",
+        "state_reconciled": "pass",
+        "contract_retention": "accepted ledger correction, strict metadata, unknown totals, extra costs, quality, privacy retained",
+        "deferred_hook_diagnostic_retained": true,
+        "final_test_claims_consistent": null,
+        "no_stale_persistence_claim": true
+      },
+      {
+        "arm": "focused",
+        "phase": "final",
+        "sha256": "d1452347e39daf48590888fa7e527047df87c7fe4a62e4ba3c4fd76a58521a32",
+        "bytes": 12548,
+        "receipt_matches": true,
+        "sources_observed": "pass",
+        "state_reconciled": "pass",
+        "contract_retention": "accepted ledger correction, strict metadata, unknown totals, extra costs, quality, privacy retained",
+        "deferred_hook_diagnostic_retained": true,
+        "final_test_claims_consistent": true,
+        "no_stale_persistence_claim": true
+      }
+    ],
+    "storage_receipts": [
+      {
+        "stage": "brief/planning",
+        "visible_item": 19,
+        "sha256": "22b0aadfca753cc892ebab878281fdbbef9a94ba00d8c1720281172503b582e1",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      },
+      {
+        "stage": "brief/planning",
+        "visible_item": 23,
+        "sha256": "1d8897efaa6811f11e501424a47814d6d4e0b0cc4c2ed25ee578b6d7dbe95010",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      },
+      {
+        "stage": "brief/planning",
+        "visible_item": 34,
+        "sha256": "3f14caadc1a6153ed13c9f406955cb30bc57429c107908eb9e652877233a41ce",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      },
+      {
+        "stage": "brief/resume",
+        "visible_item": 19,
+        "sha256": "98b02cf047790edc4f9caff30977ca336b3f38b2a75d14fdedf3c0e2398d4662",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      },
+      {
+        "stage": "focused/planning",
+        "visible_item": 16,
+        "sha256": "71b4bf3b3e8c176938e9ed93199aada16ec1af5418eef4ddfbe79eb2bd94798a",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      },
+      {
+        "stage": "focused/planning",
+        "visible_item": 20,
+        "sha256": "18851192aa953773d10ff2ccf0625c6395f5024175f5183709bc23a1262e89dc",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      },
+      {
+        "stage": "focused/planning",
+        "visible_item": 31,
+        "sha256": "2fdc652f16ef1907ebf08ebb0551e36ad0e1ac18761e9e00daeefe85caccb87d",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      },
+      {
+        "stage": "focused/resume",
+        "visible_item": 17,
+        "sha256": "d1452347e39daf48590888fa7e527047df87c7fe4a62e4ba3c4fd76a58521a32",
+        "bytes_match": true,
+        "verified": true,
+        "project_index_current": true,
+        "ack_sha_matches": true,
+        "turn_id": null,
+        "ack_scope": "last_observed_host_turn"
+      }
+    ],
+    "storage_pass": true,
+    "semantic_retention_pass": true,
+    "native_stop_verified": false,
+    "checkpoint_count_note": "Six phase-end versions plus two intermediate initial saves were observed and all eight receipts match stored bytes.",
+    "functional_scores": {
+      "baseline": "29/29",
+      "brief": "29/29",
+      "focused": "28/29"
+    },
+    "primary_success": false,
+    "focused_failure": {
+      "check": "partial_usage_unknown_despite_total",
+      "expected_known_total_tokens": 120,
+      "actual_known_total_tokens": 165,
+      "difference": "45 known input tokens from incomplete usage counted as lower bound",
+      "unknown_arm_total_null": true,
+      "metering_complete": false,
+      "success": false,
+      "rule_in_corrected_note": true,
+      "rule_in_actual_recovery_packet": true,
+      "interpretation": "Contract explicitly makes missing input/output unknown and isolated total insufficient. It does not explicitly specify whether known_total_tokens excludes known input/output components of an incomplete usage; retain every known paid cost / every known ledger usage admits the lower-bound interpretation. This is a contract/grader interpretation discrepancy, not evidenced memory loss. Frozen score and success gate unchanged."
+    },
+    "audit_limits": [
+      "Visible command evidence and protected hashes support scope; not a whole-host filesystem audit.",
+      "Storage/index receipts and null-turn acknowledgements do not establish real Stop coverage.",
+      "Passing local tests is distinct from independent 29-check acceptance."
+    ]
+  },
+  "recovery_audit": {
+    "packets": [
+      {
+        "stage": "brief/planning",
+        "visible_item": 30,
+        "view": "brief",
+        "sha256": "1d8897efaa6811f11e501424a47814d6d4e0b0cc4c2ed25ee578b6d7dbe95010",
+        "included_sections": [
+          "Resume",
+          "Constraints"
+        ],
+        "omitted_sections": [
+          "Sources",
+          "Renderer accounting",
+          "Deferred hook diagnostics"
+        ],
+        "matched_sections": null,
+        "omission_reasons": null,
+        "content_characters": 1186,
+        "content_utf8_bytes": 1215,
+        "packet_json_characters": 2861,
+        "packet_size_convention": "JSON reserialization ensure_ascii=False, default separators; content measured exactly",
+        "source_ids": [
+          "S1",
+          "S2",
+          "S3"
+        ]
+      },
+      {
+        "stage": "brief/resume",
+        "visible_item": 7,
+        "view": "brief",
+        "sha256": "3f14caadc1a6153ed13c9f406955cb30bc57429c107908eb9e652877233a41ce",
+        "included_sections": [
+          "Resume",
+          "Constraints"
+        ],
+        "omitted_sections": [
+          "Sources",
+          "Renderer accounting",
+          "Deferred hook diagnostics"
+        ],
+        "matched_sections": null,
+        "omission_reasons": null,
+        "content_characters": 1750,
+        "content_utf8_bytes": 1793,
+        "packet_json_characters": 3097,
+        "packet_size_convention": "JSON reserialization ensure_ascii=False, default separators; content measured exactly",
+        "source_ids": [
+          "S1",
+          "S6"
+        ]
+      },
+      {
+        "stage": "focused/planning",
+        "visible_item": 27,
+        "view": "brief",
+        "sha256": "18851192aa953773d10ff2ccf0625c6395f5024175f5183709bc23a1262e89dc",
+        "included_sections": [
+          "Resume",
+          "Constraints"
+        ],
+        "omitted_sections": [
+          "Sources",
+          "Renderer accounting",
+          "Deferred hook diagnostics"
+        ],
+        "matched_sections": null,
+        "omission_reasons": null,
+        "content_characters": 1165,
+        "content_utf8_bytes": 1198,
+        "packet_json_characters": 3304,
+        "packet_size_convention": "JSON reserialization ensure_ascii=False, default separators; content measured exactly",
+        "source_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5"
+        ]
+      },
+      {
+        "stage": "focused/resume",
+        "visible_item": 9,
+        "view": "focused",
+        "sha256": "2fdc652f16ef1907ebf08ebb0551e36ad0e1ac18761e9e00daeefe85caccb87d",
+        "included_sections": [
+          "Resume",
+          "Constraints",
+          "Renderer accounting"
+        ],
+        "omitted_sections": [
+          "Sources",
+          "Deferred hook diagnostics"
+        ],
+        "matched_sections": [
+          "Renderer accounting",
+          "Deferred hook diagnostics"
+        ],
+        "omission_reasons": {
+          "Sources": "cited definitions bundled separately",
+          "Deferred hook diagnostics": "matched but exceeds packet budget"
+        },
+        "content_characters": 6915,
+        "content_utf8_bytes": 7067,
+        "packet_json_characters": 9821,
+        "packet_size_convention": "JSON reserialization ensure_ascii=False, default separators; content measured exactly",
+        "source_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ]
+      }
+    ],
+    "visible_section_reads": [
+      {
+        "stage": "brief/planning",
+        "visible_item": 21,
+        "sha256": "22b0aadfca753cc892ebab878281fdbbef9a94ba00d8c1720281172503b582e1",
+        "included_sections": [
+          "Resume",
+          "Constraints",
+          "Sources"
+        ],
+        "content_characters": 2596,
+        "content_utf8_bytes": 2633,
+        "visible_output_complete": true
+      },
+      {
+        "stage": "brief/planning",
+        "visible_item": 32,
+        "sha256": "1d8897efaa6811f11e501424a47814d6d4e0b0cc4c2ed25ee578b6d7dbe95010",
+        "included_sections": [
+          "Renderer accounting",
+          "Deferred hook diagnostics"
+        ],
+        "content_characters": 4599,
+        "content_utf8_bytes": 4716,
+        "visible_output_complete": true
+      },
+      {
+        "stage": "brief/resume",
+        "visible_item": 9,
+        "sha256": "3f14caadc1a6153ed13c9f406955cb30bc57429c107908eb9e652877233a41ce",
+        "included_sections": [
+          "Renderer accounting",
+          "Deferred hook diagnostics"
+        ],
+        "content_characters": 7392,
+        "content_utf8_bytes": 7527,
+        "visible_output_complete": true
+      },
+      {
+        "stage": "focused/planning",
+        "visible_item": 18,
+        "sha256": "71b4bf3b3e8c176938e9ed93199aada16ec1af5418eef4ddfbe79eb2bd94798a",
+        "included_sections": [
+          "Resume",
+          "Constraints",
+          "Sources"
+        ],
+        "content_characters": 2701,
+        "content_utf8_bytes": 2738,
+        "visible_output_complete": true
+      },
+      {
+        "stage": "focused/planning",
+        "visible_item": 29,
+        "sha256": "18851192aa953773d10ff2ccf0625c6395f5024175f5183709bc23a1262e89dc",
+        "included_sections": [
+          "Renderer accounting",
+          "Deferred hook diagnostics"
+        ],
+        "content_characters": 4804,
+        "content_utf8_bytes": 4933,
+        "visible_output_complete": true
+      },
+      {
+        "stage": "focused/resume",
+        "visible_item": 11,
+        "sha256": "2fdc652f16ef1907ebf08ebb0551e36ad0e1ac18761e9e00daeefe85caccb87d",
+        "included_sections": [
+          "Deferred hook diagnostics"
+        ],
+        "content_characters": 2048,
+        "content_utf8_bytes": 2106,
+        "visible_output_complete": true
+      }
+    ],
+    "additional_reads": [
+      {
+        "stage": "brief/resume",
+        "purpose": "Prepare final patch",
+        "operation": "helper read Renderer accounting with corrected SHA inside subprocess; content used locally, not printed separately",
+        "sha256": "3f14caadc1a6153ed13c9f406955cb30bc57429c107908eb9e652877233a41ce"
+      },
+      {
+        "stage": "focused/resume",
+        "purpose": "Prepare final patch",
+        "operation": "Path.read_text of own complete note locally; content not printed separately; checkpoint expect-sha enforced",
+        "sha256": "2fdc652f16ef1907ebf08ebb0551e36ad0e1ac18761e9e00daeefe85caccb87d"
+      }
+    ],
+    "findings": [
+      "Brief continuation expanded both Renderer accounting and Deferred hook diagnostics before implementation; complete section output survives surrounding source-output truncation.",
+      "Focused continuation received Renderer accounting in focused packet and expanded Deferred hook diagnostics, which matched lexically but exceeded packet budget.",
+      "Both planners recovered initial brief notes and expanded technical and deferred sections before correction.",
+      "Baseline continuation initially hit a truncated history display, then performed selective history reads; supplied history itself preserves planner-visible truncation and excludes reasoning/bootstrap.",
+      "No needed renderer evidence was omitted at implementation time.",
+      "Character and byte counts are payload observations, not model-token or causal savings estimates."
+    ]
+  },
+  "configuration_verification": {
+    "hooks_json_unchanged": true,
+    "config_sha256_before": "eee1a0894ee6e5d1426b2d17d4bc23cb8c60367623db82a6eb4e27fd3aac3891",
+    "config_sha256_after": "c1e3029e083d78d0c9640e05e35c476e8edae870bddda3d85f04e870092e55d9",
+    "only_difference_is_medium_to_xhigh": false,
+    "config_mtime_utc": "2026-11-20T17:42:55.312238+00:00",
+    "no_config_written_by_this_check": true,
+    "executor_completion_utc": {
+      "baseline/planning": "2026-11-20T17:33:55.093Z",
+      "brief/planning": "2026-11-20T17:35:33.673Z",
+      "focused/planning": "2026-11-20T17:35:30.450Z",
+      "baseline/resume": "2026-11-20T17:37:23.738Z",
+      "focused/resume": "2026-11-20T17:38:20.234Z",
+      "brief/resume": "2026-11-20T17:38:45.302Z"
+    },
+    "last_executor_completed_utc": "2026-11-20T17:38:45.302Z",
+    "config_mtime_after_executor_completion": true
+  },
+  "checkpoints": {
+    "milestones_per_memory_arm": 3,
+    "storage_receipts_per_memory_arm": 4,
+    "cost_accounting": "All generation, intermediate initial saves, updates, recovery, expansions and final maintenance included. Checkpoint-only causal cost not isolated."
+  },
+  "baseline_history": {
+    "sha256": "bb4037f11e941618d45215fa8f8008c614a272185cd69dab1b6b510851dd4d4a",
+    "bytes": 142056,
+    "excluded": {
+      "encrypted_blocks": 2,
+      "encrypted_characters": 1200
+    },
+    "technical_requests_verified": true
+  },
+  "quality_interpretation": "Frozen focus score28/29 retained. Unknown arms null and comparison suppressed. known_total_tokens=165 versus expected120 is partial-component accounting not explicitly excluded by v1. Prospective v2 clarifies complete-execution totals, without new model runs.",
+  "limitations": [
+    "One scenario and independent plans; selector effect cannot be separated from model/plan variation.",
+    "No native Stop coverage; null ack is not lifecycle verification.",
+    "Fresh exported-history baseline differs from ongoing cached chat.",
+    "Parent development/orchestration/audit/publication excluded from measured executor total.",
+    "Quality equivalence and daily savings not established.",
+    "config.toml hash changed after executors finished, outside this work; no claim of full configuration identity."
+  ],
+  "local_evidence_archive": {
+    "name": "2026-11-20-task-focused/sanitized-evidence.tar.gz",
+    "sha256": "e5a45f4aa71140bb7bd3c54140b41e65ae4e1686ab3469d26d2d689375dfb857",
+    "files": 77,
+    "verified": true
+  }
+}

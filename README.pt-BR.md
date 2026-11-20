@@ -19,6 +19,7 @@ não precisa estar aberto para a gravação funcionar.
 - Ligações com justificativa entre notas existentes.
 - Separação entre fatos, decisões, hipóteses e correções, com referências às fontes.
 - Busca por palavras e recuperação adaptativa: núcleo integral e detalhes sob demanda.
+- Recuperação opcional por foco: seções completas pertinentes à tarefa, núcleo de restrições e incertezas preservado, fontes e SHA do mesmo snapshot.
 - Leitura seletiva, fontes citadas na mesma chamada e reutilização explícita de contexto pelo SHA.
 - Confirmação de leitura após gravar, evitando chamadas rotineiras separadas de leitura/verificação.
 - [Fluxo síncrono no app Codex](skills/obia/references/desktop.md): recuperação/vínculo e gravação/ack reunidos pela ferramenta de terminal existente, sem mudar configuração ou confiança dos hooks.
@@ -58,6 +59,11 @@ inconclusiva por ambiguidade nos requisitos dos metadados do formato. O diagnós
 separado não substitui os placares originais. Os subagentes não exercitaram o Stop
 nativo; economia diária de ponta a ponta com qualidade equivalente **não está
 demonstrada**.
+Um [piloto da recuperação por foco](docs/task-focused-evaluation.md) mediu 8,22%
+menos tokens inclusivos que um baseline novo, mas obteve 28/29 critérios contra
+29/29 do baseline e da recuperação breve. A ambiguidade restante sobre custos
+parciais foi esclarecida para execuções futuras; o placar original permanece,
+sem comprovação de qualidade equivalente ou cobertura do Stop nativo.
 A skill não recupera o que nunca foi salvo, não amplia a janela do modelo e não
 garante ativação automática antes de toda compactação. Ela mantém uma memória
 externa que o agente precisa consultar e conferir.

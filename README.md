@@ -24,6 +24,7 @@ flowchart LR
 - One current note per task, grouped by project, with explicit relationships.
 - Separate facts, decisions, hypotheses, sources and corrections.
 - Lexical search and adaptive recall: whole essential sections, details on demand.
+- Optional task-focused recall: select complete sections for the current need, retain core constraints and uncertainty, and bundle cited sources with the snapshot SHA.
 - Snapshot-safe section/source reads, optional cited-source bundling and explicit SHA-based context reuse.
 - Checkpoint readback receipts that avoid separate routine read/check calls.
 - A [synchronous Codex desktop workflow](skills/obia/references/desktop.md) that bundles recovery/binding and save/ack through the existing shell tool, without changing hook configuration or trust.
@@ -63,6 +64,11 @@ lower measured token usage, but the frozen quality comparison is inconclusive
 because format-metadata requirements were ambiguous. A separate diagnostic does
 not replace the original scores. Subagents did not exercise native Stop; daily
 end-to-end savings with equal quality are **not established**.
+A [task-focused retrieval pilot](docs/task-focused-evaluation.md) measured 8.22%
+fewer inclusive tokens than its fresh baseline, but scored 28/29 versus 29/29
+for baseline and brief recovery. The remaining partial-cost accounting ambiguity
+is clarified prospectively; the original score remains, and quality equivalence
+is not established. No native Stop coverage is claimed.
 It cannot recover unsaved messages, make a model remember without reading files,
 or guarantee that a host activates a skill before context compaction.
 
