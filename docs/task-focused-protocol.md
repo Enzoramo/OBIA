@@ -1,5 +1,12 @@
 # Task-focused recovery: prospective protocol — 2026-11-20
 
+The completed pilot used version 1 frozen at `2153105`. Current prompt constants
+are version 2: they explicitly define `known_total_tokens` as the sum of complete
+execution costs, excluding individual components of incomplete executions. This
+clarification is prospective; it was not delivered to the pilot agents. The
+pilot's original 28/29 focused score remains unchanged. Version 2 has not been
+tested in a new real-agent cohort. See the evaluation report for the distinction.
+
 This is a new, bounded pilot. The prior desktop study and its original grades
 remain unchanged. Freeze this document, `tools/task_focused_eval_cases.py` and
 the product commit before any comparative planning agent starts. Record those

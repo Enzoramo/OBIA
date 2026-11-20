@@ -107,6 +107,19 @@ Retain the accepted ledger correction, this format contract and source locators
 for the renderer continuation. The separate hook diagnostic stays deferred.
 """
 
+# Prospective clarification, not supplied to the pilot frozen at 2153105.
+PROTOCOL_VERSION = 2
+FORMAT_CONTRACT += """\nFor known_total_tokens, sum only execution entries whose input_tokens AND
+output_tokens are both known. A partially known entry contributes no amount to
+this aggregate, while its arm total remains null; this does NOT mean its real
+cost is zero. Do not add individual known components from incomplete entries.
+For example, complete entries costing 100 and 20 plus an entry with input=45,
+output=null and reported total=50 yield known_total_tokens=120, resume_tokens=null,
+obia_tokens=null, metering_complete=false, success=false and no percentage.
+If a component-wise lower bound is exposed separately, name it distinctly; it
+must not replace known_total_tokens or make an unknown arm total known.
+"""
+
 CORRECTION += "\n\n" + FORMAT_CONTRACT
 
 FOCUS = "renderer ledger accounting schema workflow unknown costs quality privacy"
